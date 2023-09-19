@@ -1,12 +1,29 @@
-// src/App.js
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import './App.css';
 import RenderOrRedirect from './components/RenderOrRedirect';
 import Home from './views/Home';
 import Dashboard from './views/Dashboard';
 import Login from './views/Login';
 
 function App() {
+  const [entered, setEntered] = useState(false);
+
+  function handleClick(event) {
+    console.log("Type of element:", event.target.tagName);
+    console.log("ID of element:", event.target.id);
+    console.log("Class(es) of element:", event.target.className);
+  }
+
+  if (!entered) {
+    return (
+      <div className='doorstep-container'>
+        <div onClick={handleClick} className='doorstep'></div>
+        <div onClick={handleClick} className='door'></div>
+      </div>
+    )
+  }
+
   return (
     <Router>
       <nav>
