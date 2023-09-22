@@ -1,26 +1,36 @@
-body{
+body {
   margin: 0;
   padding: 0;
 }
-.doorstep-container{
+
+.doorstep-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   width: 100%;
+  position: relative;
 }
-.doorstep{
+
+.doorstep {
   background-image: url('../src/assets/img/LMH_anime_wall-xl.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   height: 100vh;
   width: 100%;
+  z-index: 1;
 }
-.door{
-  background-image: url('../src/assets/img/door-xl.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+
+.door {
   position: absolute;
+  bottom: 25%;      
+  left: 50%;        
+  transform: translate(-50%, 50%); 
+  z-index: 2;
+}
+
+.door img {
+  display: block;    
+  max-width: 100%;   
 }
