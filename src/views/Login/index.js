@@ -21,7 +21,7 @@ function Login() {
 
   return (
     <div className="login-container">
-        <header className="header">
+        <header>
             <img src="/path/to/logo.png" alt="Logo" className="logo" />
             {/* Add other header items if necessary */}
         </header>
@@ -97,8 +97,8 @@ function Login() {
                 </div>
             )}
         </div>
-        <footer className="footer">
-            © 2023 Your Company Name. All rights reserved.
+        <footer>
+        © 2023 Copyright: Center for Research on End of Life Care, Weill Cornell Medicine
         </footer>
     </div>
 );
