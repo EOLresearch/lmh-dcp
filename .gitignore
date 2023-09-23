@@ -24,3 +24,11 @@ yarn-error.log*
 
 # imgs not needed in version control
 src/assets/img
+
+#firebase
+firestore.rules
+storage.rules
+firestore.indexes.json
+firebase.json
+.firebaserc
+/functions
