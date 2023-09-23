@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import './login.css';
+import logo from '../../assets/img/lmh-dcp.png';
+import logoWhitebg from '../../assets/img/lmh-dcp-whitebg.png';
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -22,8 +24,8 @@ function Login() {
   return (
     <div className="login-container">
         <header>
-            <img src="/path/to/logo.png" alt="Logo" className="logo" />
-            {/* Add other header items if necessary */}
+            
+            <h1>Living Memory Home</h1>
         </header>
         <div className="content">
             <div className="image-container">
@@ -31,6 +33,7 @@ function Login() {
             </div>
             {screen === "login" ? (
                 <div className="form-container">
+                  <img src={logoWhitebg} alt='LMH DCP Logo' className='logo' />
                     <h2>Login</h2>
                     <input 
                         type="text" 
