@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import './App.css';
 import RenderOrRedirect from './components/RenderOrRedirect';
@@ -10,6 +10,12 @@ import door from '../src/assets/img/door-md.png';
 
 function App() {
   const [entered, setEntered] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const loginSwitch = () => {
+    setIsAuthenticated(true);
+    console.log("Login switch called");
+  }
 
   function handleClick(event) {
     console.log("Type of element:", event.target.tagName);
@@ -49,9 +55,9 @@ function App() {
       </nav> */}
 
         <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/" element={<RenderOrRedirect intendedComponent={Home} />} />
-          <Route path="/dashboard" element={<RenderOrRedirect intendedComponent={Dashboard} />} />
+          <Route path="/login" element={<Login loginSwitch={loginSwitch} />} />
+          <Route path="/" element={<RenderOrRedirect loginSwitch={loginSwitch} isAuthenticated={isAuthenticated} intendedComponent={Home} />} />
+          <Route path="/dashboard" element={<RenderOrRedirect loginSwitch={loginSwitch} isAuthenticated={isAuthenticated} intendedComponent={Dashboard} />} />
           {/* Add more routes as needed */}
         </Routes>
         <footer>

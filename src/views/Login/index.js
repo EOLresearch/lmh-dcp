@@ -6,7 +6,7 @@ import './login.css';
 import logoWhitebg from '../../assets/img/lmh-dcp-whitebg.png';
 import houseBg from '../../assets/img/house1-md.jpg';
 
-function Login() {
+function Login({ loginSwitch }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [screen, setScreen] = useState("login");  // Values can be "login" or "register"
@@ -20,6 +20,10 @@ function Login() {
 
   const handleRegistration = () => {
     console.log("Email:", email);
+  }
+  const handleLogin = () => {
+    console.log("Username:", username);
+    loginSwitch();
   }
 
   return (
@@ -46,7 +50,7 @@ function Login() {
                         value={password} 
                         onChange={e => setPassword(e.target.value)} 
                     />
-                    <button>Login</button>
+                    <button onClick={handleLogin}>Login</button>
                     <button onClick={() => setScreen("register")} className="switch-to-register">
                         No account? Create one now
                     </button>

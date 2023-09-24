@@ -10,7 +10,9 @@
   flex-direction: column;
   overflow: hidden;
   justify-content: center;
+  flex-grow:1; 
 }
+/* add flex-grow:1; to all component view top containers to ensure it fits between the header and footer appropriately */
 
 .logo {
   max-height: 10rem;
@@ -18,7 +20,7 @@
 
 .content {
   display: flex;
-  height: 90vh;
+  height: 100%;
 }
 
 .image-container {
