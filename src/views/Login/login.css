@@ -42,12 +42,12 @@ footer{
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #eee; 
+  background-color: #eee;
+  overflow: hidden;
 }
 
 .image-container img {
-  max-height: 80%;
-  max-width: 80%;
+height: 100%;
 }
 
 .form-container {

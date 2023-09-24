@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import './login.css';
 import logo from '../../assets/img/lmh-dcp.png';
 import logoWhitebg from '../../assets/img/lmh-dcp-whitebg.png';
+import houseBg from '../../assets/img/house1-md.jpg';
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -25,16 +26,16 @@ function Login() {
     <div className="login-container">
         <header>
             
-            <h1>Living Memory Home</h1>
+            <h2>Living Memory Home</h2>
         </header>
         <div className="content">
             <div className="image-container">
-                <img src="/path/to/image.png" alt="Image Description" />
+                <img src={houseBg} alt="Image Description" />
             </div>
             {screen === "login" ? (
                 <div className="form-container">
                   <img src={logoWhitebg} alt='LMH DCP Logo' className='logo' />
-                    <h2>Login</h2>
+                    <h3>Login</h3>
                     <input 
                         type="text" 
                         id="username" 
