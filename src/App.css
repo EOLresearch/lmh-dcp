@@ -6,6 +6,32 @@ body {
   font-size: 1.2rem;
 }
 
+.top-container{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+header,
+footer {
+  padding: 10px 20px;
+  height: 7vh;
+  display: flex;
+  align-items: center;
+  background-color: #fddda4;
+}
+
+header {
+  justify-content: left;
+  border-bottom: white 2px solid;
+}
+
+footer {
+  justify-content: center;
+  border-top: white 2px solid;
+}
+
 .doorstep-container {
   display: flex;
   justify-content: center;

@@ -30,7 +30,11 @@ function App() {
 
   return (
     <Router>
-      {/* <nav>
+      <div className='top-container'>
+        <header>
+          <h2>Living Memory Home</h2>
+        </header>
+        {/* <nav>
         <ul>
           <li>
             <Link to="/">Home</Link>
@@ -44,12 +48,16 @@ function App() {
         </ul>
       </nav> */}
 
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/" element={<RenderOrRedirect intendedComponent={Home} />} />
-        <Route path="/dashboard" element={<RenderOrRedirect intendedComponent={Dashboard} />} />
-        {/* Add more routes as needed */}
-      </Routes>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<RenderOrRedirect intendedComponent={Home} />} />
+          <Route path="/dashboard" element={<RenderOrRedirect intendedComponent={Dashboard} />} />
+          {/* Add more routes as needed */}
+        </Routes>
+        <footer>
+          © 2023 Copyright: Center for Research on End of Life Care, Weill Cornell Medicine
+        </footer>
+      </div>
     </Router>
   );
 }

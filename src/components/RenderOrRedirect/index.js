@@ -1,7 +1,6 @@
 import React from 'react';
 import Login from '../../views/Login';
 
-// Placeholder, replace with your authentication logic.
 const isAuthenticated = false;
 
 const RenderOrRedirect = ({ intendedComponent: Component }) => {

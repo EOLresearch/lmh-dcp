@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import './login.css';
-import logo from '../../assets/img/lmh-dcp.png';
+// import logo from '../../assets/img/lmh-dcp.png';
 import logoWhitebg from '../../assets/img/lmh-dcp-whitebg.png';
 import houseBg from '../../assets/img/house1-md.jpg';
 
@@ -24,10 +24,6 @@ function Login() {
 
   return (
     <div className="login-container">
-        <header>
-            
-            <h2>Living Memory Home</h2>
-        </header>
         <div className="content">
             <div className="image-container">
                 <img src={houseBg} alt="Image Description" />
@@ -101,9 +97,6 @@ function Login() {
                 </div>
             )}
         </div>
-        <footer>
-        © 2023 Copyright: Center for Research on End of Life Care, Weill Cornell Medicine
-        </footer>
     </div>
 );
 };

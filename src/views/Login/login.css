@@ -8,33 +8,17 @@
 .login-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-}
-
-header, footer {
-  padding: 10px 20px;
-  height: 7vh;
-  display: flex;
-  align-items: center;
-  background-color: #fddda4;
-}
-header{
-  justify-content: left;
-  border-bottom: white 2px solid;
-}
-footer{
+  overflow: hidden;
   justify-content: center;
-  border-top: white 2px solid;
 }
-
 
 .logo {
   max-height: 10rem;
 }
 
 .content {
-  flex: 1;
   display: flex;
+  height: 90vh;
 }
 
 .image-container {
@@ -47,7 +31,7 @@ footer{
 }
 
 .image-container img {
-height: 100%;
+  height: 100%;
 }
 
 .form-container {
@@ -76,4 +60,3 @@ height: 100%;
   color: white;
   cursor: pointer;
 }
-
