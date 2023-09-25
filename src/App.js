@@ -39,6 +39,7 @@ function App() {
       <div className='top-container'>
         <header>
           <h2>Living Memory Home</h2>
+          <button onClick={()=>setIsAuthenticated(!isAuthenticated)}>Logout</button>
         </header>
         {/* <nav>
         <ul>

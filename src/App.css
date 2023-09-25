@@ -25,6 +25,16 @@ footer {
 header {
   justify-content: left;
   border-bottom: white 2px solid;
+  display: flex;
+  justify-content: space-between;
+}
+header button{
+  background-color: #fddda4;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #31605b;
+  cursor: pointer;
 }
 
 footer {
