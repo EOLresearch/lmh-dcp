@@ -1,0 +1,31 @@
+/* SetupGallery.css */
+
+.setup-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Adjust based on your design */
+  gap: 1rem;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+}
+
+.onboarding-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+/* If you want a subtle hover effect for the gallery cards when the user hovers over them */
+.gallery-card:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s;
+}
+
