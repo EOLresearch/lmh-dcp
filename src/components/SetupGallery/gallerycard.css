@@ -1,29 +1,21 @@
-/* GalleryCard.css */
-
 .gallery-card {
-  border: 1px solid #ccc;
-  padding: 1rem;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out; /* Smooth transitions for hover effects */
-  border-radius: 8px; /* Rounded corners */
-  background-color: #fff; /* White background for the card */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  overflow: hidden; /* In case image or content overflows */
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* For the arrows to position correctly */
 }
 
 .gallery-card-image {
-  width: 100%;
-  max-height: 200px;
-  object-fit: cover;
-  margin-bottom: 0.5rem;
-  border-radius: 8px; /* Rounded corners for the image */
+  max-width: 100%;
+  max-height: 90vh;
+  display: block;
+  margin: 0 auto;
 }
 
 .gallery-card-label {
-  display: block;
-  font-size: 0.9rem;
-  color: #333; /* Dark text for contrast */
-  margin-top: 0.5rem;
+  margin-top: 10px;
+  text-align: center;
 }
-

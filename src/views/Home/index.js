@@ -5,8 +5,15 @@ import { FaDoorOpen } from "react-icons/fa6";
 import { TfiWrite } from "react-icons/tfi";
 import { GiBookmark } from "react-icons/gi";
 import { AiOutlineUser } from "react-icons/ai";
-import SetupGallery from "../../components/SetupGallery";
+import SetupGallery from "../../components/SetupGallery/SetupGallery";
 // import GalleryCard from "../../components/SetupGallery/GalleryCard";
+import house from "../../assets/img/house1-xl.jpg"
+import house2 from "../../assets/img/house2-xl.jpg"
+import scene from "../../assets/img/scene1-xl.jpg"
+import scene2 from "../../assets/img/scene2-xl.jpg"
+
+
+
 
 import './home.css';
 
@@ -35,8 +42,8 @@ function Home() {
   }
 
   const houses = [
-    'path/to/image1.jpg',
-    'path/to/image2.jpg',
+    house,
+    house2,
     // ... other image paths
   ];
   
@@ -47,14 +54,14 @@ function Home() {
   ];
   
   const landscapes = [
-    'path/to/image1.jpg',
-    'path/to/image2.jpg',
+    scene,
+    scene2,
     // ... other image paths
   ];
   
   const landscapeLabels = [
-    'Label for Image 1',
-    'Label for Image 2',
+    'Label for Image 1 landscapes',
+    'Label for Image 2 landscapes',
     // ... other labels
   ];
 
@@ -65,7 +72,7 @@ function Home() {
   }));
 
   const landscapesData = landscapes.map((landscape, index) => ({
-    id: `gallery-item-${index}`,
+    id: `landscape-item-${index}`,
     image: landscape,
     label: landscapeLabels[index]
   }));
