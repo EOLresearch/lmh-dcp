@@ -6,13 +6,12 @@ import { TfiWrite } from "react-icons/tfi";
 import { GiBookmark } from "react-icons/gi";
 import { AiOutlineUser } from "react-icons/ai";
 import SetupGallery from "../../components/SetupGallery/SetupGallery";
-// import GalleryCard from "../../components/SetupGallery/GalleryCard";
+import MessageOverlay from "../../components/MessageOverlay";
+
 import house from "../../assets/img/house1-xl.jpg"
 import house2 from "../../assets/img/house2-xl.jpg"
 import scene from "../../assets/img/scene1-xl.jpg"
 import scene2 from "../../assets/img/scene2-xl.jpg"
-
-
 
 
 import './home.css';
@@ -21,6 +20,8 @@ function Home() {
   const [onboardingStep, setOnboardingStep] = useState('house'); // Could be 'house', 'landscape' or null
   const [selectedHouse, setSelectedHouse] = useState(null);
   const [selectedLandscape, setSelectedLandscape] = useState(null);
+  const [messageIndex, setMessageIndex] = useState(0);
+  const messages = ["Message 1", "Message 2", "Message 3", "Message 4"];
 
   useEffect(() => {
     // Check if the user has chosen a house or landscape, and set the onboarding step accordingly
@@ -44,25 +45,21 @@ function Home() {
   const houses = [
     house,
     house2,
-    // ... other image paths
   ];
   
   const houseLabels = [
     'Label for Image 1',
     'Label for Image 2',
-    // ... other labels
   ];
   
   const landscapes = [
     scene,
     scene2,
-    // ... other image paths
   ];
   
   const landscapeLabels = [
     'Label for Image 1 landscapes',
     'Label for Image 2 landscapes',
-    // ... other labels
   ];
 
   const housesData = houses.map((house, index) => ({
@@ -79,6 +76,13 @@ function Home() {
 
   return (
     <div className="home">
+    {(onboardingStep && messageIndex < messages.length) && (
+        <MessageOverlay 
+          message={messages[messageIndex]} 
+          onNext={() => setMessageIndex(messageIndex + 1)} 
+        />
+      )}
+      
       {onboardingStep && (
         <div className="onboarding-overlay">
           <SetupGallery
