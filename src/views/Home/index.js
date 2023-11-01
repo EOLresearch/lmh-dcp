@@ -21,7 +21,26 @@ function Home() {
   const [selectedHouse, setSelectedHouse] = useState(null);
   const [selectedLandscape, setSelectedLandscape] = useState(null);
   const [messageIndex, setMessageIndex] = useState(0);
-  const messages = ["Message 1", "Message 2", "Message 3", "Message 4"];
+
+
+  const messages = [
+    <div className="message">
+      <h2>About your Living Memory Home</h2>
+      <p>Your Living Memory Home is a place for you to explore your thoughts and feelings about your loss and honor the deceased through the act of creating.</p>
+    </div>
+    , <div className="message">
+    <h2>About your Living Memory Home</h2>
+    <p>Through this process, you will journal about your loss and complete reminiscences based activities that will allow you to engage with and reflect, meditate, and grieve with your loved one.</p>
+  </div>
+  , <div className="message">
+  <h2>Let's Get Started!</h2>
+  <p>To begin, select a house that feels like home to you. As you continue on your grief journey, your Living Memory Home will be here for you.</p>
+</div>
+, <div className="message">
+<h2>A Few Tips...</h2>
+<p>Browse the homes by clicking the left and right arrows. Select a home by clicking the "Select" button.</p>
+</div>
+];
 
   useEffect(() => {
     // Check if the user has chosen a house or landscape, and set the onboarding step accordingly
@@ -46,17 +65,17 @@ function Home() {
     house,
     house2,
   ];
-  
+
   const houseLabels = [
     'Label for Image 1',
     'Label for Image 2',
   ];
-  
+
   const landscapes = [
     scene,
     scene2,
   ];
-  
+
   const landscapeLabels = [
     'Label for Image 1 landscapes',
     'Label for Image 2 landscapes',
@@ -76,13 +95,13 @@ function Home() {
 
   return (
     <div className="home">
-    {(onboardingStep && messageIndex < messages.length) && (
-        <MessageOverlay 
-          message={messages[messageIndex]} 
-          onNext={() => setMessageIndex(messageIndex + 1)} 
+      {(onboardingStep && messageIndex < messages.length) && (
+        <MessageOverlay
+          message={messages[messageIndex]}
+          onNext={() => setMessageIndex(messageIndex + 1)}
         />
       )}
-      
+
       {onboardingStep && (
         <div className="onboarding-overlay">
           <SetupGallery
