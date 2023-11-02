@@ -10,7 +10,7 @@
 header,
 footer {
   padding: 10px 20px;
-  height: 7vh;
+  height: 5vh;
   display: flex;
   align-items: center;
   background-color: #fddda4;
@@ -29,6 +29,31 @@ header button{
   font-weight: bold;
   color: #31605b;
   cursor: pointer;
+}
+.left-side-header{
+  display: flex;
+  align-items: center;
+}
+.left-side-header img{
+  height: 5rem;
+  width: 10rem;
+  margin-right: 3rem;
+}
+.emergency-resources{
+  background-color: #31605b;
+  color: #fddda4;
+  padding:5px 10px;
+  border-radius: 5px;
+  margin-left:0.5rem;
+}
+.bell{
+  margin-left:3px;
+  position: relative;
+  top:2px;
+}
+
+.right-side-header button{
+  padding:10px;
 }
 
 footer {

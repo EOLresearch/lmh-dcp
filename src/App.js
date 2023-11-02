@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BsFillBellFill } from "react-icons/bs";
 import './App.css';
 import RenderOrRedirect from './components/RenderOrRedirect';
 import Home from './views/Home';
@@ -7,6 +8,7 @@ import Dashboard from './views/Dashboard';
 import Login from './views/Login';
 
 import door from '../src/assets/img/door-md.png';
+import logo from '../src/assets/img/lmh-dcp.png';
 
 function App() {
   const [entered, setEntered] = useState(true);
@@ -38,28 +40,20 @@ function App() {
     <Router>
       <div className='top-container'>
         <header>
-          <h2>Living Memory Home</h2>
-          <button onClick={()=>setIsAuthenticated(!isAuthenticated)}>Logout</button>
+          <div className='left-side-header'>
+            <img src={logo} alt="Living Memory Home" />
+            <h3>LIVING MEMORY HOME</h3>
+            <button className='emergency-resources'>EMERGENCY RESOURCES<span className='bell'><BsFillBellFill /></span></button>
+          </div>
+          <div className='right-side-header'>
+            <Link to=""><button>Grief Resources</button></Link>
+            <button onClick={()=>setIsAuthenticated(!isAuthenticated)}>Logout</button>
+          </div>
         </header>
-        {/* <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/dashboard">Dashboard</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-        </ul>
-      </nav> */}
-
         <Routes>
           <Route path="/login" element={<Login loginSwitch={loginSwitch} />} />
           <Route path="/" element={<RenderOrRedirect loginSwitch={loginSwitch} isAuthenticated={isAuthenticated} intendedComponent={Home} />} />
           <Route path="/dashboard" element={<RenderOrRedirect loginSwitch={loginSwitch} isAuthenticated={isAuthenticated} intendedComponent={Dashboard} />} />
-          {/* Add more routes as needed */}
         </Routes>
         <footer>
           © 2023 Copyright: Center for Research on End of Life Care, Weill Cornell Medicine
