@@ -5,7 +5,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative; /* For the arrows to position correctly */
+  position: relative;
+  /* For the arrows to position correctly */
 }
 
 .gallery-card-image {
@@ -18,4 +19,20 @@
 .gallery-card-label {
   margin-top: 10px;
   text-align: center;
+}
+
+.info-card {
+  position: absolute;
+  background-color: white;
+  left:10rem;
+  top:10rem;
+  max-width:30%;
+  padding:3rem;
+}
+
+.gallery-card button{
+  position: absolute;
+  bottom:15rem;
+  padding:1rem 5rem;
+  font-size: 1.5rem;
 }

@@ -1,9 +1,19 @@
 import './gallerycard.css';
-function GalleryCard({ image, label, onClick }) {
+
+function InfoCard({ label }) {
   return (
-    <div className="gallery-card" onClick={onClick}>
+    <div className="info-card">
+      {label}
+    </div>
+  );
+}
+
+function GalleryCard({ cardDataFull, image, label, onSelect }) {
+  return (
+    <div className="gallery-card">
       <img src={image} alt={label} className="gallery-card-image" />
-      <span className="gallery-card-label">{label}</span>
+      <InfoCard label={label} />
+      <button onClick={() => onSelect(cardDataFull)}> Select</button>
     </div>
   );
 }
