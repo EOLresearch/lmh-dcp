@@ -20,6 +20,8 @@
   align-items: center;
   padding:1rem;
   border-radius: 0.5rem;
+  color: #31605b;
+  text-decoration: none;
 }
 .icon-btn:hover{
   cursor: pointer;

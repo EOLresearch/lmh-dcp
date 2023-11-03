@@ -4,7 +4,9 @@ import { BsFillBellFill } from "react-icons/bs";
 import './App.css';
 import RenderOrRedirect from './components/RenderOrRedirect';
 import Home from './views/Home';
-import Dashboard from './views/Dashboard';
+import ReminiscenceRoom from './views/ReminiscenceRoom';
+import WritingDesk from './views/WritingDesk';
+import ReadingRoom from './views/ReadingRoom';
 import Login from './views/Login';
 
 import door from '../src/assets/img/door-md.png';
@@ -53,7 +55,9 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login loginSwitch={loginSwitch} />} />
           <Route path="/" element={<RenderOrRedirect loginSwitch={loginSwitch} isAuthenticated={isAuthenticated} intendedComponent={Home} />} />
-          <Route path="/dashboard" element={<RenderOrRedirect loginSwitch={loginSwitch} isAuthenticated={isAuthenticated} intendedComponent={Dashboard} />} />
+          <Route path="/reminiscenceroom" element={<RenderOrRedirect loginSwitch={loginSwitch} isAuthenticated={isAuthenticated} intendedComponent={ReminiscenceRoom} />} />
+          <Route path="/writingdesk" element={<RenderOrRedirect loginSwitch={loginSwitch} isAuthenticated={isAuthenticated} intendedComponent={WritingDesk} />} />
+          <Route path="/readingroom" element={<RenderOrRedirect loginSwitch={loginSwitch} isAuthenticated={isAuthenticated} intendedComponent={ReadingRoom} />} />
         </Routes>
         <footer>
           © 2023 Copyright: Center for Research on End of Life Care, Weill Cornell Medicine

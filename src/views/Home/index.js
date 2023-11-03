@@ -1,6 +1,8 @@
 // src/views/Home/index.js
 
 import { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
+
 import { FaDoorOpen } from "react-icons/fa6";
 import { TfiWrite } from "react-icons/tfi";
 import { GiBookmark } from "react-icons/gi";
@@ -133,12 +135,12 @@ function Home() {
         <p>Welcome back Joe, This is your Living Memory Home.</p>
         <p>A quaint and cozy cottage full of light colors with windows that let in bright sunlight and fresh air. When the surrounding trees are painted in autumn colors, it is a perfect moment to take a breath from your daily routine, slow down, and embrace nature.</p>
         <div className='icon-btn-container'>
-          <div className='icon-btn'>
+          <Link to="/reminiscenceroom" className='icon-btn'>
             <span className='icon'>
               <FaDoorOpen />
             </span>
             <p>Reminisence Room</p>
-          </div>
+          </Link>
           <div className='icon-btn'>
             <span className='icon'>
               <TfiWrite />
