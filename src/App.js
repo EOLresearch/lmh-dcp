@@ -48,8 +48,9 @@ function App() {
             <button className='emergency-resources'>EMERGENCY RESOURCES<span className='bell'><BsFillBellFill /></span></button>
           </div>
           <div className='right-side-header'>
+            <Link to="/"><button>Home</button></Link>
             <Link to=""><button>Grief Resources</button></Link>
-            <button onClick={()=>setIsAuthenticated(!isAuthenticated)}>Logout</button>
+            <button onClick={() => setIsAuthenticated(!isAuthenticated)}>Logout</button>
           </div>
         </header>
         <Routes>

@@ -1,6 +1,19 @@
 
-.dashboard {
-  /* Your CSS styles for the dashboard view go here */
+.reminiscence-room {
+  background-image: url("../../assets/img/new-rem-room.png");
+  flex-grow: 1;
+}
+.writing-desk-image-link{
+  position: absolute;
+  bottom:3rem;
+  right:2rem;
+  transform: scale(70%);
+}
+.mementos-image-link img{
+  transform: scale(30%);
+  position: absolute;
+  bottom:0rem;
+  left:15rem;
 }
 
 /* Add other related styles as needed */
