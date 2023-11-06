@@ -1,0 +1,8 @@
+/* Mementos container */
+.mementos-container {
+  background-image: url('../../assets/img/openbook.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 40vh;
+  position: absolute;
+}

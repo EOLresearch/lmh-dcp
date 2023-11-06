@@ -3,17 +3,48 @@
   background-image: url("../../assets/img/new-rem-room.png");
   flex-grow: 1;
 }
-.writing-desk-image-link{
+.writing-desk-image-link img{
   position: absolute;
   bottom:3rem;
   right:2rem;
   transform: scale(70%);
+  filter: drop-shadow(0 0 10px yellow);
+  cursor: pointer;
+
 }
 .mementos-image-link img{
-  transform: scale(30%);
+  transform: scale(20%) rotate(18deg);
   position: absolute;
-  bottom:0rem;
-  left:15rem;
+  bottom:5rem;
+  left:1rem;
+  filter: drop-shadow(0 0 20px yellow);
+  cursor: pointer;
+
 }
 
+.writing-desk-image-link:hover img{
+  transform: scale(70%) rotate(5deg);
+  filter: drop-shadow(0 0 40px yellow)
+}
+
+.mementos-image-link:hover img{
+  transform: scale(20%) rotate(23deg);
+  filter: drop-shadow(0 0 50px yellow)
+}
+
+.frame{
+  filter: drop-shadow(0 0 20px yellow);
+  position: absolute;
+}
+.frame2{
+  bottom:15rem;
+  right:-15rem;
+  transform: scale(15%);
+
+}
+.frame-ornate{
+  transform: scale(20%);
+  bottom:15rem;
+  left:-13rem;
+}
 /* Add other related styles as needed */
