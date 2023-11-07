@@ -1,8 +1,35 @@
-/* Mementos container */
-.mementos-container {
-  background-image: url('../../assets/img/openbook.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 40vh;
+.mementos-container img{
+  width: 78%;
+  height: 100%;
+  object-fit: cover;
   position: absolute;
+  top: 45%;
+  left: 52%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  /* transform: rotate(10deg); */
+}
+
+.mementos-content{
+  position: relative;
+  border: 1px solid red;
+  position: absolute;
+  width: 60%;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  z-index: 1;
+
+}
+.left-side{
+  border: 1px solid black;
+  width:50%;
+  /* padding:1rem; */
+}
+.right-side{
+  /* padding:1rem; */
+  border: 1px solid black;
+  width: 50%;
+
 }
