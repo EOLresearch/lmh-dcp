@@ -29,10 +29,8 @@ function Mementos() {
           </p>
         </div>
         <div className="right-side">
-          <h3>Today's Prompt</h3>
-          <p>{prompts[currentPrompt]}</p>
-          <button onClick={handleNextPrompt}>Next</button>
-          </div>
+
+        </div>
       </div>
     </div>
   );
