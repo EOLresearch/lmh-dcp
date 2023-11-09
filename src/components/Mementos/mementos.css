@@ -11,11 +11,10 @@
 }
 
 .mementos-content{
-  position: relative;
   border: 1px solid red;
   position: absolute;
   width: 60%;
-  top: 30%;
+  top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
@@ -24,12 +23,15 @@
 }
 .left-side{
   border: 1px solid black;
-  width:50%;
-  /* padding:1rem; */
+  width:53%;
+  padding:1rem;
+}
+.left-side p{
+  padding:0.5rem;
 }
 .right-side{
-  /* padding:1rem; */
+  padding:1rem;
   border: 1px solid black;
-  width: 50%;
+  width: 47%;
 
 }

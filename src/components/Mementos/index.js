@@ -27,6 +27,8 @@ function Mementos() {
           <p>
             This book is a place where you can share your life stories and memories. We'll guide you through a narrative exercise to create a meaningful record of your experiences.
           </p>
+          <p>Below you can access your Photo Album and choose photos to frame in the Reminiscence Room. </p>
+          <p>Any photos you upload in "This is Your Life" guided autobiography will be stored in this photo album as well</p>
         </div>
         <div className="right-side">
 
