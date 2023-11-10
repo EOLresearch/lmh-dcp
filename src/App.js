@@ -49,6 +49,9 @@ function App() {
           </div>
           <div className='right-side-header'>
             <Link to="/"><button>Home</button></Link>
+            <Link to="/reminiscenceroom"><button>Reminiscence Room</button></Link>
+            <Link to ="/writingdesk"><button>Writing Desk</button></Link>
+            <Link to="/readingroom"><button>Reading Room</button></Link>
             <Link to=""><button>Grief Resources</button></Link>
             <button onClick={() => setIsAuthenticated(!isAuthenticated)}>Logout</button>
           </div>

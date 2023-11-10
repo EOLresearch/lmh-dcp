@@ -141,12 +141,12 @@ function Home() {
             </span>
             <p>Reminisence Room</p>
           </Link>
-          <div className='icon-btn'>
+          <Link to="/writingdesk" className='icon-btn'>
             <span className='icon'>
               <TfiWrite />
             </span>
             <p>Writing Desk</p>
-          </div>
+          </Link>
           <div className='icon-btn'>
             <span className='icon'>
               <GiBookmark />

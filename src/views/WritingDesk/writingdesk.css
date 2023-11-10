@@ -1,0 +1,82 @@
+.writing-desk{
+  background-color: #fddda4;
+  height:100%;
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.notebook{
+  display: flex;
+  height:80vh;
+  width:80vw;
+  border: 1px black solid;
+  background-image:url('../../assets/img/notebookdesign1.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:200vh;
+  border-radius:2rem; 
+  filter: saturate(50%) brightness(90%);
+}
+.notebook h5{
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.952);
+  padding:1rem;
+  border-radius: 1rem;
+  left:25rem;
+}
+.l-side{
+  width:50%;
+  height: 100%;
+  /* border: red 1px solid; */
+  border-radius:2rem; 
+  /* background-color: rgba(0, 0, 0, 0.252); */
+
+}
+.r-side{
+  width:50%;
+  height: 100%;
+  /* border: blue 1px solid; */
+  border-radius:2rem; 
+  position: relative;
+  left:2rem;
+
+}
+
+.textarea-container {
+  margin: 10px;
+  padding: 10px;
+}
+
+.textarea-container h4 {
+  margin-bottom: 5px;
+  color: #333; 
+  background-color: rgba(255, 255, 255, 0.952);
+  width:max-content;
+  padding:1rem;
+  border-radius: 1rem;
+  margin-left:2rem;
+}
+
+.textarea-container textarea {
+  width: 90%; /* Adjust width as needed */
+  height: 80px; /* Adjust height as needed */
+  padding: 20px;
+  /* margin-bottom: 20px; */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical; /* Allows the user to resize the textarea vertically */
+  background-color: rgba(255, 255, 255, 0.952);
+}
+.textarea-container button{
+  padding:0.5rem 1rem;
+  position: relative;
+  top:-2.5rem;
+  left:33rem;
+  border-radius: 1rem;
+  background-color: #33333357;
+}
+.textarea-container button:hover{
+  background-color: white;
+  color: black;
+}
