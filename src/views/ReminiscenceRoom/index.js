@@ -19,11 +19,13 @@ import Mementos from '../../components/Mementos';
 import React from 'react';
 import './reminiscenceroom.css';
 
+
+
 function ReminiscenceRoom() {
   const [showMementos, setShowMementos] = useState(false);
   return (
     <div className="reminiscence-room">
-      {showMementos && <Mementos />}
+      {showMementos && <Mementos setShowMementos={setShowMementos} />}
       <div className='writing-desk-image-link'>
         <Link to="/writingdesk"><img src={diary} alt="Writing Desk" /></Link>
       </div>

@@ -67,6 +67,7 @@
 .your-life-callout-container img{
   width:80%;
   border-radius: 1rem;
+  cursor: pointer;
 }
 .your-life-callout-container:hover{
   background-color: rgba(0, 0, 0, 0.143);
@@ -76,11 +77,31 @@
   position: absolute;
   bottom:10rem;
   left:20rem;
-  z-index: 2;
+  z-index: 1;
   background-color: transparent;
   color: #31605b;
   border-radius: 0.5rem;
 }
 .mementos-container button:hover{
   background-color: rgba(0, 0, 0, 0.143);
+}
+
+.fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it's above other content */
+}
+
+.fullscreen-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  cursor: pointer;
 }
