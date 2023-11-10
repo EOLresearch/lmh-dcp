@@ -13,6 +13,7 @@ import frame1ornate from '../../assets/img/frame1ornate.png';
 
 import diary from '../../assets/img/diary4-sm.png';
 import mems from '../../assets/img/mementos.png';
+import stock2 from '../../assets/img/stock2.png'
 
 import Mementos from '../../components/Mementos'; 
 
@@ -32,10 +33,11 @@ function ReminiscenceRoom() {
       <div className='mementos-image-link'>
         <img onClick={() => setShowMementos(!showMementos)}  src={mems} alt="Mementos" />
       </div>
-      {/* <div className="frame frame2">
-        <img src={frame2} alt="Description of your image" />
+      <div className="frame frame2">
+        <img className="theFrame" src={frame2} alt="Description of your frame" />
+        <img className='theImage' src={stock2} alt="stock2" />
       </div>
-      <div className="frame frame-ornate">
+      {/* <div className="frame frame-ornate">
         <img src={frame1ornate} alt="Description of your image" />
       </div> */}
 

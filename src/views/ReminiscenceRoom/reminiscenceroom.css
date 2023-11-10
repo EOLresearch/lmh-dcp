@@ -19,7 +19,6 @@
   left:1rem;
   filter: drop-shadow(0 0 20px yellow);
   cursor: pointer;
-
 }
 
 .writing-desk-image-link:hover img{
@@ -33,18 +32,27 @@
 }
 
 .frame{
-  filter: drop-shadow(0 0 20px yellow);
+  /* filter: drop-shadow(0 0 20px yellow); */
   position: absolute;
 }
 .frame2{
   bottom:15rem;
   right:-15rem;
   transform: scale(15%);
-
+}
+.theFrame{
+  position: relative;
+  z-index: 4;
+}
+.theImage{
+  position: absolute;
+  z-index: 2;
+  height: 70%;
+  top:15%;
+  left:15%;
 }
 .frame-ornate{
   transform: scale(20%);
   bottom:15rem;
   left:-13rem;
 }
-/* Add other related styles as needed */
