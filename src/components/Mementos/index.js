@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PhotoAlbum from '../PhotoAlbum/PhotoAlbum';
+import YourLife from '../YourLife/YourLife'
 import './mementos.css';
 import openbook from '../../assets/img/openbook.png';
 import MhLogo from '../../assets/img/MH_logo_watercolor_bg-sm.png'
@@ -13,7 +14,8 @@ import stock5 from '../../assets/img/stock5.png';
 
 function Mementos({setShowMementos}) {
   const [currentPrompt, setCurrentPrompt] = useState(0);
-  const [showPhotoAlbum, setShowPhotoAlbum] = useState(false)
+  const [activeView, setActiveView] = useState('mementosContent');
+
   // const prompts = [
   //   'Tell me about your favorite childhood memory.',
   //   'Share a special moment from your school days.',
@@ -38,13 +40,13 @@ function Mementos({setShowMementos}) {
           <p>Below you can access your Photo Album and choose photos to frame in the Reminiscence Room. </p>
           <p>Any photos you upload in "This is Your Life" guided autobiography will be stored in this photo album as well.</p>
 
-          <div onClick={()=>setShowPhotoAlbum(true)} className='photo-album-callout'>
+          <div onClick={() => setActiveView('photoAlbum')} className='photo-album-callout'>
             <img src={MhLogo} alt="photo album"/>
             <p>Photo Album</p>
           </div>
         </div>
         <div className="right-side">
-          <div className='your-life-callout-container'>
+          <div className='your-life-callout-container' onClick={() => setActiveView('yourLife')}>
             <img src={sunset} alt="this is your life feature image"/>
             <h4>This is Your Life</h4>
             <p>Reflect on the stories that define you. Create and preserve your life's narrative with autobiographical prompts and journaling.</p>
@@ -53,11 +55,25 @@ function Mementos({setShowMementos}) {
       </div>
   )
 
+  let content;
+  switch (activeView) {
+    case 'photoAlbum':
+      content = <PhotoAlbum photos={photoArr} setShowPhotoAlbum={() => setActiveView('mementosContent')} />;
+      break;
+    case 'yourLife':
+      content = <YourLife setShowYourLife={() => setActiveView('mementosContent')} />;
+      break;
+    default:
+      content = mementosContent;
+  }
+
   return (
     <div className="mementos-container">
       <img className="openbook" src={openbook} alt="Mementos" />
-      {showPhotoAlbum ? <PhotoAlbum photos={photoArr} setShowPhotoAlbum={setShowPhotoAlbum}/> : mementosContent }
-      <button style={{ display: showPhotoAlbum ? 'none' : 'block' }} onClick={()=> setShowMementos(false)}>Back</button>
+      {content}
+      {activeView === 'mementosContent' && (
+        <button onClick={() => setShowMementos(false)}>Back</button>
+      )}
     </div>
   );
 }
