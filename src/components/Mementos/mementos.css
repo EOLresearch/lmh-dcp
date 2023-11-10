@@ -1,4 +1,4 @@
-.mementos-container img{
+.openbook{
   width: 78%;
   height: 100%;
   object-fit: cover;
@@ -11,10 +11,11 @@
 }
 
 .mementos-content{
-  border: 1px solid red;
+  /* border: 1px solid red; */
   position: absolute;
   width: 60%;
-  top: 35%;
+  height: 60%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
@@ -22,16 +23,64 @@
 
 }
 .left-side{
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width:53%;
   padding:1rem;
+  /* transform: rotate(-2deg); */
+}
+.left-side h2{
+  text-align: center;
 }
 .left-side p{
-  padding:0.5rem;
+  /* padding:0.5rem; */
 }
 .right-side{
   padding:1rem;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 47%;
 
+}
+.photo-album-callout{
+  display: flex;
+  align-items: center;
+  font-size:2rem;
+  cursor:pointer;
+  width: max-content;
+  padding:1rem 2rem;
+  border-radius: 2rem;
+}
+.photo-album-callout:hover{
+  background-color: rgba(0, 0, 0, 0.143);
+  /* border:1px gray solid; */
+
+}
+.your-life-callout-container{
+  margin:3rem;
+  text-align: center;
+  transform:rotate(-2deg);
+  border-radius: 2rem;
+  padding:2rem;
+  cursor: pointer;
+  width: 80%;
+
+}
+.your-life-callout-container img{
+  width:80%;
+  border-radius: 1rem;
+}
+.your-life-callout-container:hover{
+  background-color: rgba(0, 0, 0, 0.143);
+}
+
+.mementos-container button{
+  position: absolute;
+  bottom:10rem;
+  left:20rem;
+  z-index: 2;
+  background-color: transparent;
+  color: #31605b;
+  border-radius: 0.5rem;
+}
+.mementos-container button:hover{
+  background-color: rgba(0, 0, 0, 0.143);
 }
