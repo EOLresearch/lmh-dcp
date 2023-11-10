@@ -80,6 +80,8 @@
   background-color: transparent;
   color: #31605b;
   border-radius: 0.5rem;
+  background-color: white;
+
 }
 .mementos-container button:hover{
   background-color: rgba(0, 0, 0, 0.143);

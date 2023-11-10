@@ -1,3 +1,31 @@
 .left-side h3{
   text-align: center;
 }
+.rs{
+  margin-left:1rem;
+}
+.mementos-content h4{
+  text-align: center;
+}
+.mementos-content textarea{
+  background-color: transparent;
+  font-size: 1.2rem;
+  margin-left:1rem;
+}
+
+.mementos-content .btn-back{
+  bottom:1rem;
+  left:-35rem;
+}
+
+.mementos-content .nextPage{
+  position: absolute;
+  bottom:1rem;
+  left:20rem;
+  width: max-content;
+}
+
+
+.input-contain{
+  margin-left:2rem;
+}

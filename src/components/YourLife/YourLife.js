@@ -24,9 +24,8 @@ function YourLife({ setShowYourLife }) {
         <p>When you have completed the prompts to a degree where you are satisfied, you will be able to export your work here into a PDF to keep a digital copy for yourself.</p>
         <p>Read the prompt on the next page to get started.</p>
       </div>
-      <div className="right-side">
-        <p>Share your story:</p>
-        <input type="file" multiple onChange={handleImageUpload} />
+      <div className="right-side rs">
+        <h4>Where did your story begin?</h4>
         {images.map((image, index) => (
           <img key={index} src={image} alt={`Uploaded ${index}`} />
         ))}
@@ -37,7 +36,19 @@ function YourLife({ setShowYourLife }) {
           rows="10"
           style={{ width: '100%' }}
         ></textarea>
-        <button onClick={() => setShowYourLife(false)}>Back</button>
+        <div className='input-contain'>
+          <p>Add photos to compliment your story here</p>
+          <input
+            type="file"
+            multiple
+            onChange={handleImageUpload}
+            id="fileInput"
+            style={{ display: 'none' }}
+          />
+          <label htmlFor="fileInput" className="custom-file-upload">Upload Photos</label>
+        </div>
+        <button className='btn-back' onClick={() => setShowYourLife(false)}>Back</button>
+        <button className='nextPage'>Next Page &#8594;</button>
       </div>
     </div>
   );
