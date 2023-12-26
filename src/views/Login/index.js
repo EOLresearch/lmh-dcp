@@ -2,9 +2,8 @@
 
 import React, { useState } from 'react';
 import './login.css';
-// import logo from '../../assets/img/lmh-dcp.png';
-import logoWhitebg from '../../assets/img/lmh-dcp-whitebg.png';
-import houseBg from '../../assets/img/house1-md.jpg';
+
+
 
 function Login({ loginSwitch }) {
   const [username, setUsername] = useState("");
@@ -30,11 +29,10 @@ function Login({ loginSwitch }) {
     <div className="login-container">
         <div className="content">
             <div className="image-container">
-                <img src={houseBg} alt="Image Description" />
+                
             </div>
             {screen === "login" ? (
                 <div className="form-container">
-                  <img src={logoWhitebg} alt='LMH DCP Logo' className='logo' />
                     <h3>Login</h3>
                     <input 
                         type="text" 

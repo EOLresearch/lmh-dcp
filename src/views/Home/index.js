@@ -8,12 +8,6 @@ import { TfiWrite } from "react-icons/tfi";
 import { GiBookmark } from "react-icons/gi";
 import { AiOutlineUser } from "react-icons/ai";
 import SetupGallery from "../../components/SetupGallery/SetupGallery";
-import MessageOverlay from "../../components/MessageOverlay";
-
-import house from "../../assets/img/house1-xl.jpg"
-import house2 from "../../assets/img/house2-xl.jpg"
-import scene from "../../assets/img/scene1-xl.jpg"
-import scene2 from "../../assets/img/scene2-xl.jpg"
 
 
 import './home.css';
@@ -63,11 +57,6 @@ function Home() {
     }
   }
 
-  const houses = [
-    house,
-    house2,
-  ];
-
   const houseLabels = [
     <div className="label">
       <h2>Quaint Cottage</h2>
@@ -81,10 +70,6 @@ function Home() {
     ,
   ];
 
-  const landscapes = [
-    scene,
-    scene2,
-  ];
 
   const landscapeLabels = [
     <div className="label">
@@ -99,36 +84,9 @@ function Home() {
     ,
   ];
 
-  const housesData = houses.map((house, index) => ({
-    id: `gallery-item-${index}`,
-    image: house,
-    label: houseLabels[index]
-  }));
-
-  const landscapesData = landscapes.map((landscape, index) => ({
-    id: `landscape-item-${index}`,
-    image: landscape,
-    label: landscapeLabels[index]
-  }));
 
   return (
     <div className="home">
-      {(onboardingStep && messageIndex < messages.length) && (
-        <MessageOverlay
-          message={messages[messageIndex]}
-          onNext={() => setMessageIndex(messageIndex + 1)}
-        />
-      )}
-
-      {onboardingStep && (
-        <div className="onboarding-overlay">
-          <SetupGallery
-            type={onboardingStep}
-            data={onboardingStep === 'house' ? housesData : landscapesData}
-            onSelect={item => handleSelect(item, onboardingStep)}
-          />
-        </div>
-      )}
 
       <div className='info-box'>
         <h2>Welcome Home.</h2>

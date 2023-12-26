@@ -2,34 +2,12 @@ import React, { useState } from 'react';
 import PhotoAlbum from '../PhotoAlbum/PhotoAlbum';
 import YourLife from '../YourLife/YourLife'
 import './mementos.css';
-import openbook from '../../assets/img/openbook.png';
-import MhLogo from '../../assets/img/MH_logo_watercolor_bg-sm.png'
-import sunset from '../../assets/img/sunset.png'
 
-import stock1 from '../../assets/img/stock1.png';
-import stock2 from '../../assets/img/stock2.png';
-import stock3 from '../../assets/img/stock3.png';
-import stock4 from '../../assets/img/stock4.png';
-import stock5 from '../../assets/img/stock5.png';
 
 function Mementos({setShowMementos}) {
-  const [currentPrompt, setCurrentPrompt] = useState(0);
   const [activeView, setActiveView] = useState('mementosContent');
 
-  // const prompts = [
-  //   'Tell me about your favorite childhood memory.',
-  //   'Share a special moment from your school days.',
-  //   'Describe a memorable family gathering.',
-  // ];
-
-  // const handleNextPrompt = () => {
-  //   if (currentPrompt < prompts.length - 1) {
-  //     setCurrentPrompt(currentPrompt + 1);
-  //   } else {
-  //   }
-  // };
-
-  const photoArr = [stock1, stock2, stock3, stock4, stock5]
+  const photoArr = []
   const mementosContent = (
     <div className="mementos-content">
         <div className="left-side">
@@ -41,13 +19,13 @@ function Mementos({setShowMementos}) {
           <p>Any photos you upload in "This is Your Life" guided autobiography will be stored in this photo album as well.</p>
 
           <div onClick={() => setActiveView('photoAlbum')} className='photo-album-callout'>
-            <img src={MhLogo} alt="photo album"/>
+            {/* <img src={MhLogo} alt="photo album"/> */}
             <p>Photo Album</p>
           </div>
         </div>
         <div className="right-side">
           <div className='your-life-callout-container' onClick={() => setActiveView('yourLife')}>
-            <img src={sunset} alt="this is your life feature image"/>
+            {/* <img src={sunset} alt="this is your life feature image"/> */}
             <h4>This is Your Life</h4>
             <p>Reflect on the stories that define you. Create and preserve your life's narrative with autobiographical prompts and journaling.</p>
           </div>
@@ -69,7 +47,7 @@ function Mementos({setShowMementos}) {
 
   return (
     <div className="mementos-container">
-      <img className="openbook" src={openbook} alt="Mementos" />
+
       {content}
       {activeView === 'mementosContent' && (
         <button onClick={() => setShowMementos(false)}>Back</button>

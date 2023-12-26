@@ -9,11 +9,7 @@ import WritingDesk from './views/WritingDesk';
 import ReadingRoom from './views/ReadingRoom';
 import Login from './views/Login';
 
-import door from '../src/assets/img/door-md.png';
-import logo from '../src/assets/img/lmh-dcp.png';
-
 function App() {
-  const [entered, setEntered] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const loginSwitch = () => {
@@ -27,27 +23,14 @@ function App() {
     console.log("Class(es) of element:", event.target.className);
   }
 
-  if (!entered) {
-    return (
-      <div className='doorstep-container'>
-        <div onClick={handleClick} className='doorstep'></div>
-        <div onClick={handleClick} className='door'>
-          <img src={door} alt="Door" />
-        </div>
-      </div>
-    )
-  }
-
   return (
     <Router>
       <div className='top-container'>
         <header>
-          <div className='left-side-header'>
-            <img src={logo} alt="Living Memory Home" />
-            <h3>LIVING MEMORY HOME</h3>
-            <button className='emergency-resources'>EMERGENCY RESOURCES<span className='bell'><BsFillBellFill /></span></button>
+          <div className='logo-container'>
+            {/* <img src={} alt="Living Memory Home" /> */}
           </div>
-          <div className='right-side-header'>
+          <div className='nav-container'>
             <Link to="/"><button>Home</button></Link>
             <Link to="/reminiscenceroom"><button>Reminiscence Room</button></Link>
             <Link to ="/writingdesk"><button>Writing Desk</button></Link>

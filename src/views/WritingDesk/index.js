@@ -1,10 +1,26 @@
 import React from 'react';
+import { useState } from 'react';
+
 import './writingdesk.css';
 
 function WritingDesk() {
+  const [showGuidlines, setShowGuidlines] = useState(true)
   const currentDate = new Date().toLocaleDateString('en-US', {
     weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
   });
+
+  const guidlines = <div>
+    <h1>Expressive Writing Desk</h1>
+    <p>Please consider these guidelines as you prepare to make your entry today:</p>
+    <ul>
+      <li>Find a space that is quiet, private, and free of distraction.</li>
+      <li>Find a time to write when you won’t be interrupted.</li>
+      <li>Write continuously for at least 15 minutes.</li>
+      <li>Don’t worry about spelling or grammar.</li>
+      <li>Write only for yourself and the deceased.</li>
+      <li>Focus on what is personal and important to you.</li>
+    </ul>
+  </div>
   return (
     <div className="writing-desk">
       <div className='primary-container'>

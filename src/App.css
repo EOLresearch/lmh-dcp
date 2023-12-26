@@ -1,5 +1,4 @@
 
-
 .top-container{
   height: 100vh;
   display: flex;
@@ -13,83 +12,26 @@ footer {
   height: 6vh;
   display: flex;
   align-items: center;
-  background-color: #fddda4;
   z-index: 2;
 }
 
 header {
-  justify-content: left;
-  border-bottom: white 2px solid;
-  display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  background-color: #2D8983;
+  
 }
-header button{
-  background-color: #fddda4;
+button{
+  background-color: #2D8983;
   border: none;
   font-size: 1rem;
-  font-weight: bold;
-  color: #31605b;
+  color: white;
   cursor: pointer;
 }
-.left-side-header{
-  display: flex;
-  align-items: center;
-}
-.left-side-header img{
-  height: 4rem;
-  width: 8rem;
-  margin-right: 3rem;
-}
-.emergency-resources{
-  background-color: #31605b;
-  color: #fddda4;
-  padding:5px 10px;
-  border-radius: 5px;
-  margin-left:0.5rem;
-}
-.bell{
-  margin-left:3px;
-  position: relative;
-  top:2px;
-}
 
-.right-side-header button{
-  padding:10px;
-}
+
 
 footer {
   justify-content: center;
-  border-top: white 2px solid;
+  background-color: #2d89835a;
 }
 
-.doorstep-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
-  position: relative;
-}
-
-.doorstep {
-  background-image: url('../src/assets/img/LMH_anime_wall-xl.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  width: 100%;
-  z-index: 1;
-}
-
-.door {
-  position: absolute;
-  bottom: 25%;      
-  left: 50%;        
-  transform: translate(-50%, 50%); 
-  z-index: 2;
-}
-
-.door img {
-  display: block;    
-  max-width: 100%;   
-}
