@@ -42,7 +42,7 @@ footer {
   position: relative;
   top:1rem;
   right:1.8rem;
-  /* padding: 1rem; */
+  box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.5);
 }
 
 .logo-container img {
@@ -51,8 +51,8 @@ footer {
   position: relative;
   top:0.1rem;
   left:0.4rem;
-  height: 7rem;
-  width: 7rem;
+  height: 8rem;
+  width: 8rem;
   background-color: white;
-  padding: 0.5rem;
+  /* padding: 0.5rem; */
 }

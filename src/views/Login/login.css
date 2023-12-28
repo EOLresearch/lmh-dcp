@@ -1,10 +1,11 @@
 /* src/views/Login/Login.css */
 
-
+/* General styles */
 .input-group {
   margin-bottom: 15px;
 }
 
+/* Login container styles */
 .login-container {
   display: flex;
   flex-direction: column;
@@ -12,7 +13,6 @@
   justify-content: center;
   flex-grow:1; 
 }
-/* add flex-grow:1; to all component view top containers to ensure it fits between the header and footer appropriately */
 
 .logo {
   max-height: 10rem;
@@ -23,6 +23,7 @@
   height: 100%;
 }
 
+/* Image container styles */
 .image-container {
   flex: 1;
   display: flex;
@@ -36,6 +37,7 @@
   height: 100%;
 }
 
+/* Form container styles */
 .form-container {
   flex: 1;
   display: flex;
@@ -45,20 +47,103 @@
   padding: 20px;
 }
 
-.form-container input {
-  margin: 10px 0;
-  padding: 10px;
-  width: 70%;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.form-container label{
+  color: rgba(0, 0, 0, 0.529);
 }
 
+
 .form-container button {
-  margin-top: 20px;
-  padding: 10px 20px;
+  padding: 1rem;
   border: none;
-  border-radius: 4px;
-  background-color: #31605b;
+  border-radius: 0.5rem;
   color: white;
   cursor: pointer;
+}
+
+/* Login inputs and auth buttons container styles */
+.login-inputs-container, .auth-buttons-container {
+  display: flex;
+  flex-direction: column;
+  width:70%;
+}
+
+.forgot-password-container {
+  align-self: flex-end;
+}
+
+.forgot-password-link {
+  color: rgba(0, 0, 0, 0.529);
+  font-size: 0.8rem;
+  margin: 0.5rem 0;
+}
+
+/* Input icon container styles */
+.input-icon-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.input-icon-container input{
+  flex:1;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+}
+
+.icon {
+  width: 1rem;
+  height: 1rem;
+  background-color: #FFDB58; /* Mustard color */
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white; /* Color of the icon */ 
+  padding:0.8rem;
+}
+
+/* Or container styles */
+.or-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(0, 0, 0, 0.298);
+  margin: 0;
+}
+
+.or-container hr {
+  flex: 1;
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.298);
+}
+
+.or-container span {
+  padding: 0 1rem;
+}
+
+/* Auth buttons container styles */
+.auth-buttons-container {
+  display: flex;
+  flex-direction: column;
+  height:30%;
+  width: 60%;
+  justify-content: space-around;
+}
+
+.auth-buttons-container button, .auth-buttons-container .or-container {
+  width: 100%;
+}
+
+.login-btn{
+  box-shadow: 0px 10px 30px 0px #2D8983;
+}
+
+.auth-buttons-container .sign-up-btn{
+  background-color: white;
+  border: 1px solid #2D8983;
+  color: #2D8983;
+  box-shadow: 0px 1px 10px 0px #00000018;
 }
