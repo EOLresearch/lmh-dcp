@@ -8,17 +8,16 @@
 
 header,
 footer {
-  padding: 10px 20px;
-  height: 6vh;
+  padding: 0.5rem;
+  height: 5%;
   display: flex;
   align-items: center;
-  z-index: 2;
 }
 
 header {
-  justify-content: space-around;
   background-color: #2D8983;
-  
+  justify-content: left;
+  align-items: center;
 }
 button{
   background-color: #2D8983;
@@ -29,9 +28,31 @@ button{
 }
 
 
-
 footer {
   justify-content: center;
   background-color: #2d89835a;
 }
 
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%; /* This will make the container circular */
+  overflow: hidden; /* This will ensure the image doesn't exceed the circular boundary */
+  position: relative;
+  top:1rem;
+  right:1.8rem;
+  /* padding: 1rem; */
+}
+
+.logo-container img {
+  display: block;
+  margin: 0;
+  position: relative;
+  top:0.1rem;
+  left:0.4rem;
+  height: 7rem;
+  width: 7rem;
+  background-color: white;
+  padding: 0.5rem;
+}

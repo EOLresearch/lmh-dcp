@@ -33,7 +33,7 @@ function Login({ loginSwitch }) {
             </div>
             {screen === "login" ? (
                 <div className="form-container">
-                    <h3>Login</h3>
+                    <h3>Log into your home!</h3>
                     <input 
                         type="text" 
                         id="username" 

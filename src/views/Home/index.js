@@ -7,7 +7,6 @@ import { FaDoorOpen } from "react-icons/fa6";
 import { TfiWrite } from "react-icons/tfi";
 import { GiBookmark } from "react-icons/gi";
 import { AiOutlineUser } from "react-icons/ai";
-import SetupGallery from "../../components/SetupGallery/SetupGallery";
 
 
 import './home.css';
