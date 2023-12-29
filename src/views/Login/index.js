@@ -3,14 +3,14 @@
 import React, { useState } from 'react';
 import { FaEnvelope, FaLock } from 'react-icons/fa';
 import './login.css';
+import logo from '../../assets/img/lmh-dcp-whitebg.png';
 
 function Login({ loginSwitch }) {
   // Login state
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   // Registration state
-  const [email, setEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [givenName, setGivenName] = useState("");
@@ -25,7 +25,6 @@ function Login({ loginSwitch }) {
   }
 
   const handleLogin = () => {
-    console.log("Username:", username);
     loginSwitch();
   }
 
@@ -33,14 +32,16 @@ function Login({ loginSwitch }) {
     <div className="form-container">
       <h3>Log into your home!</h3>
       <div className="login-inputs-container">
+        <label htmlFor="email">Email address</label>
         <InputWithIcon 
-          id="username"
+          id="email"
           type="text"
-          placeholder="Enter your username"
-          value={username}
-          onChange={setUsername}
+          placeholder="Enter your email address"
+          value={email}
+          onChange={setEmail}
           icon={<FaEnvelope className="icon email-icon" />}
         />
+        <label id='passlabel' htmlFor="password">Password</label>
         <InputWithIcon 
           id="password"
           type="password"
@@ -129,7 +130,10 @@ function Login({ loginSwitch }) {
   return (
     <div className="login-container">
       <div className="content">
-        <div className="image-container"></div>
+        <div className="left-side-container">
+          <img src={logo} alt="Living Memory Home" />
+          <p>Your Living Memory Home is a place for you and your care partner to come together and explore your thoughts and feelings through the act of creating.</p>
+        </div>
         {screen === "login" ? <LoginForm /> : <RegistrationForm />}
       </div>
     </div>

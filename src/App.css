@@ -19,6 +19,9 @@ header {
   justify-content: left;
   align-items: center;
 }
+header button{
+  padding: 0rem 2rem;
+}
 button{
   background-color: #2D8983;
   border: none;
@@ -27,10 +30,29 @@ button{
   cursor: pointer;
 }
 
+button:hover{
+  color: #eac950;
+
+}
 
 footer {
   justify-content: center;
   background-color: #2d89835a;
+}
+
+.nav-container{
+  display: flex;
+  width: 100%;
+}
+.manage-account-container{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex:2;
+}
+#manage-account{
+  background-color: rgb(4, 4, 93);
+  padding:0.5rem 3rem;
 }
 
 .logo-container {
@@ -40,19 +62,20 @@ footer {
   border-radius: 50%; /* This will make the container circular */
   overflow: hidden; /* This will ensure the image doesn't exceed the circular boundary */
   position: relative;
-  top:1rem;
-  right:1.8rem;
+  /* top:1.5rem; */
+  right:1.5rem;
   box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.5);
+  z-index: 5;
 }
 
 .logo-container img {
   display: block;
   margin: 0;
   position: relative;
-  top:0.1rem;
-  left:0.4rem;
-  height: 8rem;
-  width: 8rem;
+  left:5px;
+  top:10px;
+  height: 7rem;
+  width: 7rem;
   background-color: white;
-  /* padding: 0.5rem; */
+  padding: 10px;
 }

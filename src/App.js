@@ -53,15 +53,15 @@ function App() {
             </div>
           ) : (
             <div className='nav-container'>
-              <Link to="/"><button>Home</button></Link>
-              <button onClick={() => setShowAboutUs(true)}>About Us</button>
-              {showAboutUs && <AboutUs />}
-              <button onClick={() => setShowResources(true)}>Resources for Dementia Care Pairs</button>
-              {showResources && <DementiaCareResources />}
-              <button onClick={() => setShowContact(true)}>Contact</button>
-              {showContact && <ContactInfo />}
-              <button onClick={() => setShowAccount(true)}>Manage Account</button>
-              {showAccount && <ManageAccount />}
+              <div className='nav-sub-container'>
+                <Link to="/"><button>Home</button></Link>
+                <button onClick={() => setShowAboutUs(true)}>About Us</button>
+                <button onClick={() => setShowResources(true)}>Resources for Dementia Care Pairs</button>
+                <button onClick={() => setShowContact(true)}>Contact</button>
+              </div>
+              <div className='manage-account-container'>
+                <button id='manage-account' onClick={() => setShowAccount(true)}>Manage Account</button>
+              </div>
             </div>
           )}
         </header>
