@@ -38,6 +38,7 @@ button:hover{
 footer {
   justify-content: center;
   background-color: #2d89835a;
+  color: rgba(0, 0, 0, 0.651);
 }
 
 .nav-container{

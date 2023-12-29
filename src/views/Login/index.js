@@ -29,11 +29,16 @@ function Login({ loginSwitch }) {
   }
 
   const LoginForm = () => (
+<div className="content">
+        <div className="left-side-container">
+          <img src={logo} alt="Living Memory Home" />
+          <p>Your Living Memory Home is a place for you and your care partner to come together and explore your thoughts and feelings through the act of creating.</p>
+        </div>
     <div className="form-container">
       <h3>Log into your home!</h3>
       <div className="login-inputs-container">
         <label htmlFor="email">Email address</label>
-        <InputWithIcon 
+        <InputWithIcon
           id="email"
           type="text"
           placeholder="Enter your email address"
@@ -42,7 +47,7 @@ function Login({ loginSwitch }) {
           icon={<FaEnvelope className="icon email-icon" />}
         />
         <label id='passlabel' htmlFor="password">Password</label>
-        <InputWithIcon 
+        <InputWithIcon
           id="password"
           type="password"
           placeholder="Enter your password"
@@ -65,6 +70,7 @@ function Login({ loginSwitch }) {
           Sign up now
         </button>
       </div>
+    </div>
     </div>
   );
 
@@ -129,13 +135,8 @@ function Login({ loginSwitch }) {
 
   return (
     <div className="login-container">
-      <div className="content">
-        <div className="left-side-container">
-          <img src={logo} alt="Living Memory Home" />
-          <p>Your Living Memory Home is a place for you and your care partner to come together and explore your thoughts and feelings through the act of creating.</p>
-        </div>
+      
         {screen === "login" ? <LoginForm /> : <RegistrationForm />}
-      </div>
     </div>
   );
 };
