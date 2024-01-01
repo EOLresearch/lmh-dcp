@@ -36,6 +36,8 @@ function Login({ loginSwitch }) {
     const [loginFormScreen, setLoginFormScreen] = useState("default");  // Values: "default", "resetPassword", "enterCode"
     const [resetEmail, setResetEmail] = useState('');  // State for the reset email input
     const [oneTimeCode, setOneTimeCode] = useState('');  // State for the one-time code input
+    const [newPasswoord, setNewPassword] = useState('');  // State for the new password input
+    const [confirmNewPassword, setConfirmNewPassword] = useState('');  // State for the confirm new password input
 
     // Handle showing the default login form
     const showDefaultLoginForm = () => {
@@ -51,6 +53,14 @@ function Login({ loginSwitch }) {
     const showOneTimeCodeForm = () => {
       setLoginFormScreen("enterCode");
     };
+
+    const showNewPass = () => {
+      setLoginFormScreen("newPassword");
+    }
+
+    const showSuccess = () => {
+      setLoginFormScreen("default");
+    }
 
     return (
       <div className="content">
@@ -122,7 +132,31 @@ function Login({ loginSwitch }) {
                 onChange={(e) => setOneTimeCode(e.target.value)}
                 icon={<FaLock className="icon lock-icon" />} // Change icon as appropriate
               />
-              <button>Submit</button>
+              <button onClick={showNewPass} >Submit</button>
+              <button className='back-btn' onClick={showPasswordResetForm}>Send Another One-Time Code</button>
+            </div>
+          )}
+          {loginFormScreen === "newPassword" && (
+            <div className="login-inputs-container ">
+              <label htmlFor="newPassword">New Password</label>
+              <InputWithIcon
+                id="newPassword"
+                type="text"
+                placeholder="Enter Your New Password"
+                value={newPasswoord}
+                onChange={(e) => setNewPassword(e.target.value)}
+                icon={<FaLock className="icon lock-icon" />} // Change icon as appropriate
+              />
+              <label htmlFor="confirmNewPassword">Confirm New Password</label>
+              <InputWithIcon
+                id="confirmNewPassword"
+                type="text"
+                placeholder="Confirm Your New Password"
+                value={confirmNewPassword}
+                onChange={(e) => setConfirmNewPassword(e.target.value)}
+                icon={<FaLock className="icon lock-icon" />} // Change icon as appropriate
+              />
+              <button onClick={showSuccess}>Submit</button>
               <button className='back-btn' onClick={showPasswordResetForm}>Send Another One-Time Code</button>
             </div>
           )}
