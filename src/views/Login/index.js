@@ -8,12 +8,15 @@ import logo from '../../assets/img/lmh-dcp-whitebg.png';
 function Login({ loginSwitch }) {
   // Login state
   const [credentials, setCredentials] = useState({ email: "", password: "" });
+
   // State for caregivers and care recipients
   const [caregiver, setCaregiver] = useState({ firstName: "", lastName: "", email: "", password: "", givenName: "" });
   const [careRecipient, setCareRecipient] = useState({ firstName: "", lastName: "", givenName: "" });
 
   // Screen state
   const [screen, setScreen] = useState("login");  // Values can be "login" or "register"
+  const [loginFormScreen, setLoginFormScreen] = useState("default");  // Values can be "default", "resetPassword", "enterCode"
+
 
   const handleInputChange = (e, setState, field) => {
     setState(prevState => ({ ...prevState, [field]: e.target.value }));
@@ -28,51 +31,106 @@ function Login({ loginSwitch }) {
     loginSwitch();
   }
 
-  const LoginForm = () => (
-    <div className="content">
-      <div className="left-side-container">
-        <img src={logo} alt="Living Memory Home" />
-        <p>Your Living Memory Home is a place for you and your care partner to come together and explore your thoughts and feelings through the act of creating.</p>
-      </div>
-      <div className="form-container">
-        <h3>Log into your home!</h3>
-        <div className="login-inputs-container">
-          <label htmlFor="email">Email address</label>
-          <InputWithIcon
-            id="email"
-            type="text"
-            placeholder="Enter your email address"
-            value={credentials.email}
-            onChange={e => handleInputChange(e, setCredentials, 'email')}
-            icon={<FaEnvelope className="icon email-icon" />}
-          />
-          <label id='passlabel' htmlFor="password">Password</label>
-          <InputWithIcon
-            id="password"
-            type="password"
-            placeholder="Enter your password"
-            value={credentials.password}
-            onChange={e => handleInputChange(e, setCredentials, 'password')}
-            icon={<FaLock className="icon lock-icon" />}
-          />
-          <div className="forgot-password-container">
-            <a href="#" className="forgot-password-link">Forgot Password?</a>
-          </div>
+  const LoginForm = () => {
+    // Internal state for tracking LoginForm screen
+    const [loginFormScreen, setLoginFormScreen] = useState("default");  // Values: "default", "resetPassword", "enterCode"
+    const [resetEmail, setResetEmail] = useState('');  // State for the reset email input
+    const [oneTimeCode, setOneTimeCode] = useState('');  // State for the one-time code input
+
+    // Handle showing the default login form
+    const showDefaultLoginForm = () => {
+      setLoginFormScreen("default");
+    };
+
+    // Handle showing the password reset form
+    const showPasswordResetForm = () => {
+      setLoginFormScreen("resetPassword");
+    };
+
+    // Handle showing the one-time code form
+    const showOneTimeCodeForm = () => {
+      setLoginFormScreen("enterCode");
+    };
+
+    return (
+      <div className="content">
+        <div className="left-side-container">
+          <img src={logo} alt="Living Memory Home" />
+          <p>Your Living Memory Home is a place for you and your care partner to come together and explore your thoughts and feelings through the act of creating.</p>
         </div>
-        <div className="auth-buttons-container">
-          <button className='login-btn' onClick={handleLogin}>Login now</button>
-          <div className="or-container">
-            <hr />
-            <span>OR</span>
-            <hr />
-          </div>
-          <button className='sign-up-btn' onClick={() => setScreen("register")}>
-            Sign up now
-          </button>
+        <div className="form-container">
+          {loginFormScreen === "default" && (
+            <>
+              <h3>Log into your home!</h3>
+              <div className="login-inputs-container">
+                <label htmlFor="email">Email address</label>
+                <InputWithIcon
+                  id="email"
+                  type="text"
+                  placeholder="Enter your email address"
+                  value={credentials.email}
+                  onChange={(e) => handleInputChange(e, setCredentials, 'email')}
+                  icon={<FaEnvelope className="icon email-icon" />}
+                />
+                <label id='passlabel' htmlFor="password">Password</label>
+                <InputWithIcon
+                  id="password"
+                  type="password"
+                  placeholder="Enter your password"
+                  value={credentials.password}
+                  onChange={(e) => handleInputChange(e, setCredentials, 'password')}
+                  icon={<FaLock className="icon lock-icon" />}
+                />
+                <div className="forgot-password-container">
+                  <a href="#" onClick={showPasswordResetForm} className="forgot-password-link">Forgot Password?</a>
+                </div>
+              </div>
+              <div className="auth-buttons-container">
+                <button className='login-btn' onClick={handleLogin}>Login now</button>
+                <div className="or-container">
+                  <hr />
+                  <span>OR</span>
+                  <hr />
+                </div>
+                <button className='sign-up-btn' onClick={() => setScreen("register")}>
+                  Sign up now
+                </button>
+              </div>
+            </>
+          )}
+          {loginFormScreen === "resetPassword" && (
+            <div className="login-inputs-container">
+              <InputWithIcon
+                id="resetEmail"
+                type="text"
+                placeholder="Enter your email address"
+                value={resetEmail}
+                onChange={(e) => setResetEmail(e.target.value)}
+                icon={<FaEnvelope className="icon email-icon" />}
+              />
+              <button onClick={showOneTimeCodeForm}>Send One-Time Reset Code</button>
+              <button className='back-btn' onClick={showDefaultLoginForm}>Back to Login</button>
+            </div>
+          )}
+          {loginFormScreen === "enterCode" && (
+            <div className="login-inputs-container">
+              <InputWithIcon
+                id="oneTimeCode"
+                type="text"
+                placeholder="Enter the one-time code"
+                value={oneTimeCode}
+                onChange={(e) => setOneTimeCode(e.target.value)}
+                icon={<FaLock className="icon lock-icon" />} // Change icon as appropriate
+              />
+              <button>Submit</button>
+              <button className='back-btn' onClick={showPasswordResetForm}>Send Another One-Time Code</button>
+            </div>
+          )}
         </div>
       </div>
-    </div>
-  );
+    );
+  };
+
 
 
   const RegistrationForm = () => (
@@ -158,11 +216,15 @@ function Login({ loginSwitch }) {
           />
           <div className="buttons-container">
             <button onClick={handleRegistration} className='sign-up-btn'>Sign up now</button>
+            <div className="or-container">
+              <hr />
+              <span>OR</span>
+              <hr />
+            </div>
             <button onClick={() => setScreen("login")} >Back to Login</button>
           </div>
         </div>
       </div>
-
     </div>
   );
 
@@ -181,7 +243,6 @@ function Login({ loginSwitch }) {
 
   return (
     <div className="login-container">
-
       {screen === "login" ? <LoginForm /> : <RegistrationForm />}
     </div>
   );
