@@ -60,9 +60,9 @@ function App() {
                 <button onClick={() => setShowResources(true)}>Resources for Dementia Care Pairs</button>
                 <button onClick={() => setShowContact(true)}>Contact</button>
               </div>
-              <div className='manage-account-container'>
+              {/* <div className='manage-account-container'>
                 <button id='manage-account' onClick={() => setShowAccount(true)}>Manage Account</button>
-              </div>
+              </div> I am not totally confident this needs to be present before the user logs in. they would need to log in anyway so we would know what account they wanted to manage */}
             </div>
           )}
         </header>
@@ -78,6 +78,10 @@ function App() {
 
         <Modal show={showContact} onClose={() => setShowContact(false)}>
           <ContactInfo />
+        </Modal>
+
+        <Modal show={showAccount} onClose={() => setShowAccount(false)}>
+          <ManageAccount />
         </Modal>
 
         {/* Routes */}
