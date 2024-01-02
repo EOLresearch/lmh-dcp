@@ -9,6 +9,7 @@ import WritingDesk from './views/WritingDesk';
 import ReadingRoom from './views/ReadingRoom';
 import Login from './views/Login';
 
+import Modal from './components/Modal';
 import AboutUs from './components/AboutUs';
 import DementiaCareResources from './components/DementiaCareResources';
 import ContactInfo from './components/ContactInfo';
@@ -65,6 +66,21 @@ function App() {
             </div>
           )}
         </header>
+
+        {/* Modals */}
+        <Modal show={showAboutUs} onClose={() => setShowAboutUs(false)}>
+          <AboutUs />
+        </Modal>
+
+        <Modal show={showResources} onClose={() => setShowResources(false)}>
+          <DementiaCareResources />
+        </Modal>
+
+        <Modal show={showContact} onClose={() => setShowContact(false)}>
+          <ContactInfo />
+        </Modal>
+
+        {/* Routes */}
         <Routes>
           <Route path="/login" element={<Login loginSwitch={loginSwitch} />} />
           <Route path="/" element={<RenderOrRedirect loginSwitch={loginSwitch} isAuthenticated={isAuthenticated} intendedComponent={Home} />} />
