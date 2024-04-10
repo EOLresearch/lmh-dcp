@@ -35,12 +35,14 @@ export const AuthProvider = ({ children }) => {
             },
             // ...etc 
           ],
-
+          
         },
         writingRoom: {
           completedEntries: [null]
         },
-      });
+      }
+    }
+  });
 
 
   const signIn = async (email, password) => {
