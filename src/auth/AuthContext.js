@@ -4,46 +4,8 @@ import axios from 'axios';
 
 const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
-  const [userData, setUserData] = useState({
-    userCredentials: null,
-    houseSelection: {
-      houseId: null,
-      rooms: {
-        remRoom: {
-          framed: [
-            {
-              photoId: "photo-789",
-              location: "location-1", // Predefined location in the house
-              imageUrl: "https://example.com/photo-789.jpg",
-              framedDate: "2024-03-27" // Example 
-            },
-            {
-              photoId: "photo-456",
-              location: "location-2", // Predefined location in the house
-              imageUrl: "https://example.com/photo-456.jpg",
-              framedDate: "2024-03-27" // Example 
-            },
-          ],
-          wallofFame: [
-            {
-              photoId: "photo-789",
-              imageUrl: "https://example.com/photo-789.jpg",
-            },
-            {
-              photoId: "photo-456",
-              imageUrl: "https://example.com/photo-456.jpg",
-            },
-            // ...etc 
-          ],
-          
-        },
-        writingRoom: {
-          completedEntries: [null]
-        },
-      }
-    }
-  });
-
+  const [userData, setUserData] = useState({houseSelection: false});
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const signIn = async (email, password) => {
     // Mocking a request to Amazon Cognito
@@ -69,20 +31,22 @@ export const AuthProvider = ({ children }) => {
       "email": "fakeuser@example.com"
     }
 
-    //go find userCreds and userProfile in my localDB based on email
 
-    try {
-      const response = await axios.get(`http://localhost:3001/user/data/${decodedToken.email}`);
-      console.log('User data:', response.data)
-      setUserData(response.data);
-    } catch (error) {
-      console.error('Error fetching user data:', error);
-    }
+    // try {
+    //   const response = await axios.get(`http://localhost:3001/user/data/${decodedToken.email}`);
+    //   console.log('User data:', response.data)
+    //   setUserData(response.data);
+    // } catch (error) {
+    //   console.error('Error fetching user data:', error);
+    // }
+
+    setIsAuthenticated(true);
 
   };
 
   const signOut = () => {
     setUserData(null);
+    setIsAuthenticated(false);
   };
 
   const createUser = async (userDeets) => {
@@ -91,7 +55,7 @@ export const AuthProvider = ({ children }) => {
 
 
   return (
-    <AuthContext.Provider value={{ userData, signIn, signOut, createUser }}>
+    <AuthContext.Provider value={{ isAuthenticated, userData, signIn, signOut, createUser }}>
       {children}
     </AuthContext.Provider>
   );

@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { BsFillBellFill } from "react-icons/bs";
 import './App.css';
-import RenderOrRedirect from './components/RenderOrRedirect';
 import Home from './views/Home';
 import ReminiscenceRoom from './views/ReminiscenceRoom';
 import WritingDesk from './views/WritingDesk';
 import ReadingRoom from './views/ReadingRoom';
 import Login from './views/Login';
-
+import RenderOrRedirect from './components/RenderOrRedirect';
 import Modal from './components/Modal';
 import AboutUs from './components/AboutUs';
 import DementiaCareResources from './components/DementiaCareResources';
@@ -16,20 +14,18 @@ import ContactInfo from './components/ContactInfo';
 import ManageAccount from './components/ManageAccount';
 
 import logo2 from './assets/img/logo2-lmh-dcp.png'
-import { useAuth } from './auth/AuthContext';
+
+import { useAuth, signOut } from './auth/AuthContext';
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [showAboutUs, setShowAboutUs] = useState(false);
   const [showResources, setShowResources] = useState(false);
   const [showContact, setShowContact] = useState(false);
   const [showAccount, setShowAccount] = useState(false);
 
+  const { isAuthenticated, userData, signOut } = useAuth();
 
-  const loginSwitch = () => {
-    setIsAuthenticated(true);
-    console.log("Login switch called");
-  }
 
   function handleClick(event) {
     console.log("Type of element:", event.target.tagName);
@@ -51,7 +47,7 @@ function App() {
               <Link to="/writingdesk"><button>Writing Room</button></Link>
               <Link to="/readingroom"><button>Reading Room</button></Link>
               <Link to=""><button>Grief Resources</button></Link>
-              <button onClick={() => setIsAuthenticated(!isAuthenticated)}>Logout</button>
+              <button onClick={signOut}>Logout</button>
             </div>
           ) : (
             <div className='nav-container'>
@@ -61,9 +57,6 @@ function App() {
                 <button onClick={() => setShowResources(true)}>Resources for Dementia Care Pairs</button>
                 <button onClick={() => setShowContact(true)}>Contact</button>
               </div>
-              {/* <div className='manage-account-container'>
-                <button id='manage-account' onClick={() => setShowAccount(true)}>Manage Account</button>
-              </div> I am not totally confident this needs to be present before the user logs in. they would need to log in anyway so we would know what account they wanted to manage */}
             </div>
           )}
         </header>
@@ -87,11 +80,11 @@ function App() {
 
         {/* Routes */}
         <Routes>
-          <Route path="/login" element={<Login loginSwitch={loginSwitch} />} />
-          <Route path="/" element={<RenderOrRedirect loginSwitch={loginSwitch} isAuthenticated={isAuthenticated} intendedComponent={Home} />} />
-          <Route path="/reminiscenceroom" element={<RenderOrRedirect loginSwitch={loginSwitch} isAuthenticated={isAuthenticated} intendedComponent={ReminiscenceRoom} />} />
-          <Route path="/writingdesk" element={<RenderOrRedirect loginSwitch={loginSwitch} isAuthenticated={isAuthenticated} intendedComponent={WritingDesk} />} />
-          <Route path="/readingroom" element={<RenderOrRedirect loginSwitch={loginSwitch} isAuthenticated={isAuthenticated} intendedComponent={ReadingRoom} />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<RenderOrRedirect intendedComponent={Home} />} />
+          <Route path="/reminiscenceroom" element={<RenderOrRedirect intendedComponent={ReminiscenceRoom} />} />
+          <Route path="/writingdesk" element={<RenderOrRedirect intendedComponent={WritingDesk} />} />
+          <Route path="/readingroom" element={<RenderOrRedirect intendedComponent={ReadingRoom} />} />
         </Routes>
         <footer>
           © 2023 Copyright: Center for Research on End of Life Care, Weill Cornell Medicine

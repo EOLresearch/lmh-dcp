@@ -4,8 +4,9 @@ import React, { useState } from 'react';
 import { FaEnvelope, FaLock } from 'react-icons/fa';
 import './login.css';
 import logo from '../../assets/img/lmh-dcp-whitebg.png';
+import { useAuth } from '../../auth/AuthContext';
 
-function Login({ loginSwitch }) {
+function Login() {
   // Login state
   const [credentials, setCredentials] = useState({ email: "", password: "" });
 
@@ -17,6 +18,7 @@ function Login({ loginSwitch }) {
   const [screen, setScreen] = useState("login");  // Values can be "login" or "register"
   const [loginFormScreen, setLoginFormScreen] = useState("default");  // Values can be "default", "resetPassword", "enterCode"
 
+  const { signIn } = useAuth();
 
   const handleInputChange = (e, setState, field) => {
     setState(prevState => ({ ...prevState, [field]: e.target.value }));
@@ -28,7 +30,7 @@ function Login({ loginSwitch }) {
   }
 
   const handleLogin = () => {
-    loginSwitch();
+    signIn();
   }
 
   const LoginForm = () => {
