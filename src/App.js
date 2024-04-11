@@ -15,7 +15,7 @@ import ManageAccount from './components/ManageAccount';
 
 import logo2 from './assets/img/logo2-lmh-dcp.png'
 
-import { useAuth, signOut } from './auth/AuthContext';
+import { useAuth } from './auth/AuthContext';
 
 function App() {
   // const [isAuthenticated, setIsAuthenticated] = useState(false);
