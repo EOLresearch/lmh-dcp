@@ -1,94 +1,33 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
-import Home from './views/Home';
-import ReminiscenceRoom from './views/ReminiscenceRoom';
-import WritingDesk from './views/WritingDesk';
-import ReadingRoom from './views/ReadingRoom';
-import Login from './views/Login';
-import RenderOrRedirect from './components/RenderOrRedirect';
-import Modal from './components/Modal';
-import AboutUs from './components/AboutUs';
-import DementiaCareResources from './components/DementiaCareResources';
-import ContactInfo from './components/ContactInfo';
-import ManageAccount from './components/ManageAccount';
-
-import logo2 from './assets/img/logo2-lmh-dcp.png'
-
+import Header from './components/Header';
+import Modals from './components/Modals';
+import RouteConfig from './components/RouteConfig';
+import Footer from './components/Footer';
 import { useAuth } from './auth/AuthContext';
 
 function App() {
-  // const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [showAboutUs, setShowAboutUs] = useState(false);
-  const [showResources, setShowResources] = useState(false);
-  const [showContact, setShowContact] = useState(false);
-  const [showAccount, setShowAccount] = useState(false);
+  const [modalState, setModalState] = useState({
+    showAboutUs: false,
+    showResources: false,
+    showContact: false,
+    showAccount: false
+  });
 
-  const { isAuthenticated, userData, signOut } = useAuth();
+  const { isAuthenticated, signOut } = useAuth();
 
-
-  function handleClick(event) {
-    console.log("Type of element:", event.target.tagName);
-    console.log("ID of element:", event.target.id);
-    console.log("Class(es) of element:", event.target.className);
+  const toggleModal = (modal) => {
+    setModalState(prevState => ({ ...prevState, [modal]: !prevState[modal] }));
   }
 
   return (
     <Router>
       <div className='top-container'>
-        <header>
-          <div className='logo-container'>
-            <Link to="/"><img src={logo2} alt="Living Memory Home" /></Link>
-          </div>
-          {isAuthenticated ? (
-            <div className='nav-container'>
-              <Link to="/"><button>Home</button></Link>
-              <Link to="/reminiscenceroom"><button>Reminiscence Room</button></Link>
-              <Link to="/writingdesk"><button>Writing Room</button></Link>
-              <Link to="/readingroom"><button>Reading Room</button></Link>
-              <Link to=""><button>Grief Resources</button></Link>
-              <button onClick={signOut}>Logout</button>
-            </div>
-          ) : (
-            <div className='nav-container'>
-              <div className='nav-sub-container'>
-                <Link to="/"><button>Home</button></Link>
-                <button onClick={() => setShowAboutUs(true)}>About Us</button>
-                <button onClick={() => setShowResources(true)}>Resources for Dementia Care Pairs</button>
-                <button onClick={() => setShowContact(true)}>Contact</button>
-              </div>
-            </div>
-          )}
-        </header>
-
-        {/* Modals */}
-        <Modal show={showAboutUs} onClose={() => setShowAboutUs(false)}>
-          <AboutUs />
-        </Modal>
-
-        <Modal show={showResources} onClose={() => setShowResources(false)}>
-          <DementiaCareResources />
-        </Modal>
-
-        <Modal show={showContact} onClose={() => setShowContact(false)}>
-          <ContactInfo />
-        </Modal>
-
-        <Modal show={showAccount} onClose={() => setShowAccount(false)}>
-          <ManageAccount />
-        </Modal>
-
-        {/* Routes */}
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/" element={<RenderOrRedirect intendedComponent={Home} />} />
-          <Route path="/reminiscenceroom" element={<RenderOrRedirect intendedComponent={ReminiscenceRoom} />} />
-          <Route path="/writingdesk" element={<RenderOrRedirect intendedComponent={WritingDesk} />} />
-          <Route path="/readingroom" element={<RenderOrRedirect intendedComponent={ReadingRoom} />} />
-        </Routes>
-        <footer>
-          © 2023 Copyright: Center for Research on End of Life Care, Weill Cornell Medicine
-        </footer>
+        <Header isAuthenticated={isAuthenticated} toggleModal={toggleModal} signOut={signOut} />
+        <Modals modalState={modalState} toggleModal={toggleModal} />
+        <RouteConfig />
+        <Footer />
       </div>
     </Router>
   );
