@@ -7,6 +7,7 @@ const RenderOrRedirect = ({ intendedComponent: Component }) => {
   if (isAuthenticated) {
     return <Component />;
   } else {
+    
     return <Login />;
   }
 };
