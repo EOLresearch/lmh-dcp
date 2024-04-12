@@ -6,11 +6,13 @@ import Home from '../views/Home';
 import ReminiscenceRoom from '../views/ReminiscenceRoom';
 import WritingDesk from '../views/WritingDesk';
 import ReadingRoom from '../views/ReadingRoom';
+import HouseSelection from '../views/HouseSelection'; // Make sure this path is correct
 
 function RouteConfig() {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
+      <Route path="/house-selection" element={<HouseSelection />} />
       <Route path="/" element={<RenderOrRedirect intendedComponent={Home} />} />
       <Route path="/reminiscenceroom" element={<RenderOrRedirect intendedComponent={ReminiscenceRoom} />} />
       <Route path="/writingdesk" element={<RenderOrRedirect intendedComponent={WritingDesk} />} />
