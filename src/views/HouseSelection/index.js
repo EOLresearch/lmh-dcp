@@ -3,6 +3,7 @@ import { useAuth } from '../../auth/AuthContext';
 import WelcomeScreen from './WelcomeScreen';
 import InstructionsScreen from './InstructionsScreen';
 import GalleryView from './GalleryView';
+import './houseSelection.css';
 
 const HouseSelection = () => {
   const [currentStep, setCurrentStep] = useState(0);
@@ -25,7 +26,7 @@ const HouseSelection = () => {
   };
 
   return (
-    <div>
+    <div className='house-selection-container'>
       {renderStep()}
     </div>
   );
