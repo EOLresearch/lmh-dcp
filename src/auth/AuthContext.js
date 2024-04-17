@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
-  const [userData, setUserData] = useState({houseSelection: ''});
+  const [userData, setUserData] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const signIn = async (email, password) => {
@@ -39,7 +39,7 @@ export const AuthProvider = ({ children }) => {
     // } catch (error) {
     //   console.error('Error fetching user data:', error);
     // }
-
+    setUserData({houseSelection: ''})
     setIsAuthenticated(true);
 
   };

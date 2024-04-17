@@ -1,9 +1,10 @@
 import React from 'react';
 
-const WelcomeScreen = () => {
+const WelcomeScreen = ({ handleNext }) => {
   return (
     <div>
-      <h1>Test</h1>
+      <h1>Welcome</h1>
+      <button onClick={handleNext}>Next</button>
     </div>
   );
 };

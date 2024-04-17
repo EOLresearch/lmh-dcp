@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../auth/AuthContext';
 
-function AuthenticatedNav({ signOut }) {
+function AuthenticatedNav() {
+  const { signOut } = useAuth();
+
   return (
     <div>
       <Link to="/"><button>Home</button></Link>

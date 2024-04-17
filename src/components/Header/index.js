@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import logo2 from '../../assets/img/logo2-lmh-dcp.png'
 import AuthenticatedNav from './AuthenticatedNav';
 import UnauthenticatedNav from './UnauthenticatedNav';
+import { useAuth } from '../../auth/AuthContext';
 
-function Header({ isAuthenticated, toggleModal, signOut }) {
+function Header({ toggleModal }) {
+  const { isAuthenticated } = useAuth();
   return (
     <header>
       <div className='logo-container'>
@@ -12,7 +14,7 @@ function Header({ isAuthenticated, toggleModal, signOut }) {
       </div>
       <div className='nav-container'>
         {isAuthenticated ? (
-          <AuthenticatedNav signOut={signOut} />
+          <AuthenticatedNav />
         ) : (
           <UnauthenticatedNav toggleModal={toggleModal} />
         )}

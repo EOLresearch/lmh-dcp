@@ -5,7 +5,6 @@ import Header from './components/Header';
 import Modals from './components/Modals';
 import RouteConfig from './components/RouteConfig';
 import Footer from './components/Footer';
-import { useAuth } from './auth/AuthContext';
 
 function App() {
   const [modalState, setModalState] = useState({
@@ -15,7 +14,6 @@ function App() {
     showAccount: false
   });
 
-  const { isAuthenticated, signOut } = useAuth();
 
   const toggleModal = (modal) => {
     setModalState(prevState => ({ ...prevState, [modal]: !prevState[modal] }));
@@ -24,7 +22,7 @@ function App() {
   return (
     <Router>
       <div className='top-container'>
-        <Header isAuthenticated={isAuthenticated} toggleModal={toggleModal} signOut={signOut} />
+        <Header toggleModal={toggleModal} />
         <Modals modalState={modalState} toggleModal={toggleModal} />
         <RouteConfig />
         <Footer />

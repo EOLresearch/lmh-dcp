@@ -3,7 +3,7 @@ import React from 'react';
 const GalleryView = () => {
   return (
     <div>
-      <h1>test</h1>
+      <h1>Gallery</h1>
     </div>
   );
 };

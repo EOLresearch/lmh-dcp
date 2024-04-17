@@ -20,7 +20,7 @@ const HouseSelection = () => {
       case 2:
         return <GalleryView />;
       default:
-        return <GalleryView />;
+        return <WelcomeScreen handleNext={handleNext} />;
     }
   };
 
