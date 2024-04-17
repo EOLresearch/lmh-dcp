@@ -1,11 +1,18 @@
 import React from 'react';
 import Login from '../views/Login';
+import HouseSelection from '../views/HouseSelection';
 import { useAuth } from '../auth/AuthContext';
 
 const RenderOrRedirect = ({ intendedComponent: Component }) => {
-  const { isAuthenticated } = useAuth();
+  const { userData, isAuthenticated } = useAuth();
+  console.log('userData:', userData);
+
   if (isAuthenticated) {
-    return <Component />;
+    if (userData.houseSelection) {
+      return <Component />;
+    } else {
+      return <HouseSelection />;
+    }
   } else {
     return <Login />;
   }
