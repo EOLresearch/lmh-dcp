@@ -1,3 +1,4 @@
+import './header.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo2 from '../../assets/img/logo2-lmh-dcp.png'

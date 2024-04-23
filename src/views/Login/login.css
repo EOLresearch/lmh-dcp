@@ -171,6 +171,18 @@
   justify-content: space-around;
 }
 
+.auth-buttons-container button{
+  background-color: #2D8983;
+  border: none;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+}
+.auth-buttons-container button:hover {
+  transform: translateY(-5px);
+  scale: 102%;
+}
+
 .auth-buttons-container button, .auth-buttons-container .or-container {
   width: 100%;
 }

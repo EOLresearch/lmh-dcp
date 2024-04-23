@@ -1,0 +1,56 @@
+
+header {
+  background-color: #2D8983;
+  justify-content: left;
+  align-items: center;
+}
+header button{
+  padding: 0rem 2rem;
+  background-color: #2D8983;
+  border: none;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+}
+
+header button:hover{
+  color: #eac950;
+}
+.nav-container{
+  display: flex;
+  width: 100%;
+}
+.manage-account-container{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex:2;
+}
+#manage-account{
+  background-color: rgb(4, 4, 93);
+  padding:0.5rem 3rem;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  overflow: hidden; 
+  position: relative;
+  right:1.5rem;
+  box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.5);
+  z-index: 5;
+}
+
+.logo-container img {
+  display: block;
+  margin: 0;
+  position: relative;
+  left:5px;
+  top:10px;
+  height: 7rem;
+  width: 7rem;
+  background-color: white;
+  padding: 10px;
+}
