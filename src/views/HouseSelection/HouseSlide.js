@@ -6,7 +6,7 @@ import homeicon from '../../assets/img/homeicon.png'
 
 
 
-const HouseSlide = ({ handleNext, handlePrev, showGallery, currentSlide, images }) => {
+const HouseSlide = ({ selectHouse, handleNext, handlePrev, showGallery, currentSlide, images }) => {
   const handleSelect = () => {
     // Add your select functionality here
   };
@@ -45,7 +45,7 @@ const HouseSlide = ({ handleNext, handlePrev, showGallery, currentSlide, images 
           <h3>Above are three rooms of your home where you can engage in activities with your care partner. Each room features different activities.</h3>
         </div>
         <div className='select-btn'>
-          <button id='select-btn' onClick={handleSelect}><FaLongArrowAltRight color={"green"} size={100} /> <span>SELECT</span></button>
+          <button id='select-btn' onClick={()=> selectHouse()}><FaLongArrowAltRight color={"green"} size={100} /> <span>SELECT</span></button>
         </div>
       </div>
     </div>

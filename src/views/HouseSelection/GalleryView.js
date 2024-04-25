@@ -6,11 +6,13 @@ import { IoInformationCircleOutline } from "react-icons/io5";
 
 
 import { houses } from '../../assets/img/homes';
+import { set } from 'firebase/database';
 
 const GalleryView = () => {
   const [started, setStarted] = useState(false);
   const [currentSlide, setCurrentSlide] = useState('New-England Colonial');
   const [showGallery, setShowGallery] = useState(false);
+  const [selectedHouse, setSelectedHouse] = useState('')
 
   const house = houses.find(house => house.name === currentSlide);
 
@@ -38,6 +40,9 @@ const GalleryView = () => {
   const handleHouseClick = (houseName) => {
     setCurrentSlide(houseName);
     setShowGallery(false);
+  }
+  const handleSelectHouse = () => {
+    setSelectedHouse(house)
   }
 
   if (!started) {
@@ -73,7 +78,7 @@ const GalleryView = () => {
   }
 
   return (
-    <HouseSlide handleNext={nextSlide} handlePrev={lastSlide} showGallery={handleShowGallery} currentSlide={currentSlide} images={images} />
+    <HouseSlide selectHouse={handleSelectHouse} handleNext={nextSlide} handlePrev={lastSlide} showGallery={handleShowGallery} currentSlide={currentSlide} images={images} />
   )
 };
 
