@@ -2,19 +2,22 @@ import React, { useState } from 'react';
 import { FaLongArrowAltRight } from "react-icons/fa";
 import HouseCard from './HouseCard'
 import HouseSlide from './HouseSlide'
+import { IoInformationCircleOutline } from "react-icons/io5";
+
 
 import { houses } from '../../assets/img/homes';
 
 const GalleryView = () => {
   const [started, setStarted] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState('New-England Colonial')
+  const [currentSlide, setCurrentSlide] = useState('New-England Colonial');
+  const [showGallery, setShowGallery] = useState(false);
 
   const house = houses.find(house => house.name === currentSlide);
-  
+
   const { images } = house;
 
   const handleNext = () => {
-    setStarted(true)
+    setStarted(true);
   };
 
   const nextSlide = () => {
@@ -29,39 +32,49 @@ const GalleryView = () => {
     setCurrentSlide(houses[lastIndex].name);
   }
 
-  const showGallery =()=>{
-    setCurrentSlide('')
+  const handleShowGallery = () => {
+    setShowGallery(true);
+  }
+  const handleHouseClick = (houseName) => {
+    setCurrentSlide(houseName);
+    setShowGallery(false);
   }
 
-  if (started === false) {
+  if (!started) {
     return (
       <div className='screen-container'>
-      <div className='content-container'>
-        <div className='icon-container'>
+        <div className='content-container'>
+          <div className='icon-container'>
+          </div>
+          <div className='text-container'>
+            <h1>Let's Get Started!</h1>
+          </div>
         </div>
-        <div className='text-container'>
-          <h1>Let's Get Started!</h1>    
-        </div>
+        <button onClick={handleNext}><FaLongArrowAltRight color={"gold"} size={100} /> <span>NEXT</span></button>
       </div>
-      <button onClick={handleNext}><FaLongArrowAltRight color={"gold"} size={100} /> <span>NEXT</span></button>
-    </div>
     )
   }
 
-  if (currentSlide === "") {
+  if (showGallery) {
     return (
-      <div>
-        <h1>Gallery</h1>
+      <div className='gallery-container'>
+        <div className='house-card-container'>
+          {houses.map((house, index) => (
+            <HouseCard key={index} house={house} onHouseClick={handleHouseClick} />
+          ))}
+        </div>
+        <div className='info-container-2'>
+          <IoInformationCircleOutline size={80} />
+          <h5>Select a space that you would like to view before confirming your final home selection.</h5>
+        </div>
+
       </div>
     );
-  } else {
-
-    return (
-      <HouseSlide handleNext={nextSlide} handlePrev={lastSlide} showGallery={showGallery} currentSlide={currentSlide} images={images} />
-    )
   }
 
-
+  return (
+    <HouseSlide handleNext={nextSlide} handlePrev={lastSlide} showGallery={handleShowGallery} currentSlide={currentSlide} images={images} />
+  )
 };
 
 export default GalleryView;

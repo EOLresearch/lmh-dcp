@@ -7,8 +7,9 @@ import homeicon from '../../assets/img/homeicon.png'
 
 
 const HouseSlide = ({ handleNext, handlePrev, showGallery, currentSlide, images }) => {
-
-
+  const handleSelect = () => {
+    // Add your select functionality here
+  };
   return (
     <div className='screen-container'>
       <div className='content-container'>
@@ -42,6 +43,9 @@ const HouseSlide = ({ handleNext, handlePrev, showGallery, currentSlide, images 
         <div className='wrapper'>
           <IoInformationCircleOutline size={200} />
           <h3>Above are three rooms of your home where you can engage in activities with your care partner. Each room features different activities.</h3>
+        </div>
+        <div className='select-btn'>
+          <button id='select-btn' onClick={handleSelect}><FaLongArrowAltRight color={"green"} size={100} /> <span>SELECT</span></button>
         </div>
       </div>
     </div>
