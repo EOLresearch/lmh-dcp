@@ -2,10 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { IoInformationCircleOutline } from "react-icons/io5";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { FaLongArrowAltLeft } from "react-icons/fa";
+import homeicon from '../../assets/img/homeicon.png'
 
 
 
-const HouseSlide = ({ handleNext, handlePrev, currentSlide, images }) => {
+const HouseSlide = ({ handleNext, handlePrev, showGallery, currentSlide, images }) => {
 
 
   return (
@@ -22,7 +23,7 @@ const HouseSlide = ({ handleNext, handlePrev, currentSlide, images }) => {
                 <img src={images.rem} alt="Secondary 3" className="secondary-image" />
               </div>
             </div>
-            <div className='text-container'>
+            <div className='title-container'>
               <h2>{currentSlide}</h2>
             </div>
 
@@ -31,8 +32,17 @@ const HouseSlide = ({ handleNext, handlePrev, currentSlide, images }) => {
         </div>
       </div>
       <div className='secondary-copy-container'>
-        <IoInformationCircleOutline size={200} />
-        <h3>Above are three rooms of your home where you can engage in activities with your care partner. Each room features different activities.</h3>
+        <div className='galleryView-btn' onClick={showGallery}>
+          <img src={homeicon} alt="gallery home icon" />
+          <div className='info-container'>
+            <IoInformationCircleOutline size={30} />
+            <h5>Click the <b>Home</b> icon to view all available spaces</h5>
+          </div>
+        </div>
+        <div className='wrapper'>
+          <IoInformationCircleOutline size={200} />
+          <h3>Above are three rooms of your home where you can engage in activities with your care partner. Each room features different activities.</h3>
+        </div>
       </div>
     </div>
   );

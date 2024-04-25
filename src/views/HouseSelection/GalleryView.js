@@ -29,6 +29,10 @@ const GalleryView = () => {
     setCurrentSlide(houses[lastIndex].name);
   }
 
+  const showGallery =()=>{
+    setCurrentSlide('')
+  }
+
   if (started === false) {
     return (
       <div className='screen-container'>
@@ -50,11 +54,13 @@ const GalleryView = () => {
         <h1>Gallery</h1>
       </div>
     );
+  } else {
+
+    return (
+      <HouseSlide handleNext={nextSlide} handlePrev={lastSlide} showGallery={showGallery} currentSlide={currentSlide} images={images} />
+    )
   }
 
-  return (
-    <HouseSlide handleNext={nextSlide} handlePrev={lastSlide} currentSlide={currentSlide} images={images} />
-  )
 
 };
 
