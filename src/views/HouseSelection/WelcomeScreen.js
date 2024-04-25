@@ -11,7 +11,7 @@ const WelcomeScreen = ({ handleNext }) => {
           <IoInformationCircleOutline size={100} />
         </div>
         <div className='text-container'>
-          <h1>Through this process, you will reflect on your life experiences and collaborate on activities which will allow you to thoughtfully engage with your care partner.</h1>
+          <h2>Through this process, you will reflect on your life experiences and collaborate on activities which will allow you to thoughtfully engage with your care partner.</h2>
         </div>
       </div>
       <button onClick={handleNext}><FaLongArrowAltRight color={"gold"} size={100}/> <span>NEXT</span></button>
