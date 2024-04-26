@@ -39,10 +39,14 @@ export const AuthProvider = ({ children }) => {
     // } catch (error) {
     //   console.error('Error fetching user data:', error);
     // }
-    setUserData({houseSelection: ''})
+    setUserData('')
     setIsAuthenticated(true);
 
   };
+
+  const selectHouse = (house) => {
+    setUserData({houseSelection: house})
+  }
 
   const signOut = () => {
     setUserData(null);
@@ -55,7 +59,7 @@ export const AuthProvider = ({ children }) => {
 
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, userData, signIn, signOut, createUser }}>
+    <AuthContext.Provider value={{ isAuthenticated, userData, signIn, signOut, createUser, selectHouse }}>
       {children}
     </AuthContext.Provider>
   );

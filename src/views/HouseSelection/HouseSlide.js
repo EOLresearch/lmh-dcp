@@ -3,13 +3,12 @@ import { IoInformationCircleOutline } from "react-icons/io5";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import homeicon from '../../assets/img/homeicon.png'
+import { useAuth } from '../../auth/AuthContext';
 
 
-
-const HouseSlide = ({ selectHouse, handleNext, handlePrev, showGallery, currentSlide, images }) => {
-  const handleSelect = () => {
-    // Add your select functionality here
-  };
+const HouseSlide = ({ handleNext, handlePrev, showGallery, house }) => {
+  const { selectHouse } = useAuth();
+  const { images } = house;
   return (
     <div className='screen-container'>
       <div className='content-container'>
@@ -25,7 +24,7 @@ const HouseSlide = ({ selectHouse, handleNext, handlePrev, showGallery, currentS
               </div>
             </div>
             <div className='title-container'>
-              <h2>{currentSlide}</h2>
+              <h2>{house.name}</h2>
             </div>
 
           </div>
@@ -45,7 +44,7 @@ const HouseSlide = ({ selectHouse, handleNext, handlePrev, showGallery, currentS
           <h3>Above are three rooms of your home where you can engage in activities with your care partner. Each room features different activities.</h3>
         </div>
         <div className='select-btn'>
-          <button id='select-btn' onClick={()=> selectHouse()}><FaLongArrowAltRight color={"green"} size={100} /> <span>SELECT</span></button>
+          <button id='select-btn' onClick={()=>selectHouse(house)}><FaLongArrowAltRight color={"green"} size={100} /> <span>SELECT</span></button>
         </div>
       </div>
     </div>
