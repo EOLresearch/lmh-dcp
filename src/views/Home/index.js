@@ -24,15 +24,15 @@ function Home() {
   return (
     <div style={roomStyle}>
       <div className="room-menu">
-        <Link to="/reminiscenceroom">
+        <Link className="menu-btn" to="/reminiscenceroom">
           <img src={remroomdoor} alt="Reminiscence Room Door" />
           <span>Reminiscence Room</span>
         </Link>
-        <Link to="/writingdesk">
+        <Link className="menu-btn" to="/writingdesk">
           <img src={writroomdoor} alt="Writing Desk Door" />
           <span>Writing Desk</span>
         </Link>
-        <Link to="/readingroom">
+        <Link className="menu-btn" to="/readingroom">
           <img src={readingroomdoor} alt="Reading Room Door" />
           <span>Reading Room</span>
         </Link>
