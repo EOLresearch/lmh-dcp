@@ -1,14 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Login from '../views/Login';
 import HouseSelection from '../views/HouseSelection';
 import { useAuth } from '../auth/AuthContext';
 
 const RenderOrRedirect = ({ intendedComponent: Component }) => {
   const { userData, isAuthenticated } = useAuth();
-  console.log('userData:', userData);
 
   if (isAuthenticated) {
-    if (userData.houseSelection) {
+    if (userData && userData.houseSelection) {
       return <Component />;
     } else {
       return <HouseSelection />;

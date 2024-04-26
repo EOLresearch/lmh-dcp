@@ -4,11 +4,18 @@ import { FaLongArrowAltRight } from "react-icons/fa";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import homeicon from '../../assets/img/homeicon.png'
 import { useAuth } from '../../auth/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 
 const HouseSlide = ({ handleNext, handlePrev, showGallery, house }) => {
+  const navigate = useNavigate();
   const { selectHouse } = useAuth();
   const { images } = house;
+
+  const handleHouseSelection =(house)=>{
+    selectHouse(house)
+    navigate('/');
+  }
   return (
     <div className='screen-container'>
       <div className='content-container'>
@@ -44,7 +51,7 @@ const HouseSlide = ({ handleNext, handlePrev, showGallery, house }) => {
           <h3>Above are three rooms of your home where you can engage in activities with your care partner. Each room features different activities.</h3>
         </div>
         <div className='select-btn'>
-          <button id='select-btn' onClick={()=>selectHouse(house)}><FaLongArrowAltRight color={"green"} size={100} /> <span>SELECT</span></button>
+          <button id='select-btn' onClick={()=> handleHouseSelection(house)}><FaLongArrowAltRight color={"green"} size={100} /> <span>SELECT</span></button>
         </div>
       </div>
     </div>

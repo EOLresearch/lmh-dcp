@@ -1,0 +1,17 @@
+.room-menu {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #2D8983;
+  padding:2rem;
+  position: fixed;
+  bottom:5rem;
+  border-radius:5rem ;
+}
+
+.room-menu button {
+  margin:0;
+  padding: 1rem;
+  color: black;
+  font-size: 1.2em;
+
+}
