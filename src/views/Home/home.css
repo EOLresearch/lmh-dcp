@@ -1,17 +1,35 @@
 .room-menu {
   display: flex;
   justify-content: space-evenly;
-  background-color: #2D8983;
+  background-color: #2d8983d6;
   padding:2rem;
   position: fixed;
   bottom:5rem;
   border-radius:5rem ;
+  box-shadow: 0 0 30px 30px #2d8983d6; /* Adjust as needed */
 }
 
-.room-menu button {
-  margin:0;
-  padding: 1rem;
+.room-menu a {
   color: black;
-  font-size: 1.2em;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 2rem;
+}
 
+.room-menu a img {
+  height: 100px;
+  padding:0.5rem 2rem;
+  background-color: white;
+  border-radius: 0.5rem;
+}
+
+.room-menu a span {
+  background-color: white;
+  position: absolute;
+  top:-1rem;
+  padding:0.5rem;
+  border-radius: 0.5rem;
 }

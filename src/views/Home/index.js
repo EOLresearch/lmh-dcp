@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "../../auth/AuthContext";
 import { Link } from 'react-router-dom';
+import remroomdoor from '../../assets/img/remroomdoor.png'
+import readingroomdoor from '../../assets/img/readingroomdoor.png'
+import writroomdoor from '../../assets/img/writroomdoor.png'
 
 import './home.css';
 
@@ -21,9 +24,18 @@ function Home() {
   return (
     <div style={roomStyle}>
       <div className="room-menu">
-        <Link to="/reminiscenceroom"><button>Reminiscence Room</button></Link>
-        <Link to="/writingdesk"><button>Writing Desk</button></Link>
-        <Link to="/readingroom"><button>Reading Room</button></Link>
+        <Link to="/reminiscenceroom">
+          <img src={remroomdoor} alt="Reminiscence Room Door" />
+          <span>Reminiscence Room</span>
+        </Link>
+        <Link to="/writingdesk">
+          <img src={writroomdoor} alt="Writing Desk Door" />
+          <span>Writing Desk</span>
+        </Link>
+        <Link to="/readingroom">
+          <img src={readingroomdoor} alt="Reading Room Door" />
+          <span>Reading Room</span>
+        </Link>
       </div>
     </div>
   );
