@@ -2,11 +2,11 @@
   display: flex;
   justify-content: space-evenly;
   background-color: #2d8983d6;
-  padding:2rem;
+  padding:1rem;
   position: fixed;
   bottom:5rem;
   border-radius:5rem ;
-  box-shadow: 0 0 30px 30px #2d8983d6; /* Adjust as needed */
+  box-shadow: 0 0 20px 20px #2d8983d6; /* Adjust as needed */
 }
 
 .room-menu .menu-btn {
