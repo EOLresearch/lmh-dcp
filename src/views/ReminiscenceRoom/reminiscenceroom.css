@@ -15,38 +15,48 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.563);
-  z-index: 1;
+  z-index: 0;
 }
 
 .lifebook {
-  position: relative;
-  z-index: 3;
-  background-image: url(../../assets/img/lifebook.png);
+  z-index: 1;
   background-size: cover;
+  background-image: url(../../assets/img/lifebook.png);
   background-position: center;
   height: 70vh;
   width: 70vw;
-  border-radius: 5rem;
   padding: 5rem;
+  position: relative;
+  z-index: 0;
 }
-
-.lifebook-content {
-  /* border: solid red 5px; */
+.lifebook-content{
+  height: 90%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
-
 .photo-album {
   display: flex;
-  width: 100%;
-  height: 100%;
   align-items: center;
-  justify-content: center;
   text-align: center;
+  position: relative;
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .photo-album img {
-  width: 70%;
+  min-width: 80%;
+  width: 85%;
   object-fit: cover;
   border-radius: 1rem;
-  margin-top: 2.5rem;
-  /* margin: 5rem 6rem; */
-  /* position: absolute; */
+}
+.photo-album .photo {
+  margin: 2rem;
+}
+.photo-album .photo:nth-child(3) {
+  margin-left: 5rem;
 }

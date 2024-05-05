@@ -25,11 +25,19 @@ function ReminiscenceRoom() {
   const { houseSelection } = userData;
 
   const [showLifebook, setShowLifebook] = useState(false);
+  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
 
   const roomStyle = {
     backgroundImage: `url(${houseSelection.images.rem})`,
   };
 
+  const nextPage = () => {
+    setCurrentPhotoIndex((prevIndex) => (prevIndex === photoAlbum.length - 2 ? 0 : prevIndex === photoAlbum.length - 1 ? 1 : prevIndex + 2));
+  };
+
+  const prevPage = () => {
+    setCurrentPhotoIndex((prevIndex) => (prevIndex === 0 ? photoAlbum.length - 2 : prevIndex === 1 ? photoAlbum.length - 1 : prevIndex - 2));
+  };
 
   return (
     <div style={roomStyle} className='rem-room-container'>
@@ -45,21 +53,24 @@ function ReminiscenceRoom() {
       </div>
       {showLifebook && <div className="overlay" />}
       {showLifebook &&
-        <div className="lifebook">
-          <div className="lifebook-content">
-            <button className="close-btn" onClick={() => setShowLifebook(false)}>X</button>
+        <div className="lifebook-content">
+          <button className="close-btn" onClick={() => setShowLifebook(false)}>X</button>
+          <div className="lifebook">
+          </div>
             <div className="photo-album">
-              {photoAlbum.slice(0, 2).map(photo => (
+              <button onClick={nextPage}>Prev</button>
+              {photoAlbum.slice(currentPhotoIndex, currentPhotoIndex + 2).map(photo => (
                 <div className='photo' key={photo.id}>
-                  <img key={photo.id} src={photo.src} alt={photo.caption} />
+                  <img src={photo.src} alt={photo.caption} />
                   <p>{photo.caption}</p>
                 </div>
               ))}
+              <button onClick={prevPage}>Next</button>
             </div>
-
-          </div>
         </div>
       }
+
+
     </div>
   );
 }
