@@ -19,7 +19,6 @@ const photoAlbum = [
   { id: 4, src: parisstock, caption: 'Paris' },
 ];
 
-
 function ReminiscenceRoom() {
   const { userData } = useAuth();
   const { houseSelection } = userData;
@@ -53,24 +52,28 @@ function ReminiscenceRoom() {
       </div>
       {showLifebook && <div className="overlay" />}
       {showLifebook &&
-        <div className="lifebook-content">
+        <div className="lifebook-container">
           <button className="close-btn" onClick={() => setShowLifebook(false)}>X</button>
+          <button onClick={nextPage}>Prev Page</button>
           <div className="lifebook">
-          </div>
-            <div className="photo-album">
-              <button onClick={nextPage}>Prev</button>
+            <div className='captions'>
               {photoAlbum.slice(currentPhotoIndex, currentPhotoIndex + 2).map(photo => (
-                <div className='photo' key={photo.id}>
-                  <img src={photo.src} alt={photo.caption} />
+                <div className='caption' key={photo.id}>
                   <p>{photo.caption}</p>
                 </div>
               ))}
-              <button onClick={prevPage}>Next</button>
             </div>
+          </div>
+          <div className="photo-album">
+            {photoAlbum.slice(currentPhotoIndex, currentPhotoIndex + 2).map(photo => (
+              <div className='photo' key={photo.id}>
+                <img src={photo.src} alt={photo.caption} />
+              </div>
+            ))}
+          </div>
+          <button onClick={prevPage}>Next Page</button>
         </div>
       }
-
-
     </div>
   );
 }

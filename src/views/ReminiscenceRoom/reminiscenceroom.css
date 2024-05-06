@@ -14,28 +14,50 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.563);
+  background-color: rgba(0, 0, 0, 0.719);
   z-index: 0;
 }
 
-.lifebook {
-  z-index: 1;
-  background-size: cover;
-  background-image: url(../../assets/img/lifebook.png);
-  background-position: center;
-  height: 70vh;
-  width: 70vw;
-  padding: 5rem;
-  position: relative;
-  z-index: 0;
-}
-.lifebook-content{
+.lifebook-container{
   height: 90%;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
+  bottom:2rem;
+}
+.lifebook {
+  background-size: cover;
+  background-image: url(../../assets/img/lifebook2.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  width: 80vw;
+  position: relative;
+  right:1rem;
+  z-index: 2;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.captions{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  bottom: 2rem;
+  border:solid 2px red;
+  width: 80%;
+  position: relative;
+  top:12rem;
+}
+.captions .caption{
+  width: 40%;
+  border:solid 2px blue;
+  text-align: center;
+  margin: 1rem;
 }
 .photo-album {
   display: flex;
@@ -47,16 +69,30 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 60%;
 }
-.photo-album img {
-  min-width: 80%;
-  width: 85%;
+
+.photo:not(:first-child) {
+  margin-left: 1rem; 
+}
+.photo img {
+  width: 100%;
   object-fit: cover;
   border-radius: 1rem;
 }
-.photo-album .photo {
-  margin: 2rem;
-}
-.photo-album .photo:nth-child(3) {
-  margin-left: 5rem;
+
+
+@media (max-width: 1200px) {
+  /* .photo-album {
+    width: 70%;
+  } */
+
+  .lifebook{
+    background-size: contain;
+    width: 70vw;
+    height: 70vh;
+  }
+  .captions{
+    top:8rem;
+  }
 }
