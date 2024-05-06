@@ -6,6 +6,7 @@ import { useAuth } from "../../auth/AuthContext";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import { BsXLg } from "react-icons/bs";
+import MemoryLane from './MemoryLane';
 
 import fame from '../../assets/img/fame.png'
 import memory from '../../assets/img/memory.png'
@@ -26,25 +27,11 @@ function ReminiscenceRoom() {
   const { userData } = useAuth();
   const { houseSelection } = userData;
 
-  const [showLifebook, setShowLifebook] = useState(false);
-  const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+  const [showMemoryLane, setShowMemoryLane] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   const roomStyle = {
     backgroundImage: `url(${houseSelection.images.rem})`,
-  };
-  const nextPage = () => {
-    setCurrentPhotoIndex((prevIndex) => {
-      const newIndex = prevIndex + 2;
-      return newIndex >= photoAlbum.length ? newIndex - photoAlbum.length : newIndex;
-    });
-  };
-
-  const prevPage = () => {
-    setCurrentPhotoIndex((prevIndex) => {
-      const newIndex = prevIndex - 2;
-      return newIndex < 0 ? newIndex + photoAlbum.length : newIndex;
-    });
   };
 
   const handlePhotoClick = (photo) => {
@@ -55,10 +42,15 @@ function ReminiscenceRoom() {
     setSelectedPhoto(null);
   };
 
+  const featureHandler = () => {
+
+  }
+
+
   return (
     <div style={roomStyle} className='rem-room-container'>
       <div className="room-menu">
-        <button className="menu-btn" onClick={() => setShowLifebook(true)}>
+        <button className="menu-btn" onClick={() => setShowMemoryLane(true)}>
           <img src={memory} alt="Writing Down Memory Lane" />
           <span>Writing Down Memory Lane</span>
         </button>
@@ -67,29 +59,13 @@ function ReminiscenceRoom() {
           <span>Wall of Fame</span>
         </button>
       </div>
-      {showLifebook && <div className="overlay" />}
-      {showLifebook &&
-        <div className="lifebook-container">
-          <button className="close-btn" onClick={() => setShowLifebook(false)}><BsXLg /></button>
-          <button onClick={prevPage}><FaLongArrowAltLeft color={"gold"} size={100} /> <span>Back</span></button>
-          <div className="lifebook">
-            <div className='captions'>
-              {photoAlbum.slice(currentPhotoIndex, currentPhotoIndex + 2).map(photo => (
-                <div className='caption' key={photo.id}>
-                  <p>{photo.caption}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="photo-album">
-            {photoAlbum.map((photo, index) => (
-              <div className='photo' key={photo.id}>
-                <img src={photo.src} alt={photo.caption} onClick={() => handlePhotoClick(photo)} style={{ display: index >= currentPhotoIndex && index < currentPhotoIndex + 2 ? 'block' : 'none' }} />
-              </div>
-            ))}
-          </div>
-          <button onClick={nextPage}><FaLongArrowAltRight color={"gold"} size={100} /> <span>Next</span></button>
-        </div>
+      {showMemoryLane && <div className="overlay" />}
+      {showMemoryLane &&
+        <MemoryLane
+          setShowMemoryLane={setShowMemoryLane}
+          handlePhotoClick={handlePhotoClick}
+          photoAlbum={photoAlbum}
+        />
       }
       {selectedPhoto && (
         <div className="maximized-photo-overlay" onClick={handleClosePhoto}>

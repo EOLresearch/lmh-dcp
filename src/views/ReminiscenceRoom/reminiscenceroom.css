@@ -18,7 +18,7 @@
   z-index: 0;
 }
 
-.lifebook-container {
+.memory-lane-container {
   height: 90%;
   width: 100%;
   display: flex;
@@ -28,7 +28,7 @@
   bottom: 2rem;
 }
 
-.lifebook-container button {
+.memory-lane-container button {
   all: unset;
   cursor: pointer;
   display: flex;
@@ -36,7 +36,7 @@
   align-items: center;
 }
 
-.lifebook-container button.close-btn {
+.memory-lane-container button.close-btn {
   color: white;
   position: absolute;
   top: -1rem;
@@ -49,7 +49,7 @@
   box-shadow: inset 0.2em 0.2em 0.2em 0 rgba(255,255,255,0.5), inset -0.2em -0.2em 0.2em 0 rgba(0,0,0,0.5);
 }
 
-.lifebook-container button span {
+.memory-lane-container button span {
   color: white;
   position: relative;
   bottom: 1.5rem;
@@ -57,7 +57,7 @@
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.lifebook {
+.memory-lane {
   background-size: cover;
   background-image: url(../../assets/img/lifebook2.png);
   background-position: center;
