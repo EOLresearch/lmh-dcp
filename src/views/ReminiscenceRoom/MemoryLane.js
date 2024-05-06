@@ -19,7 +19,7 @@ const MemoryLane = ({ setShowMemoryLane, handlePhotoClick, photoAlbum, }) => {
     });
   };
   return (
-    <div className="memory-lane-container">
+    <div className="feature-container">
       <button className="close-btn" onClick={() => setShowMemoryLane(false)}><BsXLg /></button>
       <button onClick={prevPage}><FaLongArrowAltLeft color={"gold"} size={100} /> <span>Back</span></button>
       <div className="memory-lane">

@@ -1,12 +1,9 @@
-import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import React from 'react';
+import React, { useState } from 'react';
 import './reminiscenceroom.css';
 import { useAuth } from "../../auth/AuthContext";
-import { FaLongArrowAltRight } from "react-icons/fa";
-import { FaLongArrowAltLeft } from "react-icons/fa";
 import { BsXLg } from "react-icons/bs";
 import MemoryLane from './MemoryLane';
+import WallOfFame from './WallOfFame'; // Import the WallOfFame component
 
 import fame from '../../assets/img/fame.png'
 import memory from '../../assets/img/memory.png'
@@ -28,6 +25,7 @@ function ReminiscenceRoom() {
   const { houseSelection } = userData;
 
   const [showMemoryLane, setShowMemoryLane] = useState(false);
+  const [showWallOfFame, setShowWallOfFame] = useState(false); // Add state for WallOfFame
   const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   const roomStyle = {
@@ -42,11 +40,6 @@ function ReminiscenceRoom() {
     setSelectedPhoto(null);
   };
 
-  const featureHandler = () => {
-
-  }
-
-
   return (
     <div style={roomStyle} className='rem-room-container'>
       <div className="room-menu">
@@ -54,19 +47,14 @@ function ReminiscenceRoom() {
           <img src={memory} alt="Writing Down Memory Lane" />
           <span>Writing Down Memory Lane</span>
         </button>
-        <button className="menu-btn">
+        <button className="menu-btn" onClick={() => setShowWallOfFame(true)}>
           <img src={fame} alt="Wall of Fame" />
           <span>Wall of Fame</span>
         </button>
       </div>
-      {showMemoryLane && <div className="overlay" />}
-      {showMemoryLane &&
-        <MemoryLane
-          setShowMemoryLane={setShowMemoryLane}
-          handlePhotoClick={handlePhotoClick}
-          photoAlbum={photoAlbum}
-        />
-      }
+      {(showMemoryLane || showWallOfFame) && <div className="overlay" />}
+      {showMemoryLane && <MemoryLane setShowMemoryLane={setShowMemoryLane} handlePhotoClick={handlePhotoClick} photoAlbum={photoAlbum} />}
+      {showWallOfFame && <WallOfFame setShowWallOfFame={setShowWallOfFame} handlePhotoClick={handlePhotoClick} photoAlbum={photoAlbum} />}
       {selectedPhoto && (
         <div className="maximized-photo-overlay" onClick={handleClosePhoto}>
           <img src={selectedPhoto.src} alt={selectedPhoto.caption} className="maximized-photo" />
