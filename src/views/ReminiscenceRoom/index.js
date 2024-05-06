@@ -33,13 +33,18 @@ function ReminiscenceRoom() {
   const roomStyle = {
     backgroundImage: `url(${houseSelection.images.rem})`,
   };
-
   const nextPage = () => {
-    setCurrentPhotoIndex((prevIndex) => (prevIndex === photoAlbum.length - 2 ? 0 : prevIndex === photoAlbum.length - 1 ? 1 : prevIndex + 2));
+    setCurrentPhotoIndex((prevIndex) => {
+      const newIndex = prevIndex + 2;
+      return newIndex >= photoAlbum.length ? newIndex - photoAlbum.length : newIndex;
+    });
   };
 
   const prevPage = () => {
-    setCurrentPhotoIndex((prevIndex) => (prevIndex === 0 ? photoAlbum.length - 2 : prevIndex === 1 ? photoAlbum.length - 1 : prevIndex - 2));
+    setCurrentPhotoIndex((prevIndex) => {
+      const newIndex = prevIndex - 2;
+      return newIndex < 0 ? newIndex + photoAlbum.length : newIndex;
+    });
   };
 
   const handlePhotoClick = (photo) => {
@@ -77,9 +82,9 @@ function ReminiscenceRoom() {
             </div>
           </div>
           <div className="photo-album">
-            {photoAlbum.slice(currentPhotoIndex, currentPhotoIndex + 2).map(photo => (
+            {photoAlbum.map((photo, index) => (
               <div className='photo' key={photo.id}>
-                <img src={photo.src} alt={photo.caption} onClick={() => handlePhotoClick(photo)} />
+                <img src={photo.src} alt={photo.caption} onClick={() => handlePhotoClick(photo)} style={{ display: index >= currentPhotoIndex && index < currentPhotoIndex + 2 ? 'block' : 'none' }} />
               </div>
             ))}
           </div>
