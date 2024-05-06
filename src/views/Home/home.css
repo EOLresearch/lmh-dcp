@@ -21,6 +21,10 @@
   cursor: pointer;
 }
 
+.room-menu .menu-btn:hover {
+
+}
+
 .room-menu .menu-btn img {
   height: 100px;
   padding:0.5rem 2rem;

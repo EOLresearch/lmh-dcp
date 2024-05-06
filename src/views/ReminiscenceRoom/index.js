@@ -28,6 +28,7 @@ function ReminiscenceRoom() {
 
   const [showLifebook, setShowLifebook] = useState(false);
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   const roomStyle = {
     backgroundImage: `url(${houseSelection.images.rem})`,
@@ -39,6 +40,14 @@ function ReminiscenceRoom() {
 
   const prevPage = () => {
     setCurrentPhotoIndex((prevIndex) => (prevIndex === 0 ? photoAlbum.length - 2 : prevIndex === 1 ? photoAlbum.length - 1 : prevIndex - 2));
+  };
+
+  const handlePhotoClick = (photo) => {
+    setSelectedPhoto(photo);
+  };
+
+  const handleClosePhoto = () => {
+    setSelectedPhoto(null);
   };
 
   return (
@@ -70,13 +79,21 @@ function ReminiscenceRoom() {
           <div className="photo-album">
             {photoAlbum.slice(currentPhotoIndex, currentPhotoIndex + 2).map(photo => (
               <div className='photo' key={photo.id}>
-                <img src={photo.src} alt={photo.caption} />
+                <img src={photo.src} alt={photo.caption} onClick={() => handlePhotoClick(photo)} />
               </div>
             ))}
           </div>
           <button onClick={nextPage}><FaLongArrowAltRight color={"gold"} size={100} /> <span>Next</span></button>
         </div>
       }
+      {selectedPhoto && (
+        <div className="maximized-photo-overlay" onClick={handleClosePhoto}>
+          <img src={selectedPhoto.src} alt={selectedPhoto.caption} className="maximized-photo" />
+          <button className="close-maximized-photo-btn">
+            <BsXLg />
+          </button>
+        </div>
+      )}
     </div>
   );
 }
