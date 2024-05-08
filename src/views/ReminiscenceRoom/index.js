@@ -3,7 +3,7 @@ import './reminiscenceroom.css';
 import { useAuth } from "../../auth/AuthContext";
 import { BsXLg } from "react-icons/bs";
 import MemoryLane from './MemoryLane';
-import WallOfFame from './WallOfFame'; // Import the WallOfFame component
+import WallOfFame from './WallOfFame';
 
 import fame from '../../assets/img/fame.png'
 import memory from '../../assets/img/memory.png'
@@ -25,7 +25,7 @@ function ReminiscenceRoom() {
   const { houseSelection } = userData;
 
   const [showMemoryLane, setShowMemoryLane] = useState(false);
-  const [showWallOfFame, setShowWallOfFame] = useState(false); // Add state for WallOfFame
+  const [showWallOfFame, setShowWallOfFame] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   const roomStyle = {

@@ -9,7 +9,7 @@ function AuthenticatedNav() {
     <div>
       <Link to="/"><button>Home</button></Link>
       <Link to="/reminiscenceroom"><button>Reminiscence Room</button></Link>
-      <Link to="/writingdesk"><button>Writing Room</button></Link>
+      <Link to="/writingroom"><button>Writing Room</button></Link>
       <Link to="/readingroom"><button>Reading Room</button></Link>
       <button onClick={signOut}>Logout</button>
     </div>

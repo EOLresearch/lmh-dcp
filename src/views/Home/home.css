@@ -9,7 +9,7 @@
   box-shadow: 0 0 20px 20px #2d8983d6; /* Adjust as needed */
 }
 
-.room-menu .menu-btn {
+.room-menu button {
   all: unset; 
   color: black;
   text-decoration: none;
@@ -30,6 +30,7 @@
   padding:0.5rem 2rem;
   background-color: white;
   border-radius: 0.5rem;
+  cursor: pointer;
 }
 
 .room-menu .menu-btn span {
@@ -38,4 +39,19 @@
   top:-1rem;
   padding:0.5rem;
   border-radius: 0.5rem;
+}
+
+.not-found-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.not-found-container h1 {
+  font-size: 36px;
+  color: #333;
+}
+
+.not-found-container p {
+  font-size: 18px;
+  color: #666;
 }
