@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaLongArrowAltRight, FaLongArrowAltLeft } from "react-icons/fa";
 import { BsXLg } from "react-icons/bs";
 
-const ResourceDictionary = ({ setShowResourceDictionary, handlePhotoClick, photoAlbum }) => {
+const ResourceDictionary = ({ setShowResourceDictionary }) => {
 
 
   return (
