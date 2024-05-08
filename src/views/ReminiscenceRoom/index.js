@@ -41,7 +41,7 @@ function ReminiscenceRoom() {
   };
 
   return (
-    <div style={roomStyle} className='rem-room-container'>
+    <div style={roomStyle} className='room-container'>
       <div className="room-menu">
         <button className="menu-btn" onClick={() => setShowMemoryLane(true)}>
           <img src={memory} alt="Writing Down Memory Lane" />

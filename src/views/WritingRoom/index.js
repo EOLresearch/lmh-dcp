@@ -5,6 +5,9 @@ import { BsXLg } from "react-icons/bs";
 import YourLife from './YourLife'; // Assuming you have a YourLife component
 import Journal from './Journal'; // Assuming you have a Journal component
 
+import life from '../../assets/img/life.png';
+import journal from '../../assets/img/journal.png';
+
 function WritingRoom() {
   const { userData } = useAuth();
   const { houseSelection } = userData;
@@ -26,14 +29,14 @@ function WritingRoom() {
   };
 
   return (
-    <div style={roomStyle} className='writ-room-container'>
+    <div style={roomStyle} className='room-container'>
       <div className="room-menu">
         <button className="menu-btn" onClick={() => setShowYourLife(true)}>
-          <img src="" alt="This Is Your Life" />
+          <img src={life} alt="This Is Your Life" />
           <span>This Is Your Life</span>
         </button>
         <button className="menu-btn" onClick={() => setShowJournal(true)}>
-          <img src="" alt="Journaling" />
+          <img src={journal} alt="Journaling" />
           <span>Journaling</span>
         </button>
       </div>

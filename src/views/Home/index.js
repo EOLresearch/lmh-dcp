@@ -28,9 +28,9 @@ function Home() {
           <img src={remroomdoor} alt="Reminiscence Room Door" />
           <span>Reminiscence Room</span>
         </Link>
-        <Link className="menu-btn" to="/writingdesk">
-          <img src={writroomdoor} alt="Writing Desk Door" />
-          <span>Writing Desk</span>
+        <Link className="menu-btn" to="/writingroom">
+          <img src={writroomdoor} alt="Writing Room Door" />
+          <span>Writing Room</span>
         </Link>
         <Link className="menu-btn" to="/readingroom">
           <img src={readingroomdoor} alt="Reading Room Door" />

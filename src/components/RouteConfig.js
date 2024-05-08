@@ -19,7 +19,7 @@ function RouteConfig() {
       <Route path="/writingroom" element={<RenderOrRedirect intendedComponent={WritingRoom} />} />
       <Route path="/readingroom" element={<RenderOrRedirect intendedComponent={ReadingRoom} />} />
 
-       {/* Wildcard route for any other URLs */}
+       Wildcard route for any other URLs
        <Route path="*" element={<NotFound />} />
     </Routes>
   );
