@@ -1,52 +1,40 @@
 import React, { createContext, useContext, useState } from 'react';
-import jwtDecode from 'jwt-decode';
+import { jwtDecode } from "jwt-decode";
 import axios from 'axios';
 
 const AuthContext = createContext();
+
 export const AuthProvider = ({ children }) => {
   const [userData, setUserData] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [error, setError] = useState('');
 
   const signIn = async (email, password) => {
-    // Mocking a request to Amazon Cognito
-    // const mockCognitoResponse = {
-      // AuthenticationResult: {
-        // IdToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InVzZXJAZXhhbXBsZS5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZXhwIjoxNjE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
-        // Other tokens and data omitted for brevity
-      // }
-    // };
-    // const decodedToken = jwtDecode(mockCognitoResponse.AuthenticationResult.IdToken);
+    try {
+      const response = await axios.post('http://localhost:3001/api/auth/login', {
+        email,
+        password
+      });
 
-    // const decodedToken = {
-    //   "sub": "12345678-user-uuid-1234",
-    //   "aud": "app-client-id",
-    //   "email_verified": true,
-    //   "event_id": "event-id-1234",
-    //   "token_use": "id",
-    //   "auth_time": 1611695988,
-    //   "iss": "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_example",
-    //   "cognito:username": "cognito-123",
-    //   "exp": 1611699588,
-    //   "iat": 1611695988,
-    //   "email": "fakeuser@example.com"
-    // }
+      const decodedToken = jwtDecode(response.data.AuthenticationResult.IdToken);
 
+      try {
+        const userDataResponse = await axios.get(`http://localhost:3001/api/user/data/${decodedToken.email}`);
+        setUserData(userDataResponse.data);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
 
-    // try {
-    //   const response = await axios.get(`http://localhost:3001/user/data/${decodedToken.email}`);
-    //   console.log('User data:', response.data)
-    //   setUserData(response.data);
-    // } catch (error) {
-    //   console.error('Error fetching user data:', error);
-    // }
-    setUserData('')
-    setIsAuthenticated(true);
-
+      setIsAuthenticated(true);
+    } catch (error) {
+      setError('Invalid email or password');
+      console.error('Login error:', error);
+    }
   };
 
   const selectHouse = (house) => {
-    setUserData({houseSelection: house})
-  }
+    setUserData((prevData) => ({ ...prevData, houseSelection: house }));
+  };
 
   const signOut = () => {
     setUserData(null);
@@ -55,11 +43,10 @@ export const AuthProvider = ({ children }) => {
 
   const createUser = async (userDeets) => {
     console.log('Creating user with:', userDeets);
-  }
-
+  };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, userData, signIn, signOut, createUser, selectHouse }}>
+    <AuthContext.Provider value={{ isAuthenticated, userData, signIn, signOut, createUser, selectHouse, error }}>
       {children}
     </AuthContext.Provider>
   );
