@@ -23,21 +23,27 @@ const MemoryLane = ({ setShowMemoryLane, handlePhotoClick, photoAlbum, }) => {
       <button className="close-btn" onClick={() => setShowMemoryLane(false)}><BsXLg /></button>
       <button onClick={prevPage}><FaLongArrowAltLeft color={"gold"} size={100} /> <span>Back</span></button>
       <div className="memory-lane">
-        <div className='captions'>
-          {photoAlbum.slice(currentPhotoIndex, currentPhotoIndex + 2).map(photo => (
-            <div className='caption' key={photo.id}>
-              <p>{photo.caption}</p>
-            </div>
+        <div className="photo-album">
+          {photoAlbum.map((photo, index) => (
+            (index >= currentPhotoIndex && index < currentPhotoIndex + 2) && (
+              <div className='album-page' key={photo.id}>
+                <div className='photo'>
+                  <img
+                    src={photo.src}
+                    alt={photo.caption}
+                    onClick={() => handlePhotoClick(photo)}
+                  />
+                </div>
+                <div className='caption'>
+                  <p>{photo.caption}</p>
+                </div>
+              </div>
+            )
           ))}
         </div>
+
       </div>
-      <div className="photo-album">
-        {photoAlbum.map((photo, index) => (
-          <div className='photo' key={photo.id}>
-            <img src={photo.src} alt={photo.caption} onClick={() => handlePhotoClick(photo)} style={{ display: index >= currentPhotoIndex && index < currentPhotoIndex + 2 ? 'block' : 'none' }} />
-          </div>
-        ))}
-      </div>
+
       <button onClick={nextPage}><FaLongArrowAltRight color={"gold"} size={100} /> <span>Next</span></button>
     </div>
   );
