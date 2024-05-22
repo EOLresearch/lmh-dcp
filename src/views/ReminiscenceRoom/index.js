@@ -40,6 +40,10 @@ function ReminiscenceRoom() {
     setSelectedPhoto(null);
   };
 
+  const handleAddPhoto = (newPhoto) => {
+    // setPhotoAlbum([...photoAlbum, newPhoto]);
+  };
+
   return (
     <div style={roomStyle} className='room-container'>
       <div className="room-menu">
@@ -53,7 +57,7 @@ function ReminiscenceRoom() {
         </button>
       </div>
       {(showMemoryLane || showWallOfFame) && <div className="overlay" />}
-      {showMemoryLane && <MemoryLane setShowMemoryLane={setShowMemoryLane} handlePhotoClick={handlePhotoClick} photoAlbum={photoAlbum} />}
+      {showMemoryLane && <MemoryLane setShowMemoryLane={setShowMemoryLane} handlePhotoClick={handlePhotoClick} photoAlbum={photoAlbum} handleAddPhoto={handleAddPhoto}/>}
       {showWallOfFame && <WallOfFame setShowWallOfFame={setShowWallOfFame} handlePhotoClick={handlePhotoClick} photoAlbum={photoAlbum} />}
       {selectedPhoto && (
         <div className="maximized-photo-overlay" onClick={handleClosePhoto}>

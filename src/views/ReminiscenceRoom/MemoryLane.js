@@ -1,10 +1,14 @@
-import { useState } from 'react';
-import { FaLongArrowAltRight } from "react-icons/fa";
-import { FaLongArrowAltLeft } from "react-icons/fa";
-import { BsXLg } from "react-icons/bs";
+import React, { useState } from 'react';
+import { FaLongArrowAltRight } from 'react-icons/fa';
+import { FaLongArrowAltLeft } from 'react-icons/fa';
+import { BsXLg } from 'react-icons/bs';
+import Modal from '../../components/Modals/Modal';
 
-const MemoryLane = ({ setShowMemoryLane, handlePhotoClick, handlePhotoUpload, photoAlbum }) => {
+const MemoryLane = ({ setShowMemoryLane, handlePhotoClick, photoAlbum, handleAddPhoto }) => {
   const [currentPageIndex, setCurrentPageIndex] = useState(0);
+  const [showModal, setShowModal] = useState(false);
+  const [newPhoto, setNewPhoto] = useState(null);
+  const [caption, setCaption] = useState('');
 
   const nextPage = () => {
     setCurrentPageIndex((prevIndex) => {
@@ -59,26 +63,39 @@ const MemoryLane = ({ setShowMemoryLane, handlePhotoClick, handlePhotoUpload, ph
 
   const albumPages = albumPageCreator(photoAlbum);
 
+  const handlePhotoChange = (e) => {
+    setNewPhoto(e.target.files[0]);
+  };
+
+  const handleCaptionChange = (e) => {
+    setCaption(e.target.value);
+  };
+
+  const handleAddNewPhoto = () => {
+    if (newPhoto) {
+      handleAddPhoto({ src: URL.createObjectURL(newPhoto), caption });
+      setShowModal(false);
+      setNewPhoto(null);
+      setCaption('');
+    }
+  };
+
   return (
     <div className="feature-container">
       <button className="close-btn" onClick={() => setShowMemoryLane(false)}><BsXLg /></button>
       <button onClick={prevPage}><FaLongArrowAltLeft color={"gold"} size={100} /> <span>Back</span></button>
       <div className="memory-lane">
-        {photoAlbum.length === 0 ? (
-          <div className='album-page'>
-            <div className='upload-prompt'>
-              <input
-                type="file"
-                accept="image/*"
-                onChange={(e) => handlePhotoUpload(e.target.files[0])}
-              />
-            </div>
-          </div>
-        ) : (
-          albumPages[currentPageIndex]
-        )}
+      <button className="add-photo-btn" onClick={() => setShowModal(true)}>+ Add a Photo</button>
+        {albumPages[currentPageIndex]}
       </div>
       <button onClick={nextPage}><FaLongArrowAltRight color={"gold"} size={100} /> <span>Next</span></button>
+      
+      <Modal show={showModal} onClose={() => setShowModal(false)}>
+        <h2>Add a Photo</h2>
+        <input type="file" accept="image/*" onChange={handlePhotoChange} />
+        <input type="text" placeholder="Enter caption" value={caption} onChange={handleCaptionChange} />
+        <button onClick={handleAddNewPhoto}>Add Photo</button>
+      </Modal>
     </div>
   );
 };
