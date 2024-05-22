@@ -79,22 +79,38 @@ const MemoryLane = ({ setShowMemoryLane, handlePhotoClick, photoAlbum, handleAdd
       setCaption('');
     }
   };
+  const clearPhoto = () => {
+    setNewPhoto(null);
+  };
+
 
   return (
     <div className="feature-container">
       <button className="close-btn" onClick={() => setShowMemoryLane(false)}><BsXLg /></button>
       <button onClick={prevPage}><FaLongArrowAltLeft color={"gold"} size={100} /> <span>Back</span></button>
       <div className="memory-lane">
-      <button className="add-photo-btn" onClick={() => setShowModal(true)}>+ Add a Photo</button>
+        <button className="add-photo-btn" onClick={() => setShowModal(true)}>+ Add a Photo</button>
         {albumPages[currentPageIndex]}
       </div>
       <button onClick={nextPage}><FaLongArrowAltRight color={"gold"} size={100} /> <span>Next</span></button>
-      
       <Modal show={showModal} onClose={() => setShowModal(false)}>
-        <h2>Add a Photo</h2>
-        <input type="file" accept="image/*" onChange={handlePhotoChange} />
-        <input type="text" placeholder="Enter caption" value={caption} onChange={handleCaptionChange} />
-        <button onClick={handleAddNewPhoto}>Add Photo</button>
+        <div className='photo-upload-modal'>
+          <h2>Add a Photo</h2>
+          {newPhoto && <button id="input-clear" onClick={clearPhoto}><BsXLg /></button>}
+          {newPhoto && (
+            <div className="thumbnail">
+              <img src={URL.createObjectURL(newPhoto)} alt="Selected Thumbnail" />
+            </div>
+          )}
+          <input type="file" accept="image/*" onChange={handlePhotoChange} />
+          <textarea
+            placeholder="Enter caption"
+            value={caption}
+            onChange={handleCaptionChange}
+            className="caption-input"
+          />
+          <button onClick={handleAddNewPhoto}>Add Photo</button>
+        </div>
       </Modal>
     </div>
   );

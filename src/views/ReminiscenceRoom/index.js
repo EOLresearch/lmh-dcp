@@ -17,7 +17,7 @@ const photoAlbum = [
   { id: 1, src: dogplayingstock, caption: 'Dog Playing' },
   { id: 2, src: familypicnicstock, caption: 'Family Picnic' },
   { id: 3, src: mountainstock, caption: 'Mountain' },
-  { id: 4, src: parisstock, caption: 'Paris' },
+  // { id: 4, src: parisstock, caption: 'Paris' },
 ];
 
 function ReminiscenceRoom() {
