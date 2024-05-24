@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { FaLongArrowAltRight } from 'react-icons/fa';
 import { FaLongArrowAltLeft } from 'react-icons/fa';
 import { BsXLg } from 'react-icons/bs';
@@ -9,6 +9,7 @@ const MemoryLane = ({ setShowMemoryLane, handlePhotoClick, photoAlbum, handleAdd
   const [showModal, setShowModal] = useState(false);
   const [newPhoto, setNewPhoto] = useState(null);
   const [caption, setCaption] = useState('');
+  const fileInputRef = useRef(null);
 
   const nextPage = () => {
     setCurrentPageIndex((prevIndex) => {
@@ -22,6 +23,31 @@ const MemoryLane = ({ setShowMemoryLane, handlePhotoClick, photoAlbum, handleAdd
       const newIndex = prevIndex - 1;
       return newIndex < 0 ? albumPages.length - 1 : newIndex;
     });
+  };
+
+  const handlePhotoChange = (e) => {
+    setNewPhoto(e.target.files[0]);
+  };
+
+  const handleCaptionChange = (e) => {
+    setCaption(e.target.value);
+  };
+
+  const handleAddNewPhoto = () => {
+    if (newPhoto) {
+      handleAddPhoto({ src: URL.createObjectURL(newPhoto), caption });
+      setShowModal(false);
+      setNewPhoto(null);
+      setCaption('');
+    }
+  };
+
+  const clearPhoto = () => {
+    setNewPhoto(null);
+    setCaption('');
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
   };
 
   const albumPageCreator = (photos) => {
@@ -63,27 +89,6 @@ const MemoryLane = ({ setShowMemoryLane, handlePhotoClick, photoAlbum, handleAdd
 
   const albumPages = albumPageCreator(photoAlbum);
 
-  const handlePhotoChange = (e) => {
-    setNewPhoto(e.target.files[0]);
-  };
-
-  const handleCaptionChange = (e) => {
-    setCaption(e.target.value);
-  };
-
-  const handleAddNewPhoto = () => {
-    if (newPhoto) {
-      handleAddPhoto({ src: URL.createObjectURL(newPhoto), caption });
-      setShowModal(false);
-      setNewPhoto(null);
-      setCaption('');
-    }
-  };
-  const clearPhoto = () => {
-    setNewPhoto(null);
-  };
-
-
   return (
     <div className="feature-container">
       <button className="close-btn" onClick={() => setShowMemoryLane(false)}><BsXLg /></button>
@@ -95,21 +100,28 @@ const MemoryLane = ({ setShowMemoryLane, handlePhotoClick, photoAlbum, handleAdd
       <button onClick={nextPage}><FaLongArrowAltRight color={"gold"} size={100} /> <span>Next</span></button>
       <Modal show={showModal} onClose={() => setShowModal(false)}>
         <div className='photo-upload-modal'>
-          <h2>Add a Photo</h2>
-          {newPhoto && <button id="input-clear" onClick={clearPhoto}><BsXLg /></button>}
-          {newPhoto && (
-            <div className="thumbnail">
-              <img src={URL.createObjectURL(newPhoto)} alt="Selected Thumbnail" />
+          <div className='photo-upload-content'>
+            <div className='photo-upload-form'>
+              <input type="file" accept="image/*" onChange={handlePhotoChange} ref={fileInputRef} />
+              <textarea
+                placeholder="Enter caption"
+                value={caption}
+                onChange={handleCaptionChange}
+                className="caption-input"
+              />
+              <button onClick={handleAddNewPhoto}>Add Photo</button>
             </div>
-          )}
-          <input type="file" accept="image/*" onChange={handlePhotoChange} />
-          <textarea
-            placeholder="Enter caption"
-            value={caption}
-            onChange={handleCaptionChange}
-            className="caption-input"
-          />
-          <button onClick={handleAddNewPhoto}>Add Photo</button>
+            {newPhoto ? (
+              <div className="thumbnail">
+                <button id="input-clear" onClick={clearPhoto}><BsXLg /></button>
+                <img src={URL.createObjectURL(newPhoto)} alt="Selected Thumbnail" />
+              </div>
+            ) : (
+              <div className="thumbnail">
+                <p>Choose a photo to see a preview</p>
+              </div>
+            )}
+          </div>
         </div>
       </Modal>
     </div>

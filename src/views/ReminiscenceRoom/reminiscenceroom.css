@@ -57,7 +57,6 @@
   object-fit: cover;
 }
 
-
 .photo-album {
   display: flex;
   align-items: center;
@@ -86,7 +85,7 @@
   width: 50vw;
   display: flex;
   flex-direction: column;
-  background-color: #fefefe;
+  min-height: 50vh;
 }
 
 .photo-upload-modal h2 {
@@ -97,40 +96,64 @@
   text-align: center;
 }
 
-.photo-upload-modal input[type="file"] {
-  display: block;
-  margin: 1rem auto;
-  padding: 1rem;
-  font-size: 1.2rem;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
+.photo-upload-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  flex-grow: 1; /* Ensure the content takes up the remaining space */
 }
 
-.photo-upload-modal input[type="file"]:hover {
-  background-color: #e0e0e0;
-  transform: scale(1.02);
+.photo-upload-form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-right: 1rem;
 }
 
-.photo-upload-modal .caption-input {
-  width: 90%;
-  margin: auto;
-  padding: 1rem;
-  font-size: 1.3rem;
+.photo-upload-form input[type="file"] {
   margin-bottom: 1rem;
-  border: 2px solid #ccc;
-  border-radius: 5px;
-  background: linear-gradient(145deg, #f0f0f0, #d9d9d9);
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-  /* font-family: 'Lucida Handwriting', cursive; */
-  resize: vertical; /* Allows the user to resize vertically */
 }
 
-.photo-upload-modal .caption-input::placeholder {
-  color: #aaa;
-  font-style: italic;
+.photo-upload-form .caption-input {
+  flex-grow: 1; /* Take up the remaining space */
+  resize: none; /* Prevent resizing */
+}
+
+.photo-upload-modal .thumbnail {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  width: 50%; /* Updated to take the width from the provided CSS */
+}
+
+.photo-upload-modal .thumbnail img {
+  max-width: 400px; /* Updated to take the width from the provided CSS */
+  max-height: 70vh; /* Updated to take the height from the provided CSS */
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#input-clear {
+  width: fit-content;
+  background-color: rgba(255, 255, 255, 0.365);
+  color: black;
+  padding: 0.3rem;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  transition: color 0.3s, transform 0.3s;
+}
+
+#input-clear:hover {
+  color: #e74c3c;
+  transform: scale(1.05);
+  background-color: rgb(236, 236, 236);
 }
 
 .photo-upload-modal button {
@@ -151,57 +174,86 @@
   background-color: #45a049;
   transform: scale(1.05);
 }
-.photo-upload-modal .thumbnail {
-  display: flex;
-  justify-content: center;
-  margin: 1rem 0;
+
+.photo-upload-modal input[type="file"] {
+  display: block;
+  margin: 1rem auto;
+  padding: 1rem;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
-.photo-upload-modal .thumbnail img {
-  max-width: 200px;
-  max-height: 200px;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.photo-upload-modal input[type="file"]:hover {
+  background-color: #e0e0e0;
+  transform: scale(1.02);
 }
-.photo-upload-modal .clear-btn {
-  background-color: #e74c3c;
+
+.photo-upload-modal .caption-input {
+  width: 80%;
+  margin: auto;
+  padding: 1rem;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  background: linear-gradient(145deg, #f0f0f0, #d9d9d9);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  resize: none;
+}
+
+.photo-upload-modal .caption-input::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+
+.photo-upload-modal button {
+  display: block;
+  margin: auto;
+  width: 70%;
+  background-color: #4CAF50;
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 1rem;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.3s, transform 0.3s;
 }
 
-.photo-upload-modal .clear-btn:hover {
-  background-color: #c0392b;
+.photo-upload-modal button:hover {
+  background-color: #45a049;
   transform: scale(1.05);
 }
+
+
 #input-clear {
   width: fit-content;
-  margin: auto;
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.365);
   color: black;
   padding: 0.3rem;
-  border: none; 
-  cursor: pointer; 
-  transition: color 0.3s, transform 0.3s; 
+  border: none;
+  cursor: pointer;
+  position: absolute; 
+  top: 1rem; 
+  right: 1.5rem; 
+  transition: color 0.3s, transform 0.3s;
 }
 
 #input-clear:hover {
-  color: #e74c3c; /* Change color on hover */
-  transform: scale(1.05); /* Slightly enlarge on hover */
+  color: #e74c3c; 
+  transform: scale(1.05); 
   background-color: rgb(236, 236, 236);
 }
 
-
 @media (max-width: 1200px) {
-
   .lifebook {
     background-size: contain;
     width: 70vw;
     height: 70vh;
   }
-
 }

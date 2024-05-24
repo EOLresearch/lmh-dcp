@@ -13,16 +13,17 @@ import familypicnicstock from '../../assets/img/stockphotos/familypicnicstock.pn
 import mountainstock from '../../assets/img/stockphotos/mountainstock.png'
 import parisstock from '../../assets/img/stockphotos/parisstock.png'
 
-const photoAlbum = [
-  { id: 1, src: dogplayingstock, caption: 'Dog Playing' },
-  { id: 2, src: familypicnicstock, caption: 'Family Picnic' },
-  { id: 3, src: mountainstock, caption: 'Mountain' },
-  // { id: 4, src: parisstock, caption: 'Paris' },
-];
 
 function ReminiscenceRoom() {
   const { userData } = useAuth();
   const { houseSelection } = userData;
+
+  const [photoAlbum, setPhotoAlbum] = useState([
+    { id: 1, src: dogplayingstock, caption: 'Dog Playing' },
+    { id: 2, src: familypicnicstock, caption: 'Family Picnic' },
+    { id: 3, src: mountainstock, caption: 'Mountain' },
+    { id: 4, src: parisstock, caption: 'Paris' },
+  ]);
 
   const [showMemoryLane, setShowMemoryLane] = useState(false);
   const [showWallOfFame, setShowWallOfFame] = useState(false);
@@ -41,7 +42,7 @@ function ReminiscenceRoom() {
   };
 
   const handleAddPhoto = (newPhoto) => {
-    // setPhotoAlbum([...photoAlbum, newPhoto]);
+    setPhotoAlbum([...photoAlbum, newPhoto]);
   };
 
   return (
@@ -57,7 +58,7 @@ function ReminiscenceRoom() {
         </button>
       </div>
       {(showMemoryLane || showWallOfFame) && <div className="overlay" />}
-      {showMemoryLane && <MemoryLane setShowMemoryLane={setShowMemoryLane} handlePhotoClick={handlePhotoClick} photoAlbum={photoAlbum} handleAddPhoto={handleAddPhoto}/>}
+      {showMemoryLane && <MemoryLane setShowMemoryLane={setShowMemoryLane} handlePhotoClick={handlePhotoClick} photoAlbum={photoAlbum} handleAddPhoto={handleAddPhoto} />}
       {showWallOfFame && <WallOfFame setShowWallOfFame={setShowWallOfFame} handlePhotoClick={handlePhotoClick} photoAlbum={photoAlbum} />}
       {selectedPhoto && (
         <div className="maximized-photo-overlay" onClick={handleClosePhoto}>

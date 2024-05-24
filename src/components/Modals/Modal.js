@@ -1,5 +1,6 @@
 import React from 'react';
 import './modals.css';
+import { BsXLg } from 'react-icons/bs';
 
 const Modal = ({ show, children, onClose }) => {
   if (!show) {
@@ -9,8 +10,8 @@ const Modal = ({ show, children, onClose }) => {
   return (
     <div className="modal-overlay">
       <div className="modal-content">
+        <button className="modal-close-btn" onClick={onClose}><BsXLg /></button>
         {children}
-        <button className="modal-close-btn" onClick={onClose}>Close</button>
       </div>
     </div>
   );
