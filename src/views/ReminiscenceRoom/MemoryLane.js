@@ -86,7 +86,7 @@ const MemoryLane = ({ setShowMemoryLane, handlePhotoClick, photoAlbum, handleAdd
     }
     return pages;
   };
-
+//  need to handle aspect ratios for the photos and when they differ. 
   const albumPages = albumPageCreator(photoAlbum);
 
   return (
