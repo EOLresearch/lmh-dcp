@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { FaLongArrowAltRight } from 'react-icons/fa';
-import { FaLongArrowAltLeft } from 'react-icons/fa';
+import { FaLongArrowAltRight, FaLongArrowAltLeft } from 'react-icons/fa';
 import { BsXLg } from 'react-icons/bs';
 import Modal from '../../components/Modals/Modal';
 
@@ -9,6 +8,7 @@ const MemoryLane = ({ setShowMemoryLane, handlePhotoClick, photoAlbum, handleAdd
   const [showModal, setShowModal] = useState(false);
   const [newPhoto, setNewPhoto] = useState(null);
   const [caption, setCaption] = useState('');
+  const [editIndex, setEditIndex] = useState(null);
   const fileInputRef = useRef(null);
 
   const nextPage = () => {
@@ -49,56 +49,77 @@ const MemoryLane = ({ setShowMemoryLane, handlePhotoClick, photoAlbum, handleAdd
       fileInputRef.current.value = '';
     }
   };
+
+  const handleEditCaption = (index) => {
+    setEditIndex(index);
+    setCaption(photoAlbum[index].caption);
+    setShowModal(true);
+  };
+
+  const handleSaveCaption = () => {
+    if (editIndex !== null) {
+      photoAlbum[editIndex].caption = caption;
+      setEditIndex(null);
+      setCaption('');
+      setShowModal(false);
+    }
+  };
+
   const truncateText = (text, maxLength) => {
     if (text.length > maxLength) {
       return text.substring(0, maxLength) + '...';
     }
     return text;
   };
-const albumPageCreator = (photos) => {
-  const pages = [];
-  const photosWithPlaceholder = photos.length % 2 === 0 ? photos : [...photos, { ...photos[photos.length - 1], id: 'placeholder' }];
 
-  for (let i = 0; i < photosWithPlaceholder.length; i += 2) {
-    pages.push(
-      <div className="photo-album" key={`page-${i}`}>
-        <div className='album-page'>
-          <div className='album-item'>
-            <div className='img-container'>
-              <img
-                src={photosWithPlaceholder[i].src}
-                alt={photosWithPlaceholder[i].caption || ''}
-                onClick={() => handlePhotoClick(photosWithPlaceholder[i])}
-              />
+  const albumPageCreator = (photos) => {
+    const pages = [];
+    const photosWithPlaceholder = photos.length % 2 === 0 ? photos : [...photos, { ...photos[photos.length - 1], id: 'placeholder' }];
+
+    for (let i = 0; i < photosWithPlaceholder.length; i += 2) {
+      pages.push(
+        <div className="photo-album" key={`page-${i}`}>
+          <div className='album-page'>
+            <div className='album-item'>
+              <div className='img-container'>
+                <img
+                  src={photosWithPlaceholder[i].src}
+                  alt={photosWithPlaceholder[i].caption || ''}
+                  onClick={() => handlePhotoClick(photosWithPlaceholder[i])}
+                />
+              </div>
+              <div className='caption'>
+                <p style={{ visibility: photosWithPlaceholder[i].caption ? 'visible' : 'hidden' }}>
+                  {photosWithPlaceholder[i].caption ? truncateText(photosWithPlaceholder[i].caption, 80) : ''}
+                </p>
+              </div>
+              <div className='edit-caption-container'>
+                <button onClick={() => handleEditCaption(i)}>Edit</button>
+              </div>
             </div>
-            <div className='caption'>
-              <p style={{ visibility: photosWithPlaceholder[i].caption ? 'visible' : 'hidden' }}>
-                {photosWithPlaceholder[i].caption ? truncateText(photosWithPlaceholder[i].caption, 80) : ''}
-              </p>
+          </div>
+          <div className='album-page'>
+            <div className='album-item' style={{ visibility: photosWithPlaceholder[i + 1].id === 'placeholder' ? 'hidden' : 'visible' }}>
+              <div className='img-container'>
+                <img
+                  src={photosWithPlaceholder[i + 1].src}
+                  alt={photosWithPlaceholder[i + 1].caption || ''}
+                  onClick={() => handlePhotoClick(photosWithPlaceholder[i + 1])}
+                />
+              </div>
+              <div className='caption' style={{ visibility: photosWithPlaceholder[i + 1].id === 'placeholder' ? 'hidden' : 'visible' }}>
+                <p>{photosWithPlaceholder[i + 1].caption ? truncateText(photosWithPlaceholder[i + 1].caption, 80) : '-'}</p>
+              </div>
+              <div className='edit-caption-container'>
+                <button onClick={() => handleEditCaption(i + 1)}>Edit</button>
+              </div>
             </div>
           </div>
         </div>
-        <div className='album-page'>
-          <div className='album-item' style={{ visibility: photosWithPlaceholder[i + 1].id === 'placeholder' ? 'hidden' : 'visible' }}>
-            <div className='img-container'>
-              <img
-                src={photosWithPlaceholder[i + 1].src}
-                alt={photosWithPlaceholder[i + 1].caption || ''}
-                onClick={() => handlePhotoClick(photosWithPlaceholder[i + 1])}
-              />
-            </div>
-            <div className='caption'style={{ visibility: photosWithPlaceholder[i + 1].id === 'placeholder' ? 'hidden' : 'visible' }} >
-              <p>{photosWithPlaceholder[i + 1].caption ? truncateText(photosWithPlaceholder[i + 1].caption, 80) : '-'}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-  return pages;
-};
-  
-  
+      );
+    }
+    return pages;
+  };
 
   const albumPages = albumPageCreator(photoAlbum);
 
@@ -115,23 +136,33 @@ const albumPageCreator = (photos) => {
         <div className='photo-upload-modal'>
           <div className='photo-upload-content'>
             <div className='photo-upload-form'>
-              <input type="file" accept="image/*" onChange={handlePhotoChange} ref={fileInputRef} />
-              <textarea
-                placeholder="Enter caption"
-                value={caption}
-                onChange={handleCaptionChange}
-                className="caption-input"
-              />
-              <button onClick={handleAddNewPhoto}>Add Photo</button>
+              {editIndex !== null ? (
+                <>
+                  <textarea
+                    placeholder="Edit caption"
+                    value={caption}
+                    onChange={handleCaptionChange}
+                    className="caption-input"
+                  />
+                  <button onClick={handleSaveCaption}>Save Caption</button>
+                </>
+              ) : (
+                <>
+                  <input type="file" accept="image/*" onChange={handlePhotoChange} ref={fileInputRef} />
+                  <textarea
+                    placeholder="Enter caption"
+                    value={caption}
+                    onChange={handleCaptionChange}
+                    className="caption-input"
+                  />
+                  <button onClick={handleAddNewPhoto}>Add Photo</button>
+                </>
+              )}
             </div>
-            {newPhoto ? (
+            {newPhoto && (
               <div className="thumbnail">
                 <button id="input-clear" onClick={clearPhoto}><BsXLg /></button>
                 <img src={URL.createObjectURL(newPhoto)} alt="Selected Thumbnail" />
-              </div>
-            ) : (
-              <div className="thumbnail">
-                <p>Choose a photo to see a preview</p>
               </div>
             )}
           </div>

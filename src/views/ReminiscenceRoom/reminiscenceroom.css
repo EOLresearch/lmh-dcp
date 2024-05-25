@@ -62,7 +62,6 @@
   align-items: center;
   justify-content: space-around;
   text-align: center;
-  position: relative;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -70,7 +69,34 @@
   width: 85%;
   height: 65%;
 }
+.album-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
+.edit-caption-container {
+  position: absolute;
+  bottom: -50px;
+  right: -10px;
+}
+
+.edit-caption-container button {
+  background-color: rgba(255, 255, 253, 0.3);
+  border: none;
+  color: rgb(126, 126, 126);
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.edit-caption-container button:hover {
+  scale: 1.05;
+  background-color: rgba(255, 255, 253, 0.527);
+
+}
 
 .img-container {
   width: 100%;
