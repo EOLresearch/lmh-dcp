@@ -49,44 +49,57 @@ const MemoryLane = ({ setShowMemoryLane, handlePhotoClick, photoAlbum, handleAdd
       fileInputRef.current.value = '';
     }
   };
+  const truncateText = (text, maxLength) => {
+    if (text.length > maxLength) {
+      return text.substring(0, maxLength) + '...';
+    }
+    return text;
+  };
+const albumPageCreator = (photos) => {
+  const pages = [];
+  const photosWithPlaceholder = photos.length % 2 === 0 ? photos : [...photos, { ...photos[photos.length - 1], id: 'placeholder' }];
 
-  const albumPageCreator = (photos) => {
-    const pages = [];
-    const photosWithPlaceholder = photos.length % 2 === 0 ? photos : [...photos, { ...photos[photos.length - 1], id: 'placeholder' }];
-
-    for (let i = 0; i < photosWithPlaceholder.length; i += 2) {
-      pages.push(
-        <div className="photo-album" key={`page-${i}`}>
-          <div className='album-page'>
-            <div className='photo'>
+  for (let i = 0; i < photosWithPlaceholder.length; i += 2) {
+    pages.push(
+      <div className="photo-album" key={`page-${i}`}>
+        <div className='album-page'>
+          <div className='album-item'>
+            <div className='img-container'>
               <img
                 src={photosWithPlaceholder[i].src}
-                alt={photosWithPlaceholder[i].caption}
+                alt={photosWithPlaceholder[i].caption || ''}
                 onClick={() => handlePhotoClick(photosWithPlaceholder[i])}
               />
-              <div className='caption'>
-                <p>{photosWithPlaceholder[i].caption}</p>
-              </div>
             </div>
-          </div>
-          <div className='album-page'>
-            <div className='photo' style={{ visibility: photosWithPlaceholder[i + 1].id === 'placeholder' ? 'hidden' : 'visible' }}>
-              <img
-                src={photosWithPlaceholder[i + 1].src}
-                alt={photosWithPlaceholder[i + 1].caption}
-                onClick={() => handlePhotoClick(photosWithPlaceholder[i + 1])}
-              />
-              <div className='caption'>
-                <p>{photosWithPlaceholder[i + 1].caption}</p>
-              </div>
+            <div className='caption'>
+              <p style={{ visibility: photosWithPlaceholder[i].caption ? 'visible' : 'hidden' }}>
+                {photosWithPlaceholder[i].caption ? truncateText(photosWithPlaceholder[i].caption, 50) : ''}
+              </p>
             </div>
           </div>
         </div>
-      );
-    }
-    return pages;
-  };
-//  need to handle aspect ratios for the photos and when they differ. 
+        <div className='album-page'>
+          <div className='album-item' style={{ visibility: photosWithPlaceholder[i + 1].id === 'placeholder' ? 'hidden' : 'visible' }}>
+            <div className='img-container'>
+              <img
+                src={photosWithPlaceholder[i + 1].src}
+                alt={photosWithPlaceholder[i + 1].caption || ''}
+                onClick={() => handlePhotoClick(photosWithPlaceholder[i + 1])}
+              />
+            </div>
+            <div className='caption'style={{ visibility: photosWithPlaceholder[i + 1].id === 'placeholder' ? 'hidden' : 'visible' }} >
+              <p>{photosWithPlaceholder[i + 1].caption ? truncateText(photosWithPlaceholder[i + 1].caption, 50) : '-'}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  return pages;
+};
+  
+  
+
   const albumPages = albumPageCreator(photoAlbum);
 
   return (

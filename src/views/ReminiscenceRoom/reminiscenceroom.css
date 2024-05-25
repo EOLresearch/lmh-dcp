@@ -70,30 +70,35 @@
   width: 85%;
 }
 
-.photo img {
-  border: 10px solid #eeefe3;
-  box-shadow: 4px 4px 8px 8px rgba(0, 0, 0, 0.1);
-  background: #eeefe3;
-  width: 70%;
+.album-item{
+  /* outline: red solid 1px; */
+  overflow: hidden;
+}
+
+.img-container {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  aspect-ratio: 1/1; 
+  overflow: hidden;
+  box-shadow: 8px 8px 10px 5px rgba(0, 0, 0, 0.1);
+  border: 10px solid #f4eac1;
+}
+
+.img-container img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   border-radius: 0.3rem;
   cursor: pointer;
 }
 
-.aspect-ratio-container img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  height: 100%;
-  width: auto;
-  transform: translate(-50%, -50%);
-}
+
 
 .photo-upload-modal {
   max-height: 70vh;
   width: 50vw;
   display: flex;
-  flex-direction: column;
   min-height: 50vh;
 }
 
@@ -180,7 +185,7 @@
   background: linear-gradient(145deg, #f0f0f0, #d9d9d9);
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
   resize: none;
-  flex-grow: 1;
+  flex-grow: 2;
 }
 
 .photo-upload-modal .caption-input::placeholder {
