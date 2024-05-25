@@ -68,12 +68,9 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 85%;
+  height: 65%;
 }
 
-.album-item{
-  /* outline: red solid 1px; */
-  overflow: hidden;
-}
 
 .img-container {
   width: 100%;
@@ -210,6 +207,21 @@
 .photo-upload-modal button:hover {
   background-color: #45a049;
   transform: scale(1.05);
+}
+
+.caption{
+  max-width: 350px;
+  text-align: left;
+  color: rgb(67, 67, 67);
+  margin: 0 auto;
+  background-color: hsla(43, 100%, 50%, 0.205);
+  padding:0.2rem 1rem;
+  border-radius: 0.5rem;
+  position: relative;
+  top:1rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
 }
 
 

@@ -73,7 +73,7 @@ const albumPageCreator = (photos) => {
             </div>
             <div className='caption'>
               <p style={{ visibility: photosWithPlaceholder[i].caption ? 'visible' : 'hidden' }}>
-                {photosWithPlaceholder[i].caption ? truncateText(photosWithPlaceholder[i].caption, 50) : ''}
+                {photosWithPlaceholder[i].caption ? truncateText(photosWithPlaceholder[i].caption, 80) : ''}
               </p>
             </div>
           </div>
@@ -88,7 +88,7 @@ const albumPageCreator = (photos) => {
               />
             </div>
             <div className='caption'style={{ visibility: photosWithPlaceholder[i + 1].id === 'placeholder' ? 'hidden' : 'visible' }} >
-              <p>{photosWithPlaceholder[i + 1].caption ? truncateText(photosWithPlaceholder[i + 1].caption, 50) : '-'}</p>
+              <p>{photosWithPlaceholder[i + 1].caption ? truncateText(photosWithPlaceholder[i + 1].caption, 80) : '-'}</p>
             </div>
           </div>
         </div>
