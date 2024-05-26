@@ -1,8 +1,6 @@
+/* Memory Lane Styling */
 .memory-lane {
-  background-size: cover;
-  background-image: url(../../assets/img/memorylane.png);
-  background-position: center;
-  background-repeat: no-repeat;
+  background: url(../../assets/img/memorylane.png) center/cover no-repeat;
   height: 80vh;
   width: 80vw;
   position: relative;
@@ -27,11 +25,9 @@
   background-color: #e0e1d6;
 }
 
+/* Wall of Fame Styling */
 .wall-of-fame {
-  background-size: contain;
-  background-image: url(../../assets/img/hallofFrame.png);
-  background-position: center;
-  background-repeat: no-repeat;
+  background: url(../../assets/img/hallofFrame.png) center/contain no-repeat;
   height: 85vh;
   width: 85vw;
   position: relative;
@@ -57,6 +53,7 @@
   object-fit: cover;
 }
 
+/* Photo Album Styling */
 .photo-album {
   display: flex;
   align-items: center;
@@ -69,6 +66,7 @@
   width: 85%;
   height: 65%;
 }
+
 .album-page {
   position: relative;
   display: flex;
@@ -80,6 +78,8 @@
   position: absolute;
   bottom: -50px;
   right: -10px;
+  display: flex;
+  gap: 10px;
 }
 
 .edit-caption-container button {
@@ -90,12 +90,12 @@
   font-size: 14px;
   cursor: pointer;
   border-radius: 4px;
+  transition: transform 0.3s, background-color 0.3s;
 }
 
 .edit-caption-container button:hover {
-  scale: 1.05;
+  transform: scale(1.05);
   background-color: rgba(255, 255, 253, 0.527);
-
 }
 
 .img-container {
@@ -116,8 +116,22 @@
   cursor: pointer;
 }
 
+.caption {
+  max-width: 350px;
+  text-align: left;
+  color: rgb(67, 67, 67);
+  margin: 0 auto;
+  background-color: hsla(43, 100%, 50%, 0.205);
+  padding: 0.2rem 1rem;
+  border-radius: 0.5rem;
+  position: relative;
+  top: 1rem;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+}
 
-
+/* Modal Styling */
 .photo-upload-modal {
   max-height: 70vh;
   width: 50vw;
@@ -148,6 +162,7 @@
   width: 45%;
   height: 100%;
 }
+
 .photo-upload-modal .thumbnail {
   display: flex;
   flex-direction: column;
@@ -235,22 +250,7 @@
   transform: scale(1.05);
 }
 
-.caption{
-  max-width: 350px;
-  text-align: left;
-  color: rgb(67, 67, 67);
-  margin: 0 auto;
-  background-color: hsla(43, 100%, 50%, 0.205);
-  padding:0.2rem 1rem;
-  border-radius: 0.5rem;
-  position: relative;
-  top:1rem;
-  height: 5rem;
-  display: flex;
-  align-items: center;
-}
-
-
+/* Input Clear Button */
 #input-clear {
   width: fit-content;
   background-color: rgba(255, 255, 255, 0.365);
@@ -270,6 +270,7 @@
   background-color: rgb(236, 236, 236);
 }
 
+/* Responsive Adjustments */
 @media (max-width: 1200px) {
   .lifebook {
     background-size: contain;

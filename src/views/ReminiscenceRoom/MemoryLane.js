@@ -54,6 +54,7 @@ const MemoryLane = ({ setShowMemoryLane, handlePhotoClick, photoAlbum, handleAdd
     setEditIndex(index);
     setCaption(photoAlbum[index].caption);
     setShowModal(true);
+    setNewPhoto(null);
   };
 
   const handleSaveCaption = () => {
@@ -128,7 +129,7 @@ const MemoryLane = ({ setShowMemoryLane, handlePhotoClick, photoAlbum, handleAdd
       <button className="close-btn" onClick={() => setShowMemoryLane(false)}><BsXLg /></button>
       <button onClick={prevPage}><FaLongArrowAltLeft color={"gold"} size={100} /> <span>Back</span></button>
       <div className="memory-lane">
-        <button className="add-photo-btn" onClick={() => setShowModal(true)}>+ Add a Photo</button>
+        <button className="add-photo-btn" onClick={() => {setEditIndex(null); setCaption(''); setShowModal(true)}}>+ Add a Photo</button>
         {albumPages[currentPageIndex]}
       </div>
       <button onClick={nextPage}><FaLongArrowAltRight color={"gold"} size={100} /> <span>Next</span></button>
