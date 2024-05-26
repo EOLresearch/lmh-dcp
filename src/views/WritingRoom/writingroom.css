@@ -1,4 +1,4 @@
-.your-life {
+.book-cover {
   background-size: contain;
   background-image: url(../../assets/img/lifebook.png);
   background-position: center;
@@ -24,7 +24,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border: red 1px solid; */
+  outline: 2px solid red;
 }
 
 #book-close-button {
@@ -43,10 +43,11 @@
 
 }
 
-.life-book-copy-container .life-book-left-side, .life-book-right-side{
+.life-book-copy-container .life-book-left-side,
+.life-book-right-side {
   width: 50%;
   height: 90%;
-  border: 2px blue solid;
+  outline: 2px blue solid;
   margin: 1rem;
 }
 
@@ -66,6 +67,7 @@
   position: relative;
   z-index: 2;
 }
+
 .journal-content {
   background-size: auto;
   background-image: url(../../assets/img/journal-rough.png);
@@ -82,7 +84,7 @@
 }
 
 .journal-inner-container {
-  border: 2px red solid;
+  outline: 2px red solid;
   width: 60%;
   height: 70%;
   position: relative;
@@ -92,7 +94,8 @@
 
 }
 
-.journal-inner-container .journal-left-side, .journal-right-side{
+.journal-inner-container .journal-left-side,
+.journal-right-side {
   width: 45%;
   border: 2px blue solid;
   margin: 1.5rem;
