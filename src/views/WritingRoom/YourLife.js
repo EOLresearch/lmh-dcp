@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { FaLongArrowAltRight, FaLongArrowAltLeft } from "react-icons/fa";
 import { BsXLg } from "react-icons/bs";
 import ReactQuill from 'react-quill';
@@ -15,23 +15,26 @@ const YourLife = ({ setShowYourLife }) => {
   const [openLifeBook, setOpenLifeBook] = useState(false);
   const [selectedPrompt, setSelectedPrompt] = useState(null);
   const [editorContent, setEditorContent] = useState("");
-  const [coverPhoto, setCoverPhoto] = useState(null); // State for cover photo
+  const [coverPhoto, setCoverPhoto] = useState(null);
+  const coverPhotoInputRef = useRef(null);
 
   const handleEditorChange = (content) => {
     setEditorContent(content);
   };
 
   const handleSave = () => {
+    // Save editor content as HTML or JSX
     console.log("Saving content: ", editorContent);
+    // You can replace this console.log with actual save logic, e.g., an API call
   };
 
-  const handlePhotoUpload = (event) => {
+  const handleCoverPhotoChange = (event) => {
     const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setCoverPhoto(reader.result);
+    };
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setCoverPhoto(reader.result);
-      };
       reader.readAsDataURL(file);
     }
   };
@@ -42,9 +45,9 @@ const YourLife = ({ setShowYourLife }) => {
       {openLifeBook ? (
         <div className="open-life-book-content">
           {selectedPrompt === null ? (
-            <button onClick={() => setOpenLifeBook(false)} id="book-close-button"><FaLongArrowAltLeft color={"gold"} size={100} /> <span>Close</span></button>
+            <button onClick={() => setOpenLifeBook(false)} id="book-close-button"><FaLongArrowAltLeft color={"gold"} size={100}/> <span>Close</span></button>
           ) : (
-            <button onClick={() => setSelectedPrompt(null)} id="book-close-button"><FaLongArrowAltLeft color={"gold"} size={100} /> <span>Back</span></button>
+            <button onClick={() => setSelectedPrompt(null)} id="book-close-button"><FaLongArrowAltLeft color={"gold"} size={100}/> <span>Back</span></button>
           )}
           <div className='life-book-copy-container'>
             <div className='life-book-left-side'>
@@ -84,25 +87,25 @@ const YourLife = ({ setShowYourLife }) => {
       ) : (
         <>
           <button style={{ visibility: 'hidden' }} ><FaLongArrowAltLeft color={"gold"} size={100} /> <span>Close</span></button>
-          <div className="book-cover">
             {coverPhoto ? (
-              <div className="cover-photo-container">
-                <img src={coverPhoto} alt="Cover" className="cover-photo" />
-                <button className="edit-button" onClick={() => document.getElementById('cover-photo-input').click()}>Edit Cover Photo</button>
-              </div>
+              <>
+                <img src={coverPhoto} alt="Cover" className="cover-photo"/>
+                <button onClick={() => coverPhotoInputRef.current.click()} className="edit-cover-button">Edit Cover Photo</button>
+              </>
             ) : (
-              <button className="upload-button" onClick={() => document.getElementById('cover-photo-input').click()}>Upload Cover Photo</button>
+              <button onClick={() => coverPhotoInputRef.current.click()} className="add-cover-button">Add Cover Photo</button>
             )}
             <input
               type="file"
-              id="cover-photo-input"
+              ref={coverPhotoInputRef}
               style={{ display: 'none' }}
-              onChange={handlePhotoUpload}
+              accept="image/*"
+              onChange={handleCoverPhotoChange}
             />
+          <div className="book-cover">
           </div>
           <button onClick={() => setOpenLifeBook(true)}><FaLongArrowAltRight color={"gold"} size={100} /> <span>Open</span></button>
         </>
-
       )}
     </div>
   );
