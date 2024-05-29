@@ -1,20 +1,20 @@
 .book-cover {
   background-size: contain;
-  background-image: url(../../assets/img/lifebook2.png);
   background-position: center;
   background-repeat: no-repeat;
   height: 85vh;
   width: 85vw;
   position: relative;
+  right:1.5rem;
   z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
-  outline: red solid 3px;
+  /* outline: red solid 3px; */
 }
 
  img.cover-photo {
-  width: 20vw;
+  width: 21vw;
   height: 50vh;
   object-fit: cover;
   position: absolute;
