@@ -1,11 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const Prompt = ({ title, prompts, onSelectPrompt }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  const handleToggle = () => {
-    setIsExpanded(!isExpanded);
-  };
+const Prompt = ({ section, isExpanded, onSelectPrompt, toggleExpand }) => {
+  const { title, prompts } = section;
 
   const handlePromptClick = (prompt) => {
     onSelectPrompt(prompt);
@@ -13,7 +9,7 @@ const Prompt = ({ title, prompts, onSelectPrompt }) => {
 
   return (
     <div className="prompt-section">
-      <h3 onClick={handleToggle} className="prompt-title">
+      <h3 onClick={toggleExpand} className="prompt-title">
         {title}
       </h3>
       {isExpanded && (
