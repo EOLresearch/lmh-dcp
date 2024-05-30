@@ -138,7 +138,7 @@ const YourLife = ({ setShowYourLife }) => {
             <div className='life-book-left-side'>
               {selectedPrompt === null ? (
                 <div>
-                  <h2>Welcome to your Life Book</h2>
+                  <h3>Welcome to your Life Book</h3>
                   <p>Here is a collection of prompts to help you reflect on different stages of your life.</p>
                   <p>We have defined 5 general life-stages to the right where we have organized the prompts to help get you started.</p>
                   <p>When you are complete, you will be able to download a PDF copy of your Life Book.</p>

@@ -52,12 +52,11 @@ button.edit-cover-button, button.add-cover-button{
 }
 
 .life-book-copy-container {
-  border: 2px red solid;
-  width: 50%;
-  height: 60%;
+  /* outline: 2px red solid; */
+  width: 45%;
+  height: 55%;
   position: relative;
-  right: 0.5rem;
-  bottom: 0.5rem;
+  right: 1rem;
   display: flex;
 }
 
@@ -65,13 +64,17 @@ button.edit-cover-button, button.add-cover-button{
 .life-book-right-side {
   width: 50%;
   height: 90%;
-  outline: 2px blue solid;
-  margin: 1rem;
+  /* outline: 2px blue solid; */
+  /* margin: 1rem; */
+}
+.life-book-copy-container .life-book-left-side{
+  margin-right:2rem;
 }
 
-.prompt-index {
-  display: flex;
-  flex-direction: column;
+
+.life-book-copy-container .life-book-right-side{
+  margin-left:5rem;
+
 }
 
 .prompt-item {
@@ -111,27 +114,27 @@ button.edit-cover-button, button.add-cover-button{
   object-fit: cover;
 }
 
-/* .book-cover .upload-button, .edit-button {
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.7);
+.life-stage-prompts {
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  flex-direction: column;
+  margin-top:1rem;
+
+}
+
+.prompt-section h3:hover{
+  background-color: #9a64004e;
   color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
+}
+
+.prompt-section h3{
+  padding: 0.5rem 2rem;
+  margin: 0.5rem;
+  width: max-content;
+  border-radius: 0.3rem;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s, transform 0.3s;
-  z-index: 3;
 }
-
-.upload-button:hover, .edit-button:hover {
-  background-color: rgba(0, 0, 0, 0.9);
-  transform: scale(1.05);
-}
-
-#cover-photo-input {
-  display: none;
-} */
 
 .journal {
   display: flex;
