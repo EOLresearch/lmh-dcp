@@ -18,10 +18,10 @@ const YourLife = ({ setShowYourLife }) => {
   const [editorContent, setEditorContent] = useState(userData.prompts?.[currentPromptIndex]?.content || "");
   const [uploadedImage, setUploadedImage] = useState(userData.prompts?.[currentPromptIndex]?.image || null);
 
-  useEffect(() => {
-    setEditorContent(userData.prompts?.[currentPromptIndex]?.content || "");
-    setUploadedImage(userData.prompts?.[currentPromptIndex]?.image || null);
-  }, [currentPromptIndex, userData.prompts]);
+  // useEffect(() => {
+  //   setEditorContent(userData.prompts?.[currentPromptIndex]?.content || "");
+  //   setUploadedImage(userData.prompts?.[currentPromptIndex]?.image || null);
+  // }, [currentPromptIndex, userData.prompts]);
 
   const handleNextPrompt = () => {
     if (showWelcome) {
@@ -56,7 +56,9 @@ const YourLife = ({ setShowYourLife }) => {
           currentPromptIndex={currentPromptIndex}
           setCurrentPromptIndex={setCurrentPromptIndex}
           setEditorContent={setEditorContent}
+          editorContent={editorContent}
           setUploadedImage={setUploadedImage}
+          uploadedImage={uploadedImage}
           showWelcome={showWelcome}
           handleNextPrompt={handleNextPrompt}
           handlePreviousPrompt={handlePreviousPrompt}
