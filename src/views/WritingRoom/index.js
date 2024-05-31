@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import './writingroom.css'; // Assuming this is the CSS file for WritingRoom
+import './writingroom.css'; 
 import { useAuth } from "../../auth/AuthContext";
 import { BsXLg } from "react-icons/bs";
-import YourLife from './YourLife'; // Assuming you have a YourLife component
-import Journal from './Journal'; // Assuming you have a Journal component
+import YourLife from './YourLife'; 
+import Journal from './Journal'; 
 
 import life from '../../assets/img/life.png';
 import journal from '../../assets/img/journal.png';
