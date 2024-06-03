@@ -62,7 +62,7 @@ const LifeBookContent = ({
   
       // Mocking the API call
       setTimeout(() => {
-        // Simulate a response
+
         const mockResponse = {
           data: {
             imageUrl: URL.createObjectURL(file), // Using a blob URL for the uploaded image
@@ -73,24 +73,6 @@ const LifeBookContent = ({
     }
   };
   
-  // const handleImageChange = async (event) => {
-  //   const file = event.target.files[0];
-  //   if (file) {
-  //     const formData = new FormData();
-  //     formData.append('file', file);
-      
-  //     try {
-  //       const response = await axios.post('http://localhost:3001/api/uploadImage', formData, {
-  //         headers: {
-  //           'Content-Type': 'multipart/form-data'
-  //         }
-  //       });
-  //       setUploadedImage(response.data.imageUrl);
-  //     } catch (error) {
-  //       console.error('Error uploading image:', error);
-  //     }
-  //   }
-  // };
 
   return (
     <div className="open-life-book-content">

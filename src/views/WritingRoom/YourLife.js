@@ -14,9 +14,9 @@ const YourLife = ({ setShowYourLife }) => {
   const [viewingIndex, setViewingIndex] = useState(false);
   const [showWelcome, setShowWelcome] = useState(true);
   const [coverPhoto, setCoverPhoto] = useState(null);
+  const [editorContent, setEditorContent] = useState("");
+  const [uploadedImage, setUploadedImage] = useState(null);
   const allPrompts = getAllPrompts();
-  const [editorContent, setEditorContent] = useState(userData.prompts?.[currentPromptIndex]?.content || "");
-  const [uploadedImage, setUploadedImage] = useState(userData.prompts?.[currentPromptIndex]?.image || null);
 
   // useEffect(() => {
   //   setEditorContent(userData.prompts?.[currentPromptIndex]?.content || "");
