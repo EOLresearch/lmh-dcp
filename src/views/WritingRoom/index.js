@@ -41,8 +41,8 @@ function WritingRoom() {
         </button>
       </div>
       {(showYourLife || showJournal) && <div className="overlay" />}
-      {showYourLife && <YourLife setShowYourLife={setShowYourLife} handlePhotoClick={handlePhotoClick} photoAlbum='' />}
-      {showJournal && <Journal setShowJournal={setShowJournal} handlePhotoClick={handlePhotoClick} photoAlbum='' />}
+      {showYourLife && <YourLife setShowYourLife={setShowYourLife} handlePhotoClick={handlePhotoClick} />}
+      {showJournal && <Journal setShowJournal={setShowJournal} handlePhotoClick={handlePhotoClick} />}
       {selectedPhoto && (
         <div className="maximized-photo-overlay" onClick={handleClosePhoto}>
           <img src={selectedPhoto.src} alt={selectedPhoto.caption} className="maximized-photo" />
