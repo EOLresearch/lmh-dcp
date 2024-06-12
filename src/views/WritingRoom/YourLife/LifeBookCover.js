@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { FaLongArrowAltRight } from "react-icons/fa";
-import lifebook from '../../assets/img/lifebook.png';
-import lifebook2 from '../../assets/img/lifebook2.png';
+import lifebook from '../../../assets/img/lifebook.png';
+import lifebooktrans from '../../../assets/img/lifebook2.png';
 
 const LifeBookCover = ({ coverPhoto, setCoverPhoto, setOpenLifeBook }) => {
   const coverPhotoInputRef = useRef(null);
@@ -37,10 +37,12 @@ const LifeBookCover = ({ coverPhoto, setCoverPhoto, setOpenLifeBook }) => {
       <div
         className="book-cover"
         style={{
-          backgroundImage: `url(${coverPhoto ? lifebook2 : lifebook})`
+          backgroundImage: `url(${coverPhoto ? lifebooktrans : lifebook})`
         }}
-      ></div>
+      >
+
       <button onClick={() => setOpenLifeBook(true)}><FaLongArrowAltRight color={"gold"} size={100} /> <span>Open</span></button>
+      </div>
     </>
   );
 };

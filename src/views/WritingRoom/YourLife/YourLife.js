@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import './yourlife.css';
 import { FaLongArrowAltRight, FaLongArrowAltLeft } from "react-icons/fa";
 import { BsXLg } from "react-icons/bs";
-import { useAuth } from '../../auth/AuthContext';
+import { useAuth } from '../../../auth/AuthContext';
 import axios from 'axios';
 import LifeBookCover from './LifeBookCover';
 import LifeBookContent from './LifeBookContent';
-import { getAllPrompts } from './yourlifeprompts';
+import { getAllPrompts } from '../yourlifeprompts';
 
 const YourLife = ({ setShowYourLife }) => {
   const { userData, setUserData } = useAuth();

@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
 import { FaLongArrowAltLeft } from "react-icons/fa";
-import PromptIndex from './PromptIndex';
-import PromptView from './PromptView';
+import PromptIndex from '../PromptIndex';
+import PromptView from '../PromptView';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { useAuth } from '../../auth/AuthContext';
+import { useAuth } from '../../../auth/AuthContext';
 import axios from 'axios';
 
 const LifeBookContent = ({
@@ -33,25 +33,7 @@ const LifeBookContent = ({
   };
 
   const handleSave = async () => {
-    const updatedUserData = {
-      ...userData,
-      prompts: {
-        ...userData.prompts,
-        [currentPromptIndex]: {
-          content: editorContent,
-          image: uploadedImage,
-        }
-      },
-      currentPromptIndex
-    };
-    setUserData(updatedUserData);
-
-    try {
-      await axios.post('http://localhost:3001/api/saveProgress', updatedUserData);
-      console.log("Content saved");
-    } catch (error) {
-      console.error('Error saving content:', error);
-    }
+    console.log('Saving prompt content...');
   };
 
   const handleImageChange = async (event) => {

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './writingroom.css'; 
 import { useAuth } from "../../auth/AuthContext";
 import { BsXLg } from "react-icons/bs";
-import YourLife from './YourLife'; 
+import YourLife from './YourLife/YourLife.js'; 
 import Journal from './Journal'; 
 
 import life from '../../assets/img/life.png';
