@@ -78,9 +78,19 @@ button.edit-cover-button, button.add-cover-button{
 .life-book-copy-container .life-book-left-side{
   margin-right:2rem;
 }
-
 .life-book-copy-container .life-book-right-side{
   margin-left:5rem;
+}
+
+.life-book-copy-container .life-book-right-side .quill-container{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.quill-container .prompts-toolbar{
+  display: flex;
+  justify-content: space-between;
 }
 
 .life-book-left-side img{
