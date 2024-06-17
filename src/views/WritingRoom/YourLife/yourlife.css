@@ -100,7 +100,7 @@ button.edit-cover-button, button.add-cover-button{
   background-color: rgba(255, 255, 255, 0.511);
 }
 .custom-quill-editor .ql-editor{
-  font-size: 1.3rem;
+  /* font-size: 1.3rem; */
   border: none;
 }
 .life-book-left-side img{

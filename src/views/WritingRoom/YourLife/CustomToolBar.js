@@ -14,10 +14,10 @@ const CustomToolbar = () => (
       <button className="ql-list" value="ordered"></button>
       <button className="ql-list" value="bullet"></button>
     </span>
-    <span className="ql-formats">
+    {/* <span className="ql-formats">
       <button className="ql-script" value="sub"></button>
       <button className="ql-script" value="super"></button>
-    </span>
+    </span> */}
     <span className="ql-formats">
       <button className="ql-indent" value="-1"></button>
       <button className="ql-indent" value="+1"></button>
