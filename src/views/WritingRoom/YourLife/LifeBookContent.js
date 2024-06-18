@@ -3,7 +3,7 @@ import { FaLongArrowAltLeft } from "react-icons/fa";
 import PromptIndex from '../PromptIndex';
 import PromptView from '../PromptView';
 import ReactQuill from 'react-quill';
-import CustomToolbar from './CustomToolBar';
+import QuillToolBar from './QuillToolBar';
 import { useAuth } from '../../../auth/AuthContext';
 import axios from 'axios';
 
@@ -102,20 +102,24 @@ const LifeBookContent = ({
             </div>
           ) : (
             <div className='quill-container'>
-              <CustomToolbar />
-              <ReactQuill
-                value={editorContent}
-                onChange={handleEditorChange}
-                modules={{ toolbar: { container: "#toolbar" } }}
-                formats={formats}
-                className='custom-quill-editor'
-              />
+              <QuillToolBar />
+              <div className='quill-input-wrapper'>
+                <ReactQuill
+                  theme='snow'
+                  value={editorContent}
+                  onChange={handleEditorChange}
+                  modules={{ toolbar: { container: "#toolbar" } }}
+                  formats={formats}
+                  className='custom-quill-editor'
+                  placeholder='Click here to start writing...'
+                />
+              </div>
 
               <div className="prompts-btn-menu">
                 <button onClick={handleSave} className="save-button">Save</button>
                 {currentPromptIndex > 0 && <button onClick={handlePreviousPrompt} className="back-button">Previous</button>}
                 {currentPromptIndex < allPrompts.length - 1 && <button onClick={handleNextPrompt} className="next-button">Next</button>}
-                <button onClick={handleViewIndex} className="view-index-button">View Index</button>
+                <button onClick={handleViewIndex} className="view-index-button">View All Prompts</button>
               </div>
             </div>
           )}

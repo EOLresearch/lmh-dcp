@@ -84,25 +84,41 @@ button.edit-cover-button, button.add-cover-button{
 
 .life-book-copy-container .life-book-right-side .quill-container{
   height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-}
-.quill-container .prompts-btn-menu{
-  display: flex;
-  justify-content: space-between;
+  justify-content: space-between; 
+  /* outline: 2px red solid; */
+  align-content: center;
 }
 .quill-container .custom-quill-editor{
   height: 100%;
-  overflow: auto;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  background-color: rgba(255, 255, 255, 0.511);
+}
+.quill-input-wrapper{
+  height: 100%;
+}
+#toolbar{
+  /* outline: red 2px solid; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  border-bottom: 1px solid #00000042;
 }
 .custom-quill-editor .ql-editor{
-  /* font-size: 1.3rem; */
-  border: none;
+  font-size: 1.3rem;
 }
+.quill-container .ql-container.ql-snow{
+  border: none;
+  padding: 0;
+}
+.quill-container .ql-toolbar.ql-snow {
+  border: none; 
+  position: relative;
+  bottom: 0.5rem;
+  padding: 0;
+}
+
 .life-book-left-side img{
   width: 90%;
   height: 100%;
@@ -113,22 +129,6 @@ button.edit-cover-button, button.add-cover-button{
   margin: 0.5rem 0;
 }
 
-.save-button {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-.save-button:hover {
-  background-color: #45a049;
-  transform: scale(1.05);
-}
 
 .cover-photo-container {
   position: relative;
@@ -186,6 +186,30 @@ button.edit-cover-button, button.add-cover-button{
   width: max-content;
 }
 .welcome-container button:hover{
+  background-color: #dbb34d;
+  transform: scale(1.05);
+}
+
+.prompts-btn-menu{
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+}
+
+.prompts-btn-menu button{
+  padding: 0.5rem 1rem;
+  background-color: #dbb34d6e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.3s;
+  color: rgba(0, 0, 0, 0.534);
+  width: max-content;
+  /* position: absolute; */
+}
+.prompts-btn-menu button:hover{
   background-color: #dbb34d;
   transform: scale(1.05);
 }
