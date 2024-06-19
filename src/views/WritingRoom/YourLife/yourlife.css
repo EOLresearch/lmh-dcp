@@ -73,7 +73,8 @@ button.edit-cover-button, button.add-cover-button{
   width: 50%;
   /* outline: 2px blue solid; */
   padding: 0.5rem;
-  overflow: hidden;
+  overflow: auto;
+  position: relative;
 }
 .life-book-copy-container .life-book-left-side{
   margin-right:2rem;
@@ -194,11 +195,14 @@ button.edit-cover-button, button.add-cover-button{
   display: flex;
   justify-content: space-between;
   margin: 1rem 0;
+  position: absolute;
+  bottom: 0;
 }
 
 .prompts-btn-menu button{
   padding: 0.5rem 1rem;
   background-color: #dbb34d6e;
+  margin: 2px;
   color: white;
   border: none;
   border-radius: 5px;
@@ -210,6 +214,42 @@ button.edit-cover-button, button.add-cover-button{
   /* position: absolute; */
 }
 .prompts-btn-menu button:hover{
+  background-color: #dbb34d;
+  transform: scale(1.05);
+}
+
+.life-book-left-side .upload-button{
+  background-color: #dbb34d6e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.3s;
+  color: rgba(0, 0, 0, 0.534);
+  width: max-content;
+  padding: 0.5rem 1rem;
+}
+
+.life-book-left-side .upload-button:hover{
+  background-color: #dbb34d;
+  transform: scale(1.05);
+}
+
+.quill-container .lifebook-button{
+  background-color: #dbb34d6e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.3s;
+  color: rgba(0, 0, 0, 0.534);
+  width: max-content;
+  padding: 0.5rem 1rem;
+}
+
+.quill-container .lifebook-button:hover{
   background-color: #dbb34d;
   transform: scale(1.05);
 }

@@ -60,6 +60,10 @@ const LifeBookContent = ({
     'list', 'bullet', 'indent', 'link', 'image', 'color', 'background', 'align'
   ];
 
+  const stripNumbers = (prompt) => {
+    return prompt.replace(/^\d+\.\s*/, '');
+  };
+
   return (
     <div className="open-life-book-content">
       <button onClick={() => setOpenLifeBook(false)} id="book-close-button"><FaLongArrowAltLeft color={"gold"} size={100} /><span>Close</span></button>
@@ -79,7 +83,7 @@ const LifeBookContent = ({
               </div>
             ) : (
               <>
-                <h2>{allPrompts[currentPromptIndex]}</h2>
+                <h2>{stripNumbers(allPrompts[currentPromptIndex])}</h2>
                 <button onClick={() => imageInputRef.current.click()} className="upload-button">Upload Image</button>
                 <input
                   type="file"
@@ -89,6 +93,11 @@ const LifeBookContent = ({
                   onChange={handleImageChange}
                 />
                 {uploadedImage && <img src={uploadedImage} alt="Uploaded" className="uploaded-thumbnail" />}
+                <div className="prompts-btn-menu">
+                  {currentPromptIndex > 0 && <button onClick={handlePreviousPrompt} className="back-button">Previous</button>}
+                  {currentPromptIndex < allPrompts.length - 1 && <button onClick={handleNextPrompt} className="next-button">Next</button>}
+                  <button onClick={handleViewIndex} className="view-index-button">View All Prompts</button>
+                </div>
               </>
             )
           )}
@@ -114,13 +123,7 @@ const LifeBookContent = ({
                   placeholder='Click here to start writing...'
                 />
               </div>
-
-              <div className="prompts-btn-menu">
-                <button onClick={handleSave} className="save-button">Save</button>
-                {currentPromptIndex > 0 && <button onClick={handlePreviousPrompt} className="back-button">Previous</button>}
-                {currentPromptIndex < allPrompts.length - 1 && <button onClick={handleNextPrompt} className="next-button">Next</button>}
-                <button onClick={handleViewIndex} className="view-index-button">View All Prompts</button>
-              </div>
+              <button onClick={handleSave} className="lifebook-button">Save</button>
             </div>
           )}
         </div>
