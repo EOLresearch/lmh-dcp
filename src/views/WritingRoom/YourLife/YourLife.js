@@ -6,7 +6,7 @@ import { useAuth } from '../../../auth/AuthContext';
 import axios from 'axios';
 import LifeBookCover from './LifeBookCover';
 import LifeBookContent from './LifeBookContent';
-import { getAllPrompts } from '../yourlifeprompts';
+import { getAllPrompts, getSectionPrompts } from '../yourlifeprompts';
 
 const YourLife = ({ setShowYourLife }) => {
   const { userData, setUserData } = useAuth();
@@ -18,6 +18,9 @@ const YourLife = ({ setShowYourLife }) => {
   const [editorContent, setEditorContent] = useState("");
   const [uploadedImage, setUploadedImage] = useState(null);
   const allPrompts = getAllPrompts();
+  const sectionPrompts = getSectionPrompts();
+
+  console.log(sectionPrompts);
 
   // useEffect(() => {
   //   setEditorContent(userData.prompts?.[currentPromptIndex]?.content || "");

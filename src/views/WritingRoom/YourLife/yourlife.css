@@ -73,7 +73,7 @@ button.edit-cover-button, button.add-cover-button{
   width: 50%;
   /* outline: 2px blue solid; */
   padding: 0.5rem;
-  overflow: auto;
+  /* overflow: auto; */
   position: relative;
 }
 .life-book-copy-container .life-book-left-side{

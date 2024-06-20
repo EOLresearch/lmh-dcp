@@ -84,3 +84,9 @@ const prompts = {
 export const getAllPrompts = () => {
   return Object.values(prompts).reduce((all, section) => [...all, ...section.prompts], []);
 };
+export const getSectionPrompts = () => {
+  return Object.values(prompts).map(section => ({
+    title: section.title,
+    prompts: section.prompts
+  }));
+};
