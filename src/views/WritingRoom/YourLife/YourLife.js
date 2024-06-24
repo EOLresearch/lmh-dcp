@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './yourlife.css';
+import 'react-quill/dist/quill.snow.css';
 import { FaLongArrowAltRight, FaLongArrowAltLeft } from "react-icons/fa";
 import { BsXLg } from "react-icons/bs";
 import { useAuth } from '../../../auth/AuthContext';

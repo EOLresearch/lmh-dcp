@@ -1,7 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import PromptIndex from '../PromptIndex';
-import PromptView from '../PromptView';
 import ReactQuill from 'react-quill';
 import QuillToolBar from './QuillToolBar';
 import { useAuth } from '../../../auth/AuthContext';
@@ -75,9 +74,6 @@ const LifeBookContent = ({
     'list', 'bullet', 'indent', 'link', 'image', 'color', 'background', 'align'
   ];
 
-  const stripNumbers = (prompt) => {
-    return prompt.replace(/^\d+\.\s*/, '');
-  };
 
   return (
     <div className="open-life-book-content">
