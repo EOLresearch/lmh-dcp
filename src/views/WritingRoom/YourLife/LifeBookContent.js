@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { FaLongArrowAltLeft } from "react-icons/fa";
 import PromptIndex from '../PromptIndex';
 import PromptView from '../PromptView';
@@ -8,17 +8,12 @@ import { useAuth } from '../../../auth/AuthContext';
 import axios from 'axios';
 
 const LifeBookContent = ({
-  currentPromptIndex,
-  setCurrentPromptIndex,
   showWelcome,
-  handleNextPrompt,
-  handlePreviousPrompt,
   handleViewIndex,
-  handleSelectPromptFromIndex,
   handleBackToIndex,
   setShowWelcome,
   setOpenLifeBook,
-  allPrompts,
+  prompts,
   viewingIndex,
   editorContent,
   setEditorContent,
@@ -27,6 +22,26 @@ const LifeBookContent = ({
 }) => {
   const { userData, setUserData } = useAuth();
   const imageInputRef = useRef(null);
+  const [currentPromptText, setCurrentPromptText] = useState('');
+  console.log(userData)
+
+  useEffect(() => {
+    if (userData && userData.promptInProgress) {
+      const promptText = findPromptTextById(userData.promptInProgress);
+      setCurrentPromptText(promptText);
+    }
+  }, [userData]);
+
+  const findPromptTextById = (promptId) => {
+    for (let section in prompts) {
+      for (let prompt of prompts[section].prompts) {
+        if (prompt.id === promptId) {
+          return prompt.question;
+        }
+      }
+    }
+    return '';
+  };
 
   const handleEditorChange = (content) => {
     setEditorContent(content);
@@ -71,8 +86,7 @@ const LifeBookContent = ({
         <div className='life-book-left-side'>
           {viewingIndex ? (
             <PromptIndex
-              allPrompts={allPrompts}
-              handleSelectPromptFromIndex={handleSelectPromptFromIndex}
+              prompts={prompts}
               handleBackToIndex={handleBackToIndex}
             />
           ) : (
@@ -83,7 +97,7 @@ const LifeBookContent = ({
               </div>
             ) : (
               <>
-                <h2>{stripNumbers(allPrompts[currentPromptIndex])}</h2>
+                <h2>{currentPromptText}</h2>
                 <button onClick={() => imageInputRef.current.click()} className="upload-button">Upload Image</button>
                 <input
                   type="file"
@@ -94,9 +108,7 @@ const LifeBookContent = ({
                 />
                 {uploadedImage && <img src={uploadedImage} alt="Uploaded" className="uploaded-thumbnail" />}
                 <div className="prompts-btn-menu">
-                  {currentPromptIndex > 0 && <button onClick={handlePreviousPrompt} className="back-button">Previous</button>}
-                  {currentPromptIndex < allPrompts.length - 1 && <button onClick={handleNextPrompt} className="next-button">Next</button>}
-                  <button onClick={handleViewIndex} className="view-index-button">View All Prompts</button>
+                  <button onClick={handleViewIndex} className="view-index-button">View Prompts List</button>
                 </div>
               </>
             )
@@ -107,7 +119,7 @@ const LifeBookContent = ({
             <div className='welcome-container'>
               <p>Click the next button below to get started</p>
               {/* <p>We encourage you to upload photos where suitable to help illustrate your story.</p> */}
-              <button onClick={handleNextPrompt} className="next-button">Next</button>
+              <button onClick={()=>setShowWelcome(false)} className="next-button">Next</button>
             </div>
           ) : (
             <div className='quill-container'>

@@ -9,44 +9,20 @@ import LifeBookContent from './LifeBookContent';
 import { getAllPrompts, getSectionPrompts } from '../yourlifeprompts';
 
 const YourLife = ({ setShowYourLife }) => {
-  const { userData, setUserData } = useAuth();
   const [openLifeBook, setOpenLifeBook] = useState(false);
-  const [currentPromptIndex, setCurrentPromptIndex] = useState(userData.currentPromptIndex || 0);
   const [viewingIndex, setViewingIndex] = useState(false);
   const [showWelcome, setShowWelcome] = useState(true);
   const [coverPhoto, setCoverPhoto] = useState(null);
   const [editorContent, setEditorContent] = useState("");
   const [uploadedImage, setUploadedImage] = useState(null);
-  const allPrompts = getAllPrompts();
-  const sectionPrompts = getSectionPrompts();
+  const prompts = getSectionPrompts();
 
-  console.log(sectionPrompts);
-
-  // useEffect(() => {
-  //   setEditorContent(userData.prompts?.[currentPromptIndex]?.content || "");
-  //   setUploadedImage(userData.prompts?.[currentPromptIndex]?.image || null);
-  // }, [currentPromptIndex, userData.prompts]);
-
-  const handleNextPrompt = () => {
-    if (showWelcome) {
-      setShowWelcome(false);
-    } else {
-      setCurrentPromptIndex((prevIndex) => Math.min(prevIndex + 1, allPrompts.length - 1));
-    }
-  };
-
-  const handlePreviousPrompt = () => {
-    setCurrentPromptIndex((prevIndex) => Math.max(prevIndex - 1, 0));
-  };
+  console.log(prompts);
 
   const handleViewIndex = () => {
     setViewingIndex(true);
   };
 
-  const handleSelectPromptFromIndex = (index) => {
-    setCurrentPromptIndex(index);
-    setViewingIndex(false);
-  };
 
   const handleBackToIndex = () => {
     setViewingIndex(false);
@@ -57,21 +33,16 @@ const YourLife = ({ setShowYourLife }) => {
       <button className="close-btn" onClick={() => setShowYourLife(false)}><BsXLg /></button>
       {openLifeBook ? (
         <LifeBookContent
-          currentPromptIndex={currentPromptIndex}
-          setCurrentPromptIndex={setCurrentPromptIndex}
           setEditorContent={setEditorContent}
           editorContent={editorContent}
           setUploadedImage={setUploadedImage}
           uploadedImage={uploadedImage}
           showWelcome={showWelcome}
-          handleNextPrompt={handleNextPrompt}
-          handlePreviousPrompt={handlePreviousPrompt}
           handleViewIndex={handleViewIndex}
-          handleSelectPromptFromIndex={handleSelectPromptFromIndex}
           handleBackToIndex={handleBackToIndex}
           setShowWelcome={setShowWelcome}
           setOpenLifeBook={setOpenLifeBook}
-          allPrompts={allPrompts}
+          prompts={prompts}
           viewingIndex={viewingIndex}
         />
       ) : (
