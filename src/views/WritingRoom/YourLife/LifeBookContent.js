@@ -5,6 +5,47 @@ import ReactQuill from 'react-quill';
 import QuillToolBar from './QuillToolBar';
 import { useAuth } from '../../../auth/AuthContext';
 import axios from 'axios';
+// Helper functions defined outside the component
+const findPromptTextById = (id, prompts) => {
+  for (let item of prompts) {
+    for (let prompt of item.prompts) {
+      if (prompt.id === id) {
+        return prompt.question;
+      }
+    }
+  }
+  return '';
+};
+
+const getNextPromptId = (lastCompletedId, prompts) => {
+  const { currentListIndex, currentPromptIndex } = findCurrentPromptIndex(lastCompletedId, prompts);
+
+  if (currentPromptIndex === -1 || currentListIndex === -1) {
+    return prompts[0].prompts[0].id;
+  }
+
+  if (currentPromptIndex + 1 < prompts[currentListIndex].prompts.length) {
+    return prompts[currentListIndex].prompts[currentPromptIndex + 1].id;
+  }
+
+  if (currentListIndex + 1 < prompts.length) {
+    return prompts[currentListIndex + 1].prompts[0].id;
+  }
+
+  return null;
+};
+
+const findCurrentPromptIndex = (lastCompletedId, prompts) => {
+  for (let i = 0; i < prompts.length; i++) {
+    const promptList = prompts[i].prompts;
+    for (let j = 0; j < promptList.length; j++) {
+      if (promptList[j].id === lastCompletedId) {
+        return { currentListIndex: i, currentPromptIndex: j };
+      }
+    }
+  }
+  return { currentListIndex: -1, currentPromptIndex: -1 };
+};
 
 const LifeBookContent = ({
   showWelcome,
@@ -19,15 +60,46 @@ const LifeBookContent = ({
   uploadedImage,
   setUploadedImage
 }) => {
-  const { userData, setUserData } = useAuth();
+  // const { userData, setUserData } = useAuth();
+  const userData = {
+    "id": "12345-abcde-67890-fghij",
+    "username": "johndoe",
+    "email": "johndoe@example.com",
+    "firstName": "John",
+    "lastName": "Doe",
+    "role": "user",
+    "createdAt": "2023-01-01T00:00:00Z",
+    "updatedAt": "2023-01-10T00:00:00Z",
+    "lastLogin": "2023-01-09T12:34:56Z",
+    "lastPromptCompleted": "adolescence_9",
+    "promptInProgress": "",
+    "houseSelection": {
+      "name": "New-England Colonial",
+      "images": {
+        "ext": "/static/media/ColonialExt.9d0e94bab90f138da881.png",
+        "read": "/static/media/ColonialRead.6e8940a7d971f2535781.png",
+        "writ": "/static/media/ColonialWrit.051a3a2704ce3070d3ff.png",
+        "rem": "/static/media/ColonialRem.47e827d2e3efe790b894.png"
+      }
+    }
+  }
   const imageInputRef = useRef(null);
   const [currentPromptText, setCurrentPromptText] = useState('');
   console.log(userData)
 
   useEffect(() => {
-    if (userData && userData.promptInProgress) {
-      const promptText = findPromptTextById(userData.promptInProgress);
-      setCurrentPromptText(promptText);
+    if (userData) {
+      if (userData.promptInProgress) {
+        const promptText = findPromptTextById(userData.promptInProgress, prompts);
+        setCurrentPromptText(promptText);
+      } else if (userData.lastPromptCompleted) {
+        const nextPromptId = getNextPromptId(userData.lastPromptCompleted, prompts);
+        const nextPromptText = findPromptTextById(nextPromptId, prompts);
+        setCurrentPromptText(nextPromptText);
+      } else {
+        const firstPrompt = prompts[0].prompts[0].question;
+        setCurrentPromptText(firstPrompt);
+      }
     }
   }, [userData]);
 
