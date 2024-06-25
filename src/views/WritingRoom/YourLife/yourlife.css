@@ -253,3 +253,34 @@ button.edit-cover-button, button.add-cover-button{
   background-color: #dbb34d;
   transform: scale(1.05);
 }
+
+.prompts-index-panel{
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  text-align: right;
+  width: 100%;
+  /* outline: 1px red solid; */
+  height: 100%; 
+  position: relative;
+}
+
+.prompts-panel{
+  overflow:auto;
+  height: 100%;
+}
+
+.open-life-book-content .prompts-btn{
+  /* outline: 1px blue solid; */
+  border: rgba(0, 0, 0, 0.22) 2px solid;
+  background-color: rgba(0, 0, 0, 0.041);
+  padding: 0.5rem 1rem;
+  width: 80%;
+  margin: .5rem 0;
+  cursor: pointer;
+}
+.open-life-book-content .prompts-btn:hover{
+  background-color: #dbb34d6e;
+  /* color: white; */
+}

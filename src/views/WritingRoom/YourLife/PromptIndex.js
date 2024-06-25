@@ -12,34 +12,33 @@ const PromptIndex = ({ prompts, handleBackToIndex }) => {
   };
 
   const renderTitles = () => (
-    <div>
-      <h3>Prompt Index</h3>
+    <div className='prompts-index-panel'>
       {prompts.map((item, index) => (
-        <button key={index} onClick={() => handleTitleClick(item.title)} className="title-button">
+        <button key={index} onClick={() => handleTitleClick(item.title)} className="prompts-btn">
           {item.title}
         </button>
       ))}
-      <button onClick={handleBackToIndex} className="back-button">Back</button>
+      <button onClick={handleBackToIndex} className="prompts-btn">Back</button>
     </div>
   );
 
   const renderPrompts = () => {
-    const selectedPrompt = prompts.find(item => item.title === selectedTitle);
+    const promptSection = prompts.find(item => item.title === selectedTitle);
     return (
       <div className='prompts-panel'>
         <h3>{selectedTitle}</h3>
-        {selectedPrompt.prompts.map((prompt) => (
-          <div key={prompt.id} className="prompt-item">{prompt.question}</div>
+        {promptSection.prompts.map((prompt) => (
+          <div key={prompt.id} className="prompts-btn">{prompt.question}</div>
         ))}
-        <button onClick={handleBack} className="back-button">Back to Titles</button>
+        <button onClick={handleBack} className="prompts-btn">Back to Titles</button>
       </div>
     );
   };
 
   return (
-    <div>
+    <>
       {selectedTitle ? renderPrompts() : renderTitles()}
-    </div>
+    </>
   );
 };
 

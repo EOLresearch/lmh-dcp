@@ -1,10 +1,11 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { FaLongArrowAltLeft } from "react-icons/fa";
-import PromptIndex from '../PromptIndex';
+import PromptIndex from './PromptIndex';
 import ReactQuill from 'react-quill';
 import QuillToolBar from './QuillToolBar';
 import { useAuth } from '../../../auth/AuthContext';
 import axios from 'axios';
+
 // Helper functions defined outside the component
 const findPromptTextById = (id, prompts) => {
   for (let item of prompts) {
@@ -60,32 +61,9 @@ const LifeBookContent = ({
   uploadedImage,
   setUploadedImage
 }) => {
-  // const { userData, setUserData } = useAuth();
-  const userData = {
-    "id": "12345-abcde-67890-fghij",
-    "username": "johndoe",
-    "email": "johndoe@example.com",
-    "firstName": "John",
-    "lastName": "Doe",
-    "role": "user",
-    "createdAt": "2023-01-01T00:00:00Z",
-    "updatedAt": "2023-01-10T00:00:00Z",
-    "lastLogin": "2023-01-09T12:34:56Z",
-    "lastPromptCompleted": "adolescence_9",
-    "promptInProgress": "",
-    "houseSelection": {
-      "name": "New-England Colonial",
-      "images": {
-        "ext": "/static/media/ColonialExt.9d0e94bab90f138da881.png",
-        "read": "/static/media/ColonialRead.6e8940a7d971f2535781.png",
-        "writ": "/static/media/ColonialWrit.051a3a2704ce3070d3ff.png",
-        "rem": "/static/media/ColonialRem.47e827d2e3efe790b894.png"
-      }
-    }
-  }
+  const { userData, setUserData } = useAuth();
   const imageInputRef = useRef(null);
   const [currentPromptText, setCurrentPromptText] = useState('');
-  console.log(userData)
 
   useEffect(() => {
     if (userData) {
@@ -103,16 +81,6 @@ const LifeBookContent = ({
     }
   }, [userData]);
 
-  const findPromptTextById = (promptId) => {
-    for (let section in prompts) {
-      for (let prompt of prompts[section].prompts) {
-        if (prompt.id === promptId) {
-          return prompt.question;
-        }
-      }
-    }
-    return '';
-  };
 
   const handleEditorChange = (content) => {
     setEditorContent(content);
@@ -177,6 +145,7 @@ const LifeBookContent = ({
                 {uploadedImage && <img src={uploadedImage} alt="Uploaded" className="uploaded-thumbnail" />}
                 <div className="prompts-btn-menu">
                   <button onClick={handleViewIndex} className="view-index-button">View Prompts List</button>
+                  <button onClick={()=>setShowWelcome(true)}>Back</button>
                 </div>
               </>
             )

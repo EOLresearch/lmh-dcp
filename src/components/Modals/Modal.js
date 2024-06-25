@@ -2,10 +2,8 @@ import React from 'react';
 import './modals.css';
 import { BsXLg } from 'react-icons/bs';
 
-const Modal = ({ show, children, onClose }) => {
-  if (!show) {
-    return null;
-  }
+const Modal = ({ show, onClose, children }) => {
+  if (!show) return null;
 
   return (
     <div className="modal-overlay">

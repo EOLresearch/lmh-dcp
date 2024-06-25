@@ -10,26 +10,49 @@ export const AuthProvider = ({ children }) => {
   const [error, setError] = useState('');
 
   const signIn = async (email, password) => {
-    try {
-      const response = await axios.post('http://localhost:3001/api/auth/login', {
-        email,
-        password
-      });
-
-      const decodedToken = jwtDecode(response.data.AuthenticationResult.IdToken);
-
-      try {
-        const userDataResponse = await axios.get(`http://localhost:3001/api/user/data/${decodedToken.email}`);
-        setUserData(userDataResponse.data);
-      } catch (error) {
-        console.error('Error fetching user data:', error);
+    setIsAuthenticated(true);
+    setUserData({
+      "id": "12345-abcde-67890-fghij",
+      "username": "johndoe",
+      "email": "johndoe@example.com",
+      "firstName": "John",
+      "lastName": "Doe",
+      "role": "user",
+      "createdAt": "2023-01-01T00:00:00Z",
+      "updatedAt": "2023-01-10T00:00:00Z",
+      "lastLogin": "2023-01-09T12:34:56Z",
+      "lastPromptCompleted": "adolescence_9",
+      "promptInProgress": "",
+      "houseSelection": {
+        "name": "New-England Colonial",
+        "images": {
+          "ext": "/static/media/ColonialExt.9d0e94bab90f138da881.png",
+          "read": "/static/media/ColonialRead.6e8940a7d971f2535781.png",
+          "writ": "/static/media/ColonialWrit.051a3a2704ce3070d3ff.png",
+          "rem": "/static/media/ColonialRem.47e827d2e3efe790b894.png"
+        }
       }
+    })
+    // try {
+    //   const response = await axios.post('http://localhost:3001/api/auth/login', {
+    //     email,
+    //     password
+    //   });
 
-      setIsAuthenticated(true);
-    } catch (error) {
-      setError('Invalid email or password');
-      console.error('Login error:', error);
-    }
+    //   const decodedToken = jwtDecode(response.data.AuthenticationResult.IdToken);
+
+    //   try {
+    //     const userDataResponse = await axios.get(`http://localhost:3001/api/user/data/${decodedToken.email}`);
+    //     setUserData(userDataResponse.data);
+    //   } catch (error) {
+    //     console.error('Error fetching user data:', error);
+    //   }
+
+    //   setIsAuthenticated(true);
+    // } catch (error) {
+    //   setError('Invalid email or password');
+    //   console.error('Login error:', error);
+    // }
   };
 
   const selectHouse = (house) => {
