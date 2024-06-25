@@ -89,6 +89,9 @@ const LifeBookContent = ({
   const handleSave = async () => {
     console.log('Saving prompt content...');
   };
+  const handleComplete = async () => {
+    console.log('Completing prompt...');
+  };
 
   const handleImageChange = async (event) => {
     const file = event.target.files[0];
@@ -172,7 +175,10 @@ const LifeBookContent = ({
                   placeholder='Click here to start writing...'
                 />
               </div>
+              <div className='quill-button-container'>
               <button onClick={handleSave} className="lifebook-button">Save</button>
+              <button onClick={handleComplete} className="lifebook-button">Complete Prompt</button>
+              </div>
             </div>
           )}
         </div>

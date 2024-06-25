@@ -18,3 +18,38 @@ footer {
   background-color: #2d89835a;
   color: rgba(0, 0, 0, 0.651);
 }
+
+/* General scrollbar styling */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+/* The track (background) */
+::-webkit-scrollbar-track {
+  background: #f1f1f144; 
+  border-radius: 10px;
+}
+
+/* The handle (scrollbar thumb) */
+::-webkit-scrollbar-thumb {
+  background: #888888a4; 
+  border-radius: 10px;
+  cursor: pointer;
+  border:1px rgba(0, 0, 0, 0.104) solid;
+}
+
+/* The handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #5555559b; 
+}
+
+/* Optional: the scrollbar buttons (arrows at the ends) */
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* Optional: the scrollbar corner (bottom-right corner) */
+::-webkit-scrollbar-corner {
+  background: #f1f1f1;
+}

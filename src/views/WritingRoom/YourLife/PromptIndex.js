@@ -30,7 +30,7 @@ const PromptIndex = ({ prompts, handleBackToIndex }) => {
         {promptSection.prompts.map((prompt) => (
           <div key={prompt.id} className="prompts-btn">{prompt.question}</div>
         ))}
-        <button onClick={handleBack} className="prompts-btn">Back to Titles</button>
+        <button onClick={handleBack} className="prompts-btn">Back to Sections</button>
       </div>
     );
   };

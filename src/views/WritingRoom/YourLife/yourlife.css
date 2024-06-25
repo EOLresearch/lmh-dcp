@@ -1,3 +1,5 @@
+
+
 .book-cover {
   background-size: contain;
   background-position: center;
@@ -70,21 +72,23 @@ button.edit-cover-button, button.add-cover-button{
 
 .life-book-copy-container .life-book-left-side,
 .life-book-right-side {
-  width: 50%;
-  /* outline: 2px blue solid; */
+  max-width: 41%;
+  /* outline: 2px blue solid;  */
   padding: 0.5rem;
   /* overflow: auto; */
   position: relative;
 }
 .life-book-copy-container .life-book-left-side{
   margin-right:2rem;
+  width: 100%;
 }
 .life-book-copy-container .life-book-right-side{
   margin-left:5rem;
+  /* outline: blue solid 3px; */
 }
 
-.life-book-copy-container .life-book-right-side .quill-container{
-  height: 100%;
+.quill-container{
+  height: 70%;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -94,9 +98,11 @@ button.edit-cover-button, button.add-cover-button{
 }
 .quill-container .custom-quill-editor{
   height: 100%;
+  /* outline: red 1px solid; */
 }
 .quill-input-wrapper{
   height: 100%;
+  max-width: 100%;
 }
 #toolbar{
   /* outline: red 2px solid; */
@@ -247,6 +253,7 @@ button.edit-cover-button, button.add-cover-button{
   color: rgba(0, 0, 0, 0.534);
   width: max-content;
   padding: 0.5rem 1rem;
+
 }
 
 .quill-container .lifebook-button:hover{
@@ -283,4 +290,10 @@ button.edit-cover-button, button.add-cover-button{
 .open-life-book-content .prompts-btn:hover{
   background-color: #dbb34d6e;
   /* color: white; */
+}
+
+.quill-button-container{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
 }
