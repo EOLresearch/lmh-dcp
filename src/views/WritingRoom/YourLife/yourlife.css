@@ -81,6 +81,8 @@ button.edit-cover-button, button.add-cover-button{
 .life-book-copy-container .life-book-left-side{
   margin-right:2rem;
   width: 100%;
+  /* outline: 2px red solid; */
+  overflow: hidden;
 }
 .life-book-copy-container .life-book-right-side{
   margin-left:5rem;
@@ -126,11 +128,33 @@ button.edit-cover-button, button.add-cover-button{
   padding: 0;
 }
 
-.life-book-left-side img{
-  width: 90%;
-  height: 100%;
-  object-fit: contain;
+.thumbnail-container {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  max-height: 200px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+  position: relative;
 }
+
+.uploaded-thumbnail {
+  max-width: 50%;
+  margin-left:25%;
+}
+
+.thumbnail-container .clear-button{
+  font-size: 2.3rem;
+  color: rgb(0, 0, 0);
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;  
+}
+.thumbnail-container .clear-button:hover{
+  color: rgba(0, 0, 0, 0.534);
+}
+
 .prompt-item {
   cursor: pointer;
   margin: 0.5rem 0;

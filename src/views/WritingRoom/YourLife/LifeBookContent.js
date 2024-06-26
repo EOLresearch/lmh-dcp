@@ -4,6 +4,7 @@ import PromptIndex from './PromptIndex';
 import ReactQuill from 'react-quill';
 import QuillToolBar from './QuillToolBar';
 import { useAuth } from '../../../auth/AuthContext';
+import { MdCancel } from "react-icons/md";
 import axios from 'axios';
 
 // Helper functions defined outside the component
@@ -117,7 +118,10 @@ const LifeBookContent = ({
     'list', 'bullet', 'indent', 'link', 'image', 'color', 'background', 'align'
   ];
 
-
+  const handleClearImage = () => {
+    setUploadedImage('');
+    imageInputRef.current.value = null;
+  };
   return (
     <div className="open-life-book-content">
       <button onClick={() => setOpenLifeBook(false)} id="book-close-button"><FaLongArrowAltLeft color={"gold"} size={100} /><span>Close</span></button>
@@ -145,10 +149,14 @@ const LifeBookContent = ({
                   accept="image/*"
                   onChange={handleImageChange}
                 />
-                {uploadedImage && <img src={uploadedImage} alt="Uploaded" className="uploaded-thumbnail" />}
-                <div className="prompts-btn-menu">
+                {uploadedImage && (
+                  <div className='thumbnail-container'>
+                    <img src={uploadedImage} alt="Uploaded" className="uploaded-thumbnail" />
+                    <button onClick={handleClearImage} className="clear-button"><MdCancel /></button>
+                  </div>
+                )}                <div className="prompts-btn-menu">
                   <button onClick={handleViewIndex} className="view-index-button">View Prompts List</button>
-                  <button onClick={()=>setShowWelcome(true)}>Back</button>
+                  <button onClick={() => setShowWelcome(true)}>Back</button>
                 </div>
               </>
             )
@@ -159,7 +167,7 @@ const LifeBookContent = ({
             <div className='welcome-container'>
               <p>Click the next button below to get started</p>
               {/* <p>We encourage you to upload photos where suitable to help illustrate your story.</p> */}
-              <button onClick={()=>setShowWelcome(false)} className="next-button">Next</button>
+              <button onClick={() => setShowWelcome(false)} className="next-button">Next</button>
             </div>
           ) : (
             <div className='quill-container'>
@@ -176,8 +184,8 @@ const LifeBookContent = ({
                 />
               </div>
               <div className='quill-button-container'>
-              <button onClick={handleSave} className="lifebook-button">Save</button>
-              <button onClick={handleComplete} className="lifebook-button">Complete Prompt</button>
+                <button onClick={handleSave} className="lifebook-button">Save</button>
+                <button onClick={handleComplete} className="lifebook-button">Complete Prompt</button>
               </div>
             </div>
           )}
