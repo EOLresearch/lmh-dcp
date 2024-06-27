@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
+import { useAuth } from "../../auth/AuthContext";
 import { FaLongArrowAltRight, FaLongArrowAltLeft } from "react-icons/fa";
 import { BsXLg } from "react-icons/bs";
 import ReactQuill from 'react-quill';
 import QuillToolBar from './QuillToolBar';
 import PromptIndex from './PromptIndex';
-import { getPrompts } from './journalprompts';
+import { getInterventionGroupPrompts, getControlGroupPrompts } from './journalprompts';
 
 const Journal = ({ setShowJournal }) => {
   const [showWelcome, setShowWelcome] = useState(true);
   const [editorContent, setEditorContent] = useState('');
   const [viewingIndex, setViewingIndex] = useState(false);
-  const prompts = getPrompts();
+  const interventionPrompts = getInterventionGroupPrompts();
+  const controlPrompts = getControlGroupPrompts();
+  const { userData } = useAuth();
 
   const prevPage = () => {
     console.log('Previous page');
@@ -44,6 +47,8 @@ const Journal = ({ setShowJournal }) => {
     'header', 'font', 'size', 'bold', 'italic', 'underline', 'strike', 'blockquote',
     'list', 'bullet', 'indent', 'link', 'image', 'color', 'background', 'align'
   ];
+  
+  const prompts = userData.studyGroup === 'intervention' ? interventionPrompts : controlPrompts;
 
   return (
     <div className="feature-container">

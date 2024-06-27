@@ -21,17 +21,10 @@ export const AuthProvider = ({ children }) => {
       "createdAt": "2023-01-01T00:00:00Z",
       "updatedAt": "2023-01-10T00:00:00Z",
       "lastLogin": "2023-01-09T12:34:56Z",
-      "lastPromptCompleted": "adolescence_9",
+      "lastPromptCompleted": "",
       "promptInProgress": "",
-      "houseSelection": {
-        "name": "New-England Colonial",
-        "images": {
-          "ext": "/static/media/ColonialExt.9d0e94bab90f138da881.png",
-          "read": "/static/media/ColonialRead.6e8940a7d971f2535781.png",
-          "writ": "/static/media/ColonialWrit.051a3a2704ce3070d3ff.png",
-          "rem": "/static/media/ColonialRem.47e827d2e3efe790b894.png"
-        }
-      }
+      "houseSelection": "", 
+      "studyGroup": "intervention",
     })
     // try {
     //   const response = await axios.post('http://localhost:3001/api/auth/login', {

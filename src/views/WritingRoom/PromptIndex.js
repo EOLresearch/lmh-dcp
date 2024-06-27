@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 const PromptIndex = ({ prompts, handleBackToIndex }) => {
   const [selectedTitle, setSelectedTitle] = useState(null);
 
+  const isGroupedBySection = Array.isArray(prompts) && prompts.length > 0 && prompts[0].hasOwnProperty('title');
+
   const handleTitleClick = (title) => {
     setSelectedTitle(title);
   };
@@ -22,22 +24,22 @@ const PromptIndex = ({ prompts, handleBackToIndex }) => {
     </div>
   );
 
-  const renderPrompts = () => {
-    const promptSection = prompts.find(item => item.title === selectedTitle);
-    return (
-      <div className='prompts-panel'>
-        <h3>{selectedTitle}</h3>
-        {promptSection.prompts.map((prompt) => (
-          <div key={prompt.id} className="prompts-btn">{prompt.question}</div>
-        ))}
-        <button onClick={handleBack} className="prompts-btn">Back to Sections</button>
-      </div>
-    );
-  };
+  const renderPrompts = (promptList) => (
+    <div className='prompts-panel'>
+      <h3>{selectedTitle || "Prompts"}</h3>
+      {promptList.map((prompt) => (
+        <div key={prompt.id} className="prompts-btn">{prompt.question}</div>
+      ))}
+      <button onClick={handleBackToIndex} className="prompts-btn">Back to Prompt</button>
+      {isGroupedBySection && <button onClick={handleBack} className="prompts-btn">Back to Sections</button>}
+    </div>
+  );
+
+  const promptSection = isGroupedBySection ? prompts.find(item => item.title === selectedTitle) : { prompts };
 
   return (
     <>
-      {selectedTitle ? renderPrompts() : renderTitles()}
+      {isGroupedBySection && !selectedTitle ? renderTitles() : renderPrompts(promptSection.prompts)}
     </>
   );
 };

@@ -67,3 +67,11 @@ export const getPrompts = () => {
     prompts: section.prompts
   }));
 };
+
+export const getInterventionGroupPrompts = () => {
+  return prompts.interventionGroup.prompts;
+};
+
+export const getControlGroupPrompts = () => {
+  return prompts.controlGroup.prompts;
+};
