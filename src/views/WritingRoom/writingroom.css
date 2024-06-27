@@ -1,47 +1,92 @@
-
-
-.journal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 85vh;
-  width: 85vw;
-  background-size: contain;
-  background-image: url(../../assets/img/journal.png);
-  background-position: center;
-  background-repeat: no-repeat;
-  position: relative;
-  z-index: 2;
-}
-
 .journal-content {
-  background-size: auto;
-  background-image: url(../../assets/img/journal-rough.png);
+  background-size: contain;
+  background-image: url(../../assets/img/openjournal.png);
   background-position: center;
   background-repeat: no-repeat;
-  height: 85vh;
-  width: 85vw;
+  height: 75vh;
+  width: 75vw;
   position: relative;
   z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
+  /* outline: 2px purple solid; */
+
 }
 
 .journal-inner-container {
-  outline: 2px red solid;
-  width: 60%;
-  height: 70%;
+  /* outline: 2px red solid; */
+  padding: 1rem;
+  width: 65%;
+  height: 85%;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: relative;
   right: 1rem;
-  bottom: 0.5rem;
-  display: flex;
 }
 
-.journal-inner-container .journal-left-side,
+.journal-left-side,
 .journal-right-side {
   width: 45%;
-  border: 2px blue solid;
-  margin: 1.5rem;
+  height: 95%;
+  /* outline: 2px blue solid; */
+  display: flex;
+  
 }
 
+.journal-left-side {
+  margin-right: 1.5rem;
+}
+
+.journal-right-side {
+  margin-left: 1.5rem;
+}
+
+.welcome-container-journal{
+  margin-top:3rem;
+}
+.welcome-container-journal button{
+  padding: 0.5rem 1rem;
+  background-color: #dbb34d6e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.3s;
+  color: rgba(0, 0, 0, 0.534);
+  width: max-content;
+}
+.welcome-container-journal button:hover{
+  background-color: #dbb34d;
+  transform: scale(1.05);
+}
+
+.prompts-index-panel{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: right;
+  width: 100%;
+  height: 100%; 
+  position: relative;
+}
+
+.prompts-panel{
+  overflow:auto;
+  height: 100%;
+}
+
+.journal-content .prompts-btn{
+  border: rgba(0, 0, 0, 0.22) 2px solid;
+  background-color: rgba(0, 0, 0, 0.041);
+  padding: 0.5rem 1rem;
+  width: 80%;
+  margin: .5rem 0;
+  cursor: pointer;
+}
+.journal-content .prompts-btn:hover{
+  background-color: #dbb34d6e;
+}

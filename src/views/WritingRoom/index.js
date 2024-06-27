@@ -14,19 +14,12 @@ function WritingRoom() {
 
   const [showYourLife, setShowYourLife] = useState(false);
   const [showJournal, setShowJournal] = useState(false);
-  const [selectedPhoto, setSelectedPhoto] = useState(null);
 
   const roomStyle = {
     backgroundImage: `url(${houseSelection.images.writ})`,
   };
 
-  const handlePhotoClick = (photo) => {
-    setSelectedPhoto(photo);
-  };
 
-  const handleClosePhoto = () => {
-    setSelectedPhoto(null);
-  };
 
   return (
     <div style={roomStyle} className='room-container'>
@@ -41,16 +34,8 @@ function WritingRoom() {
         </button>
       </div>
       {(showYourLife || showJournal) && <div className="overlay" />}
-      {showYourLife && <YourLife setShowYourLife={setShowYourLife} handlePhotoClick={handlePhotoClick} />}
-      {showJournal && <Journal setShowJournal={setShowJournal} handlePhotoClick={handlePhotoClick} />}
-      {selectedPhoto && (
-        <div className="maximized-photo-overlay" onClick={handleClosePhoto}>
-          <img src={selectedPhoto.src} alt={selectedPhoto.caption} className="maximized-photo" />
-          <button className="close-maximized-photo-btn">
-            <BsXLg />
-          </button>
-        </div>
-      )}
+      {showYourLife && <YourLife setShowYourLife={setShowYourLife}  />}
+      {showJournal && <Journal setShowJournal={setShowJournal} />}
     </div>
   );
 }

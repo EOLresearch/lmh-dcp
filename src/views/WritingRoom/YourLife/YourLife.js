@@ -18,13 +18,9 @@ const YourLife = ({ setShowYourLife }) => {
   const [uploadedImage, setUploadedImage] = useState(null);
   const prompts = getSectionPrompts();
 
-  console.log(prompts);
-
   const handleViewIndex = () => {
     setViewingIndex(true);
   };
-
-
   const handleBackToIndex = () => {
     setViewingIndex(false);
   };

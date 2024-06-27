@@ -11,14 +11,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* outline: red 3px solid; */
 }
 .book-cover button{
   position: absolute;
   right:5%;
-
 }
-
 img.cover-photo {
   width: 21vw;
   height: 50vh;
@@ -50,7 +47,6 @@ button.edit-cover-button, button.add-cover-button{
   display: flex;
   justify-content: center;
   align-items: center;
-  /* outline: red 3px solid; */
 }
 
 #book-close-button {
@@ -59,7 +55,6 @@ button.edit-cover-button, button.add-cover-button{
 }
 
 .life-book-copy-container {
-  /* outline: 2px red solid; */
   width: 50%;
   height: 55%;
   position: relative;
@@ -67,47 +62,40 @@ button.edit-cover-button, button.add-cover-button{
   display: flex;
   padding:1rem;
   border-radius: 1rem;
-  /* background-color: rgba(81, 43, 0, 0.136); */
 }
 
 .life-book-copy-container .life-book-left-side,
 .life-book-right-side {
   max-width: 41%;
-  /* outline: 2px blue solid;  */
   padding: 0.5rem;
-  /* overflow: auto; */
   position: relative;
 }
 .life-book-copy-container .life-book-left-side{
   margin-right:2rem;
   width: 100%;
-  /* outline: 2px red solid; */
   overflow: hidden;
 }
 .life-book-copy-container .life-book-right-side{
   margin-left:5rem;
-  /* outline: blue solid 3px; */
+  display: flex;
 }
 
 .quill-container{
-  height: 70%;
+  /* height: 70%; */
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between; 
-  /* outline: 2px red solid; */
   align-content: center;
 }
 .quill-container .custom-quill-editor{
   height: 100%;
-  /* outline: red 1px solid; */
 }
 .quill-input-wrapper{
   height: 100%;
   max-width: 100%;
 }
 #toolbar{
-  /* outline: red 2px solid; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -130,7 +118,6 @@ button.edit-cover-button, button.add-cover-button{
 
 .thumbnail-container {
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   max-height: 200px;
   overflow: hidden;
@@ -288,11 +275,9 @@ button.edit-cover-button, button.add-cover-button{
 .prompts-index-panel{
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
   text-align: right;
   width: 100%;
-  /* outline: 1px red solid; */
   height: 100%; 
   position: relative;
 }
@@ -303,7 +288,6 @@ button.edit-cover-button, button.add-cover-button{
 }
 
 .open-life-book-content .prompts-btn{
-  /* outline: 1px blue solid; */
   border: rgba(0, 0, 0, 0.22) 2px solid;
   background-color: rgba(0, 0, 0, 0.041);
   padding: 0.5rem 1rem;
@@ -313,7 +297,6 @@ button.edit-cover-button, button.add-cover-button{
 }
 .open-life-book-content .prompts-btn:hover{
   background-color: #dbb34d6e;
-  /* color: white; */
 }
 
 .quill-button-container{

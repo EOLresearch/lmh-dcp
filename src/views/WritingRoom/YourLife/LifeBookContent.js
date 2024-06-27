@@ -1,8 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { FaLongArrowAltLeft } from "react-icons/fa";
-import PromptIndex from './PromptIndex';
+import PromptIndex from '../PromptIndex';
 import ReactQuill from 'react-quill';
-import QuillToolBar from './QuillToolBar';
+import QuillToolBar from '../QuillToolBar';
 import { useAuth } from '../../../auth/AuthContext';
 import { MdCancel } from "react-icons/md";
 import axios from 'axios';
@@ -166,7 +166,6 @@ const LifeBookContent = ({
           {showWelcome ? (
             <div className='welcome-container'>
               <p>Click the next button below to get started</p>
-              {/* <p>We encourage you to upload photos where suitable to help illustrate your story.</p> */}
               <button onClick={() => setShowWelcome(false)} className="next-button">Next</button>
             </div>
           ) : (
